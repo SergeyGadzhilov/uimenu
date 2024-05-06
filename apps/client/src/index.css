@@ -1,0 +1,150 @@
+body{
+    background-color: #f2f2f2;
+    font-weight: 400;
+}
+
+.btn:hover{
+    color:#fff;
+}
+
+* {
+    font-family: Helvetica, sans-serif;
+}
+
+.btn-standard{
+    font-weight:700;
+    background-color: #ED6F3B;
+    color: white;
+}
+
+.font-md{
+    font-weight:600;
+}
+
+.text-md{
+    font-size: 0.875rem;
+    line-height: 1.2rem;
+}
+
+.text-lg{
+    font-size: 1.125rem;
+    line-height: 1.4rem;
+}
+
+.text-sm{
+    font-size: 1rem;
+}
+
+.fw-sm{
+    font-weight: 400;
+}
+
+.text-primary{
+    color: #ED6F3B;
+}
+
+.text-gray {
+    --tw-text-opacity: 1;
+    color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+
+.btn-standard:hover{
+    background-color: #fc285d;
+}
+
+h1, h2,h3{
+    font-weight: 700;
+}
+
+h1, h2 {
+    margin-top: 5px;
+}
+
+#nav-btn a{
+    font-weight: 600;
+    border-radius: 7px;
+    margin-left: 3px;
+    margin-left: 3px;
+}
+
+#logout{
+    background-color: #ED6F3B;
+    color: white;
+}
+
+#logout:hover{
+    background-color:black;
+    color: white;
+}
+
+#login{
+    background-color: black;
+    color: white;
+}
+
+#logout:hover{
+    background-color:#fc285d;
+    color: white;
+}
+
+.link{
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.logo{
+    height: 50px;
+    width: auto;
+}
+
+.boeSgZ {
+    padding: 0 30px;
+}
+
+input{
+    font-family: sans-serif;
+    font-size: 0.9em !important;
+}
+
+.StripeElement{
+    height:38px;
+    padding: 10px 12px;
+    width:100%;
+    color:#32325d;
+    background-color:#fff;
+    border:1px solid #ced4da;
+    border-radius:4px;
+}
+
+.StripeElement--focus{
+    border-color:#80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123,255,0.25);
+}
+
+.StripeElement--invalid{
+    border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill{
+    background-color:#fefde5!important;
+}
+
+.btn-link{
+    color: #32325d;
+    font-weight: 600;
+}
+
+p { font-size: 14px;}
+
+.btn-link:hover{
+    text-decoration: none;
+    color: #ED6F3B;
+}
+
+.opbnt:active{
+    color: #32325d;
+}
+
+.opbnt:hover{
+    color: #80bdff;
+}
