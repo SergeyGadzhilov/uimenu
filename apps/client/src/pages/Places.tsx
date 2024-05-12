@@ -70,7 +70,7 @@ const Places = () => {
     }
     return(
     <MainLayout>
-        <h3 className="text-primary m-4 text-center">My Places</h3>
+        <h3 className="text-primary m-4 text-center">Menus</h3>
         <Modal show={show} onHide={onHide} centered>
             <Modal.Body>
                 <PlaceForm  onDone={onDone}/>

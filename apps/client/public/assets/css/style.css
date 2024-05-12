@@ -206,7 +206,7 @@ img{
   position: absolute;
   height: 3px;
   width: 30px;
-  background: #ED6F3B;
+  background: #4C4C4C;
   border-radius: 0;
   opacity: 1;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
@@ -252,6 +252,7 @@ img{
   background:#F3F3F3;
   z-index:9999;
   padding: 0;
+  border-bottom: 1px solid #EFEBEB;
 }
 .header__logo a{
   display:inline-block;
@@ -274,6 +275,10 @@ img{
       -ms-flex-align: center;
           align-items: center;
 }
+.header__menu .open ul{
+  display: block;
+}
+
 .header__menu ul{
   display: -webkit-box;
   display: -ms-flexbox;
