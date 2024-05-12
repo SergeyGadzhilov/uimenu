@@ -17,8 +17,8 @@ const Login  = () =>{
         }
     });
 
-    const demoLogin = () =>{
-        auth.signIn({username:'test@test.com',password:'password'},()=> navigateTo('/places'));
+    const demoLogin = () => {
+        auth.signIn({username:'test@test.com', password:'password'}, ()=> navigateTo('/places'));
     }
 
     const onClick = () =>{
@@ -53,7 +53,7 @@ const Login  = () =>{
                                     {
                                     auth.loading?
                                         <Spinner animation="border" role="status" variant="standard" as="span" size="sm" aria-hidden="true" />
-                                    :"Sign in"
+                                    :"Login"
                                     }
                                 </Button>
                             </Form>
@@ -61,7 +61,7 @@ const Login  = () =>{
                             <p className="text-gray">
                                 Don't have an account?
                                 <Link className="underline text-primary" to="/register">{" "}
-                                Sign up
+                                Registration
                                 </Link> {"  "}
                                 <Button className="btn-sm" variant="secondary" onClick={demoLogin}>Demo Login</Button>
                             </p>

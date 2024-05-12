@@ -8,7 +8,7 @@ const AuthContext = createContext();
 
 interface SignInResponse {
     accessToken?: string; // Adjust the type according to your actual response structure
-  }
+}
 
 export function AuthProvider({ children }) {
     const [token, setToken] = useState(localStorage.getItem('token'));
@@ -39,10 +39,7 @@ export function AuthProvider({ children }) {
             callback()
         }
         setLoading(false);
-
     }
-
-
 
     const value = {
         token,

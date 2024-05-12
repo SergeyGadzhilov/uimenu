@@ -28,7 +28,6 @@ const Place = styled.div`
         font-weight:bold;
     }`;
 
-
 const AddPlaceButton = styled.div`
     border:2px dashed lightgrey;
     height:200px;
@@ -41,7 +40,6 @@ const AddPlaceButton = styled.div`
     :hover{
        background-color:#fbfbfbf;
     }
-
 `
 
 const Places = () => {

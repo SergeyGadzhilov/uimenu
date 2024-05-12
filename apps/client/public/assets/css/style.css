@@ -245,14 +245,13 @@ img{
   left: 50%;
 }
 .header__main_area{
-  position: absolute;
   content: '';
   width:100%;
   left:0;
   top: 0;
   background:#F3F3F3;
   z-index:9999;
-  padding: 15px 0;
+  padding: 0;
 }
 .header__logo a{
   display:inline-block;
@@ -264,6 +263,7 @@ img{
   color: #ED6F3B
 }
 .header__logo_menu {
+  height: 60px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -278,16 +278,17 @@ img{
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin: 0;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 .header__menu ul li a{
   display: inline-block;
-  font-size:18px;
+  font-size:16px;
   font-weight:600;
-  color:#000;
-  margin-right:70px;
+  color:#4C4C4C;
+  margin-right:20px;
   -webkit-transition: .3s all ease;
   transition:.3s all ease;
 }
@@ -298,28 +299,7 @@ img{
 .header__menu ul li a:hover{
   color:#ED6F3B;
 }
-.singup ul{
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.singup ul li a{
-  display: inline-block;
-  font-size:18px;
-  font-weight:600;
-  color:#000;
-  -webkit-transition: .3s all ease;
-  transition:.3s all ease;
-}
-.singup ul li a:hover{
-  color:#ED6F3B;
-}
-.singup ul li:first-child a{
-  margin-right: 98px;
-}
+
 .freetrial{
   background:#ED6F3B !important;
   color:#FFF !important;

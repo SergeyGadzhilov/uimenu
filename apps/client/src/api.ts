@@ -8,22 +8,25 @@ async function request(path: string, { data, token, method = "GET" }: { data?: u
     "Content-Type": "application/json",
   };
 
-  const body = (method !== "GET" && method !== "DELETE") ? JSON.stringify(data) : null;
-
   try {
+    const body = (method !== "GET" && method !== "DELETE") ? JSON.stringify(data) : null;
     const response = await fetch(url, { method, headers, body });
 
     if (response.ok) {
       return method === "DELETE" ? true : response.json();
     }
+
     if(response.status == 403){
-      const json = await response.json()
-     return  toast.error( json.message, {type: "error"});
+      const json = await response.json();
+      return toast.error( json.message, {type: "error"});
     }
+
     const json = await response.json();
     if(Array.isArray(json.message)){
       toast.error(json.message[0], {type: "error"});
+      return;
     }
+
     throw new Error(JSON.stringify(json));
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {

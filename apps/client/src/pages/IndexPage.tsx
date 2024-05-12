@@ -1,72 +1,11 @@
-import { useContext } from "react";
-import AuthContext from "../context/AuthContext";
 import { Link } from "react-router-dom";
-import { AuthContextType } from "../types";
+import RCMenuHeader from "../components/RCMenuHeader";
 
 function IndexPage() {
-  const auth = useContext(AuthContext) as AuthContextType;
   return (
     <div id="landing">
-      <header className="header__main_area">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <div className="header__logo_menu">
-                <div className="header__logo">
-                  <a href="/">
-                    <img src="/logo.png" alt="RCMenu" className="logo" />
-                  </a>
-                </div>
-                <div className="header__menu">
-                {auth.token && (
-                  <nav className="menu">
-                    <ul>
-                      <li>
-                        <Link to="/places">Places</Link>
-                      </li>
-                    </ul>
-                  </nav>)}
-                  <div className="mobile_menu">
-                    <div className="all_p_humber">
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="singup">
-                  <ul>
-                    {auth.token ? (
-                      <li>
-                        <a className="freetrial" onClick={() => auth.signOut()}>
-                          Sign out
-                        </a>
-                      </li>
-                    ) : (
-                      <>
-                        <li>
-                          <Link to="/login">Sign in</Link>
-                        </li>
-                        <li>
-                          <Link className="freetrial" to="/register">
-                            Sign up
-                          </Link>
-                        </li>
-                      </>
-                    )}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
-      <section
-        className="banner__main_area ptb_1"
-        style={{ backgroundColor: "#F4F8FB" }}
-      >
+      <RCMenuHeader/>
+      <section className="banner__main_area ptb_1" style={{ backgroundColor: "#F4F8FB" }}>
         <div className="container">
           <div className="row">
             <div className="col-md-12">

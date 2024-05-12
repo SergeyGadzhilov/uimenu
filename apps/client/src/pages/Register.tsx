@@ -27,7 +27,7 @@ const Register = () => {
       <Row className="justify-content-center min-h-80">
         <Col lg={6} md={8}>
           <Card>
-            <h3 className="text-center text-primary mt-4">Sing Up</h3>
+            <h3 className="text-center text-primary mt-4">Registration</h3>
             <p className="text-gray text-center">
               Create your account to get started.
             </p>
@@ -75,7 +75,7 @@ const Register = () => {
                       aria-hidden="true"
                     />
                   ) : (
-                    "Sign up"
+                    "Registration"
                   )}
                 </Button>
               </Form>
@@ -84,7 +84,7 @@ const Register = () => {
                   Already have an account?
                   <Link className="underline text-primary" to="/login">
                     {" "}
-                    Log in
+                    Login
                   </Link>
                 </p>
               </div>
