@@ -19,10 +19,6 @@ export class MenuController {
   create(@Body() createOrderDto: CreateOrderDto) {
     return this.menuService.create(createOrderDto);
   }
-  @Post('/create-payment-intent/')
-  CreatePaymentTheIntent(@Body() payment: CreateOrderDto) {
-    return this.menuService.createPaymentIntent(payment);
-  }
 
   @Get()
   findMenu(@Param('placeId') placeId: string) {

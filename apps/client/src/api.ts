@@ -116,14 +116,6 @@ export function updatePlace(place:IdDataToken) {
   return request(`/places/${place.id}`, { data:place.data, token:place.token, method: "PATCH" });
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function createPaymentIntent(payment:any) {
-  return request(`/menu/${payment.placeId}/create-payment-intent/`, {
-    data:payment,
-    method: "POST",
-  });
-}
-
 export function fetchOrders(place:IdToken) {
   return request(`/orders/${place.placeId}/`, { token:place.token });
 }
