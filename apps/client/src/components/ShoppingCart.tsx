@@ -1,12 +1,9 @@
 import { useMemo } from "react";
 import { Card } from "react-bootstrap";
 import OperationButton from "./OperationButton";
-import StripeContext from "../containers/PaymentForm";
 import { useParams } from "react-router-dom";
-const ShoppingCart = ({ items, onAdd, onRemove, onPaymentDone, color }) => {
+const ShoppingCart = ({ items, onAdd, onRemove}) => {
   const param = useParams();
-  const placeId = param.id;
-  
   const totalPrice = useMemo(
     () => items.map((i) => i.quantity * i.price ).reduce((a, b) => parseFloat(`${(a + b).toFixed(2)}`), 0),
     [items]
@@ -59,13 +56,6 @@ const ShoppingCart = ({ items, onAdd, onRemove, onPaymentDone, color }) => {
           </div>
 
           <hr className="mb-4" />
-          <StripeContext
-          amount={totalPrice}
-          detail={items}
-          placeId={placeId}
-          onDone={onPaymentDone}
-          color={color}
-        />
         </Card.Body>
        
       </Card>
