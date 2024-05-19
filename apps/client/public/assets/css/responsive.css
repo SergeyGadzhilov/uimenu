@@ -63,6 +63,10 @@
 		display: none;
 	}
 
+	.banner__buttons {
+		justify-content: center;
+	  }
+
 	.need__main_content_right,
 	.idea__main_content_right,
 	.banner__content_right {
@@ -187,11 +191,6 @@
 	h2 {
 		font-size: 35px;
 		line-height: 40px;
-	}
-
-	.btn_style_1 {
-		padding: 12px 25px;
-		font-size: 15px;
 	}
 
 	.free_trial__content_left img,

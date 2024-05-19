@@ -16,7 +16,9 @@ function IndexPage() {
                     Revolutionize your customers' ordering process with our contactless QR Code menu solution.<br/>
                     <span className="banner__description_part2">Create digital restaurant menu and share it via a unique QR code with just a few clicks.</span>
                   </p>
-                  <Link className="btn_style_1" to="/register">Create QR menu</Link>
+                  <div className="banner__buttons">
+                    <Link className="button_accent" to="/register">Create QR menu</Link>
+                  </div>
                 </div>
                 <div className="banner__content_right" data-aos="fade-left">
                   <div className="scan_code">
@@ -88,7 +90,7 @@ function IndexPage() {
                     A simple QR Code to scan for your customer and order
                     directly from the kitchen.
                   </p>
-                  <Link className="btn_style_1" to="/places">
+                  <Link className="button_accent" to="/places">
                     Let's Build My Menu
                   </Link>
                 </div>
