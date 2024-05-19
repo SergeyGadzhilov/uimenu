@@ -24,15 +24,11 @@ function IndexPage() {
                   <div className="scan_code">
                     <a>
                       <img src="/qr.png" alt="QR_Code" />
-                      <p>
-                        Scan Me <span>To Try</span>
-                      </p>
+                      <p>Scan me <span>to try demo</span></p>
                     </a>
                   </div>
                   <div className="qr_code text-center">
-                    <span>
-                      Or <a href="" target="_blank" rel="noopener">Click Here</a>
-                    </span>
+                    <span>or <a href="" target="_blank" rel="noopener">click here</a></span>
                   </div>
                 </div>
               </div>

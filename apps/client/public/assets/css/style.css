@@ -314,10 +314,6 @@ img{
 }
 /*=========== Start Banner Area Css
 ==============================================*/
-.banner__main_area {
-  padding: 130px 0px;
-}
-
 .banner__content_area {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -328,6 +324,7 @@ img{
 }
 
 .banner__content_left {
+  padding: 130px 0px;
   -webkit-box-flex:0;
   -ms-flex:0 0 50%;
   flex:0 0 50%;
@@ -338,6 +335,7 @@ img{
 }
 
 .banner__content_right{
+  padding: 130px 0px;
   -webkit-box-flex:0;
   -ms-flex:0 0 50%;
   flex:0 0 50%;
