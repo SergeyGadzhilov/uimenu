@@ -113,9 +113,6 @@ img{
   -o-object-fit: cover;
      object-fit: cover;
 }
-.ptb_1{
-  padding:200px 0 165px 0;
-}
 .ptb_2{
   padding:42px 0 ;
 }
@@ -315,31 +312,39 @@ img{
 }
 /*=========== Start Banner Area Css
 ==============================================*/
-.banner__content_area{
+.banner__main_area {
+  padding: 130px 0px;
+}
+
+.banner__content_area {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
 }
-.banner__content_left{
+
+.banner__content_left {
   -webkit-box-flex:0;
       -ms-flex:0 0 50%;
           flex:0 0 50%;
 }
+
 .banner__content_left h2 span {
     display: block;
-  }
+}
+
 .banner__content_right{
   -webkit-box-flex:0;
       -ms-flex:0 0 50%;
           flex:0 0 50%;
 }
-.banner__content_left p {
-  max-width: 450px;
-  padding: 50px 0 100px 0;
+
+.banner__description {
+  padding-top: 20px;
 }
+
 .banner__content_right img {
   max-width: 350px;
   margin: auto;
