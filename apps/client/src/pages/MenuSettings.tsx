@@ -80,24 +80,23 @@ const MenuSettings = () => {
                 onChange={(e) => setFont(e.target.value)}
               >
                 <option value="'Helvitica', sans-serif">Helvitica</option>
-                 <option value="'Bitter', serif">Bitter</option>
-                  <option value="'Caveat', cursive">Caveat</option>
-                  <option value="'Concert One', sans-serif">Concert One</option>
-                  <option value="'Cookie', cursive">Cookie</option>
-                  <option value="'Indie Flower', cursive">Indie Flower</option>
-                  <option value="'Josefin Slab', serif">Josefin Slab</option>
-                  <option value="'Jost', sans-serif">Jost</option>
-                  <option value="'Lemon', serif">Lemon</option>
-                  <option value="'Lobster', sans-serif">Lobster</option>
-                  <option value="'Montserrat', sans-serif">Montserrat</option>
-                  <option value="'Pacifico', cursive">Pacifico</option>
-                  <option value="'Philosopher', sans-serif">Philosopher</option>
-                  <option value="'Righteous', sans-serif">Righteous</option>
-                  <option value="'Roboto', sans-serif">Roboto</option>
-                  <option value="'Roboto Condensed', sans-serif">Roboto Condensed</option>
-                  <option value="'Salsa', cursive">Salsa</option>
-                  <option value="'Shadows Into Light', cursive">Shadows Into Light</option>
-                  <option value="'Ubuntu', sans-serif">Ubuntu</option>
+                <option value="'Caveat', cursive">Caveat</option>
+                <option value="'Concert One', sans-serif">Concert One</option>
+                <option value="'Cookie', cursive">Cookie</option>
+                <option value="'Indie Flower', cursive">Indie Flower</option>
+                <option value="'Josefin Slab', serif">Josefin Slab</option>
+                <option value="'Jost', sans-serif">Jost</option>
+                <option value="'Lemon', serif">Lemon</option>
+                <option value="'Lobster', sans-serif">Lobster</option>
+                <option value="'Montserrat', sans-serif">Montserrat</option>
+                <option value="'Pacifico', cursive">Pacifico</option>
+                <option value="'Philosopher', sans-serif">Philosopher</option>
+                <option value="'Righteous', sans-serif">Righteous</option>
+                <option value="'Roboto', sans-serif">Roboto</option>
+                <option value="'Roboto Condensed', sans-serif">Roboto Condensed</option>
+                <option value="'Salsa', cursive">Salsa</option>
+                <option value="'Shadows Into Light', cursive">Shadows Into Light</option>
+                <option value="'Ubuntu', sans-serif">Ubuntu</option>
               </Form.Control>
             </Form.Group>
 
