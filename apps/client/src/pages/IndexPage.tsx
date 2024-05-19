@@ -10,7 +10,7 @@ function IndexPage() {
           <div className="row">
             <div className="col-md-12">
               <div className="banner__content_area">
-                <div className="banner__content_left" data-aos="fade-right">
+                <div className="banner__content_left">
                   <h2 className="banner__title">Contactless digital <span>QR Code Menu</span></h2>
                   <p className="banner__description">
                     Revolutionize your customers' ordering process with our contactless QR Code menu solution.<br/>
@@ -20,7 +20,7 @@ function IndexPage() {
                     <Link className="button_accent" to="/register">Create QR menu</Link>
                   </div>
                 </div>
-                <div className="banner__content_right" data-aos="fade-left">
+                <div className="banner__content_right">
                   <div className="scan_code">
                     <a>
                       <img src="/qr.png" alt="QR_Code" />
@@ -47,7 +47,7 @@ function IndexPage() {
           <div className="row">
             <div className="col-md-12">
               <div className="idea__main_content ptb_2">
-                <div className="idea__main_content_left" data-aos="fade-right">
+                <div className="idea__main_content_left">
                   <p>
                     RCMenu is the ideal tool for restaurants, bars and cafes.
                     Create your digital menu in a few minutes and generate your
@@ -56,7 +56,7 @@ function IndexPage() {
                     application download needed.
                   </p>
                 </div>
-                <div className="idea__main_content_right" data-aos="fade-left">
+                <div className="idea__main_content_right">
                   <img src="/assets/images/idea_item.png" alt="item_image" />
                 </div>
               </div>
@@ -65,7 +65,7 @@ function IndexPage() {
           <div className="row">
             <div className="col-md-12">
               <div className="scan__main_content ptb_2">
-                <div className="scan__main_content_left" data-aos="fade-up">
+                <div className="scan__main_content_left">
                   <div className="scan_code">
                     <a >
                       <img src="/qr.png" alt="QR_Code" />
@@ -80,7 +80,7 @@ function IndexPage() {
                     </span>
                   </div>
                 </div>
-                <div className="scan__main_content_right" data-aos="fade-up">
+                <div className="scan__main_content_right">
                   <h2>Try It For Yourself</h2>
                   <p>
                     A simple QR Code to scan for your customer and order
@@ -105,7 +105,7 @@ function IndexPage() {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <div className="need_header text-center" data-aos="fade-up">
+              <div className="need_header text-center">
                 <h3>
                   Don't Think Twice! <span>You Need RCMenu 😎</span>
                 </h3>
@@ -116,7 +116,7 @@ function IndexPage() {
                     className="accordion accordion-flush"
                     id="accordionFlushExample"
                   >
-                    <div className="accordion-item " data-aos="fade-up">
+                    <div className="accordion-item">
                       <h2 className="accordion-header" id="flush-headingOne">
                         <button
                           className="accordion-button collapsed"
@@ -144,7 +144,7 @@ function IndexPage() {
                       </div>
                     </div>
 
-                    <div className="accordion-item" data-aos="fade-up">
+                    <div className="accordion-item">
                       <h2 className="accordion-header" id="flush-headingTwo">
                         <button
                           className="accordion-button collapsed"
@@ -173,7 +173,7 @@ function IndexPage() {
                       </div>
                     </div>
 
-                    <div className="accordion-item" data-aos="fade-up">
+                    <div className="accordion-item">
                       <h2 className="accordion-header" id="flush-headingThree">
                         <button
                           className="accordion-button collapsed"
@@ -205,7 +205,7 @@ function IndexPage() {
                       </div>
                     </div>
 
-                    <div className="accordion-item" data-aos="fade-up">
+                    <div className="accordion-item">
                       <h2 className="accordion-header" id="flush-headingFour">
                         <button
                           className="accordion-button collapsed"
@@ -237,7 +237,7 @@ function IndexPage() {
                       </div>
                     </div>
 
-                    <div className="accordion-item" data-aos="fade-up">
+                    <div className="accordion-item">
                       <h2 className="accordion-header" id="flush-headingFive">
                         <button
                           className="accordion-button collapsed"
@@ -270,7 +270,7 @@ function IndexPage() {
                     </div>
                   </div>
                 </div>
-                <div className="need__main_content_right" data-aos="fade-up">
+                <div className="need__main_content_right">
                   <img src="/assets/images/need_item.png" alt="item_image" />
                 </div>
               </div>
@@ -289,10 +289,10 @@ function IndexPage() {
           <div className="row">
             <div className="col-md-12">
               <div className="free_trial__main_content">
-                <div className="free_trial__content_left" data-aos="fade-right">
+                <div className="free_trial__content_left">
                   <img src="/assets/images/free_item.png" alt="item_image" />
                 </div>
-                <div className="free_trial__content_right" data-aos="fade-left">
+                <div className="free_trial__content_right">
                   <h1>Totaly Free</h1>
                   <p>$0.0 USD per month </p>
                   <Link className="btn_style_3" to="/register">
@@ -315,10 +315,10 @@ function IndexPage() {
           <div className="row">
             <div className="col-md-12">
               <div className="use__main_content">
-                <div className="use__main_content_left" data-aos="fade-up">
+                <div className="use__main_content_left">
                   <h1 style={{ color: "#FFF" }}>Why use RCMenu ?</h1>
                 </div>
-                <div className="use__main_content_right" data-aos="fade-up">
+                <div className="use__main_content_right">
                   <ul>
                     <li>
                       <img src="/assets/images/icon.png" alt="icon" />
@@ -369,7 +369,7 @@ function IndexPage() {
                   </ul>
                 </div>
               </div>
-              <div className="try_for_free" data-aos="fade-up">
+              <div className="try_for_free">
                 <Link className="btn_style_2" to="/register">
                   TRY FOR FREE
                 </Link>
