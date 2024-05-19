@@ -5,36 +5,30 @@ function IndexPage() {
   return (
     <div id="landing">
       <RCMenuHeader/>
-      <section className="banner__main_area ptb_1" style={{ backgroundColor: "#F4F8FB" }}>
+      <section className="banner__main_area" style={{ backgroundColor: "#F4F8FB" }}>
         <div className="container">
           <div className="row">
             <div className="col-md-12">
               <div className="banner__content_area">
                 <div className="banner__content_left" data-aos="fade-right">
-                  <h2>
-                    Contactless digital <span>QR code Menus</span>
-                  </h2>
-                  <p>
-                    Direct QR & table ordering, Payment & guest engagement at
-                    its best.
+                  <h2 className="banner__title">Contactless digital <span>QR Code Menu</span></h2>
+                  <p className="banner__description">
+                    Revolutionize your customers' ordering process with our contactless QR Code menu solution.<br/>
+                    <span className="banner__description_part2">Create digital restaurant menu and share it via a unique QR code with just a few clicks.</span>
                   </p>
-                  <Link className="btn_style_1" to="/register">
-                    Get started for free
-                  </Link>
+                  <div className="banner__buttons">
+                    <Link className="button_accent" to="/register">Create QR menu</Link>
+                  </div>
                 </div>
                 <div className="banner__content_right" data-aos="fade-left">
                   <div className="scan_code">
                     <a>
                       <img src="/qr.png" alt="QR_Code" />
-                      <p>
-                        Scan Me <span>To Try</span>
-                      </p>
+                      <p>Scan me <span>to try demo</span></p>
                     </a>
                   </div>
                   <div className="qr_code text-center">
-                    <span>
-                      Or <a href="" target="_blank" rel="noopener">Click Here</a>
-                    </span>
+                    <span>or <a href="" target="_blank" rel="noopener">click here</a></span>
                   </div>
                 </div>
               </div>
@@ -92,7 +86,7 @@ function IndexPage() {
                     A simple QR Code to scan for your customer and order
                     directly from the kitchen.
                   </p>
-                  <Link className="btn_style_1" to="/places">
+                  <Link className="button_accent" to="/places">
                     Let's Build My Menu
                   </Link>
                 </div>
