@@ -1,21 +1,29 @@
+import { Link } from "react-router-dom";
+
 const RCMenuEditorSection = () => {
     return (
       <section className="section_editor">
         <div className="container">
             <div className="row">
                 <div className="col-md-12">
-                    <div className="idea__main_content ptb_2">
+                    <div className="idea__main_content">
                         <div className="idea__main_content_left">
-                            <p>
-                            RCMenu is the ideal tool for restaurants, bars and cafes.
-                            Create your digital menu in a few minutes and generate your
-                            QR Code to offer your customers secure and intuitive access.
-                            Accept orders and payments directly using your Qr menu, no
-                            application download needed.
-                            </p>
+                            <img src="/assets/images/idea_item.png" alt="item_image" />
                         </div>
                         <div className="idea__main_content_right">
-                            <img src="/assets/images/idea_item.png" alt="item_image" />
+                            <div className="editor__title">QR Code Menu Editor</div>
+                            <div className="editor__description">
+                                The QR code menu editor allows you to effortlessly create and share your menu within minutes.
+                                <ul className="editor__features">
+                                    <li>Design your digital menu in just minutes</li>
+                                    <li>Effortless menu updates with our editor</li>
+                                    <li>Generate and print QR code for menu</li>
+                                </ul>
+                                <div className="editor__buttons">
+                                    <Link className="button_accent" to="/register">Create QR menu</Link>
+                                    <Link className="button" to="/demo">Demo</Link>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
