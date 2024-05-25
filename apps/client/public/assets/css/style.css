@@ -752,7 +752,7 @@ img{
 }
 
 .scan__main_content,
-.idea__main_content{
+.editor__main_content{
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -762,18 +762,18 @@ img{
   padding: 120px 0px;
 }
 
-.idea__main_content_left,
-.idea__main_content_right{
+.editor__main_content_left,
+.editor__main_content_right{
   -webkit-box-flex:0;
   -ms-flex:0 0 50%;
   flex:0 0 50%;
 }
 
-.idea__main_content_left p{
+.editor__main_content_left p{
   padding-top: 60px;
 }
 
-.idea__main_content_left img {
+.editor__main_content_left img {
   max-width: 400px;
   margin: auto;
 }
@@ -873,6 +873,67 @@ img{
   font-size: 26px;
   max-width: 500px;
   line-height: 36px;
+}
+
+@media all and (max-width:450px) {
+  .editor__buttons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .editor__title {
+    font-size: 24px;
+  }
+
+  .editor__description {
+    font-size: 16px;
+  }
+}
+
+@media all and (max-width:992px) {
+  .editor__main_content {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+
+  .editor__main_content {
+    padding-top: 135px;
+    justify-content: center;
+  }
+
+  .editor__main_content_left {
+    display: none;
+  }
+
+  .editor__main_content_right {
+    display: flex;
+    align-items: center;
+    flex:0 0 100%;
+    flex-direction: column;
+  }
+
+  .editor__buttons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .editor__features {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .editor__description {
+    text-align: center;
+  }
 }
 
 /*=========== Start Need Area Css ===========*/
@@ -1217,8 +1278,7 @@ img{
   .use__main_content,
   .free_trial__main_content,
   .need__main_content,
-  .scan__main_content,
-  .idea__main_content {
+  .scan__main_content{
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
@@ -1330,13 +1390,11 @@ img{
   }
 
   .free_trial__content_left img,
-  .banner__content_right img,
-  .idea__main_content_right img {
+  .banner__content_right img{
     max-width: 300px;
   }
 
   .need__main_content_right,
-  .idea__main_content_right,
   .banner__content_right {
     -webkit-box-ordinal-group: 0;
     -ms-flex-order: -1;
@@ -1347,10 +1405,6 @@ img{
   p {
     font-size: 16px;
     line-height: 25px;
-  }
-
-  .idea__main_content_left p {
-    padding-top: 20px;
   }
 
   h1 {

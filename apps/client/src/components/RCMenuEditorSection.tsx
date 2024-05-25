@@ -6,11 +6,11 @@ const RCMenuEditorSection = () => {
         <div className="container">
             <div className="row">
                 <div className="col-md-12">
-                    <div className="idea__main_content">
-                        <div className="idea__main_content_left">
+                    <div className="editor__main_content">
+                        <div className="editor__main_content_left">
                             <img src="/assets/images/idea_item.png" alt="item_image" />
                         </div>
-                        <div className="idea__main_content_right">
+                        <div className="editor__main_content_right">
                             <div className="editor__title">QR Code Menu Editor</div>
                             <div className="editor__description">
                                 The QR code menu editor allows you to effortlessly create and share your menu within minutes.
