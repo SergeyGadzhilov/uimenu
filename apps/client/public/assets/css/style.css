@@ -657,6 +657,10 @@ img{
 }
 
 /*=========== Start Banner Area Css ===========*/
+.banner {
+  background-color: "#F4F8FB";
+}
+
 .banner__content_area {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -698,7 +702,11 @@ img{
   padding-top: 30px;
   justify-content: left;
 }
-/*=========== Start idea_tools Area Css ===========*/
+/*=========== Start editor featues ===========*/
+.section_editor {
+  background-color: "#F3F3F3";
+}
+
 .scan__main_content,
 .idea__main_content{
   display: -webkit-box;

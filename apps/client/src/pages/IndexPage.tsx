@@ -1,102 +1,14 @@
 import { Link } from "react-router-dom";
 import RCMenuHeader from "../components/RCMenuHeader";
+import RCMenuBanner from "../components/RCMenuBanner";
+import RCMenuEditorSection from "../components/RCMenuEditorSection";
 
 function IndexPage() {
   return (
     <div id="landing">
       <RCMenuHeader/>
-      <section className="banner__main_area" style={{ backgroundColor: "#F4F8FB" }}>
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <div className="banner__content_area">
-                <div className="banner__content_left">
-                  <h2 className="banner__title">Contactless digital <span>QR Code Menu</span></h2>
-                  <p className="banner__description">
-                    Revolutionize your customers' ordering process with our contactless QR Code menu solution.<br/>
-                    <span className="banner__description_part2">Create digital restaurant menu and share it via a unique QR code with just a few clicks.</span>
-                  </p>
-                  <div className="banner__buttons">
-                    <Link className="button_accent" to="/register">Create QR menu</Link>
-                  </div>
-                </div>
-                <div className="banner__content_right">
-                  <div className="scan_code">
-                    <a>
-                      <img src="/qr.png" alt="QR_Code" />
-                      <p>Scan me <span>to try demo</span></p>
-                    </a>
-                  </div>
-                  <div className="qr_code text-center">
-                    <span>or <a href="" target="_blank" rel="noopener">click here</a></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* <!--End Banner Area--> */}
-
-      {/* <!-- Start Idea_Tools Area --> */}
-      <section
-        className="idea_tools__main_area"
-        style={{ backgroundColor: "#F3F3F3" }}
-      >
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <div className="idea__main_content ptb_2">
-                <div className="idea__main_content_left">
-                  <p>
-                    RCMenu is the ideal tool for restaurants, bars and cafes.
-                    Create your digital menu in a few minutes and generate your
-                    QR Code to offer your customers secure and intuitive access.
-                    Accept orders and payments directly using your Qr menu, no
-                    application download needed.
-                  </p>
-                </div>
-                <div className="idea__main_content_right">
-                  <img src="/assets/images/idea_item.png" alt="item_image" />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-md-12">
-              <div className="scan__main_content ptb_2">
-                <div className="scan__main_content_left">
-                  <div className="scan_code">
-                    <a >
-                      <img src="/qr.png" alt="QR_Code" />
-                      <p>
-                        Scan Me <span>To Try</span>
-                      </p>
-                    </a>
-                  </div>
-                  <div className="qr_code text-center">
-                    <span>
-                      Or <a href="" target="_blank" rel="noopener">Click Here</a>
-                    </span>
-                  </div>
-                </div>
-                <div className="scan__main_content_right">
-                  <h2>Try It For Yourself</h2>
-                  <p>
-                    A simple QR Code to scan for your customer and order
-                    directly from the kitchen.
-                  </p>
-                  <Link className="button_accent" to="/places">
-                    Let's Build My Menu
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* <!-- End Idea_Tools Area --> */}
-
+      <RCMenuBanner/>
+      <RCMenuEditorSection/>
       {/* <!-- Start Neeed Area --> */}
       <section
         className="need__main_area"
