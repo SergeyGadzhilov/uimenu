@@ -426,24 +426,28 @@ h2 {
   line-height: 58px;
   color: #000000;
 }
+
 h3 {
   font-size: 50px;
   font-weight: 700;
   line-height: 70px;
   color: #ED6F3B;
 }
+
 h4{
   font-size: 40px;
   font-weight: 700;
   line-height: 58px;
   color: #FFF;
 }
+
 h5{
   font-size: 35px;
   font-weight: 700;
   line-height: 58px;
   color: #ED6F3B;
 }
+
 #landing p {
   font-size: 24px;
   font-weight: 500;
@@ -456,18 +460,9 @@ img{
   height:auto;
   display: block;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
-.ptb_3{
-  padding:90px 0 70px 0;
-}
-.ptb_4{
-  padding:30px 0 20px 0;
-}
-.ptb_5{
-  padding:50px 0;
-}
 .text-center{
   text-align: center;
 }
