@@ -78,12 +78,6 @@ const Menu = () => {
     });
   };
 
-  const onPaymentDone = () => {
-    setShoppingCart({});
-    shoppingCartLocalStorage({});
-    setShowShoppingCart(false);
-  };
-
   const totalQuantity = useMemo(
     () =>
       Object.keys(shoppingCart)
@@ -107,8 +101,6 @@ const Menu = () => {
                 .filter((item) => item.quantity > 0)}
               onAdd={onAddItemtoShoppingCart}
               onRemove={onRemoveItemToShoppingCart}
-              onPaymentDone={onPaymentDone}
-              color={place?.color}
             />
           ) : (
             <MenuList

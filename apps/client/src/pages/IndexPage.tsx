@@ -3,6 +3,7 @@ import RCMenuBanner from "../components/RCMenuBanner";
 import RCMenuEditorSection from "../components/RCMenuEditorSection";
 import RCMenuFooter from "../components/RCMenuFooter";
 import RCMenuPlansAndPrices from "../components/RCMenuPlansAndPrices";
+import RCMenuContactsSection from "../sections/contacts/RCMenuContactsSection";
 
 function IndexPage() {
   return (
@@ -11,6 +12,7 @@ function IndexPage() {
       <RCMenuBanner/>
       <RCMenuEditorSection/>
       <RCMenuPlansAndPrices/>
+      <RCMenuContactsSection/>
       <RCMenuFooter/>
     </div>
   );

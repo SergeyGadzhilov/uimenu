@@ -1,9 +1,8 @@
 import { useMemo } from "react";
 import { Card } from "react-bootstrap";
 import OperationButton from "./OperationButton";
-import { useParams } from "react-router-dom";
+
 const ShoppingCart = ({ items, onAdd, onRemove}) => {
-  const param = useParams();
   const totalPrice = useMemo(
     () => items.map((i) => i.quantity * i.price ).reduce((a, b) => parseFloat(`${(a + b).toFixed(2)}`), 0),
     [items]
