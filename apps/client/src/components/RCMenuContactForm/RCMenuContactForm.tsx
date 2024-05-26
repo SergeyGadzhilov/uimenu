@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styles from './RCMenuContactFrom.module.css'
 import Error from './Error';
 import Loader from './Loader';
+import SuccessPage from './Success';
 
 enum Page {
     Form,
@@ -15,7 +16,7 @@ const RCMenuContactFrom = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        setPage(Page.Error);
+        setPage(Page.Success);
     };
 
     return (
@@ -28,8 +29,9 @@ const RCMenuContactFrom = () => {
                 <input className={styles.submit} type="submit" value="Send" />
                 </>
             }
-            <Error show={page == Page.Error} onClose={() => {setPage(Page.Form)}} />
             <Loader show={page == Page.Loader} />
+            <Error show={page == Page.Error} onClose={() => {setPage(Page.Form)}} />
+            <SuccessPage show={page == Page.Success} onClose={() => {setPage(Page.Form)}}/>
         </form>
     );
 };
