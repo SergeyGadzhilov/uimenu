@@ -14,6 +14,8 @@ import { JwtService } from '@nestjs/jwt';
 import { OrderController } from './order/order.controller';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { SupportModule } from './support/support.module';
+import { SupportController } from './support/support.controller';
 
 @Module({
   imports: [
@@ -24,9 +26,10 @@ import { join } from 'path';
     ItemModule,
     MenuModule,
     OrderModule,
+    SupportModule,
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '../../..', 'client', 'dist'),
-    }),
+    })
   ],
   providers: [JwtService, PrismaService],
 })
