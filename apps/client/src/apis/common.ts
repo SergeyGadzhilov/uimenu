@@ -1,8 +1,8 @@
 export class Error {
     private _code: Number = 0;
-    private _message: string = "";
+    private _message: string[] = [];
 
-    constructor(code: Number, message: string) {
+    constructor(code: Number, message: string[]) {
         this._code = code;
         this._message = message;
     }
@@ -46,7 +46,7 @@ export class Result<TData> {
         return result;
     }
 
-    static Error<TData>(status: Number, message: string) {
+    static Error<TData>(status: Number, message: string[]) {
         const result = new Result<TData>();
         result.Error = new Error(status, message);
         return result;
@@ -69,7 +69,7 @@ export async function PostRequest<TRequest, TResponse>(
     });
 
     if (response == null) {
-        return Result.Error(response.status, "response is null");
+        return Result.Error(response.status, ["response is null"]);
     }
 
     const payload = await response.json();
@@ -77,5 +77,5 @@ export async function PostRequest<TRequest, TResponse>(
         return Result.Success(payload);
     }
 
-    return Result.Error(response.status, payload);
+    return Result.Error(response.status, payload.message);
 }

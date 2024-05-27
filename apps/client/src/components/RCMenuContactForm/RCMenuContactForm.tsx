@@ -17,12 +17,18 @@ const RCMenuContactFrom = () => {
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
     const [page, setPage] = useState(Page.Form);
+    const [errors, setError] = useState([]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         setPage(Page.Loader);
         const response = await CreateSupportTicket({name, email, message});
-        setPage(response.IsSuccess ? Page.Success : Page.Error);
+        if (response.IsSuccess) {
+            setPage(Page.Success);
+            return;
+        }
+        setError(response.Error.Message);
+        setPage(Page.Error);
     };
 
     return (
@@ -51,7 +57,7 @@ const RCMenuContactFrom = () => {
                 </>
             }
             <Loader show={page == Page.Loader} />
-            <Error show={page == Page.Error} onClose={() => {setPage(Page.Form)}} />
+            <Error show={page == Page.Error} errors={errors} onClose={() => {setPage(Page.Form)}} />
             <SuccessPage show={page == Page.Success} onClose={() => {
                 setName("");
                 setEmail("");
