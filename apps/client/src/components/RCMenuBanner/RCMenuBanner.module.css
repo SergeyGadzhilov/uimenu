@@ -1,0 +1,58 @@
+.banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F4F8FB;
+    padding: 120px 120px;
+    color: #4C4C4C;
+    gap: 30px;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.gap {
+    flex-grow: 1;
+    flex-shrink: 1;
+    max-width: 200px;
+}
+
+.button {
+    display: flex;
+}
+
+.description {
+    font-size: 20px;
+    max-width: 450px;
+}
+
+@media all and (max-width:600px) {
+    .description2 {
+        display: none;
+    }
+}
+
+@media all and (max-width:990px) {
+    .banner {
+        flex-direction: column;
+        padding: 50px 20px;
+        gap: 50px;
+    }
+
+    .title,
+    .description {
+        text-align: center;
+    }
+
+    .button {
+        justify-content: center;
+    }
+}

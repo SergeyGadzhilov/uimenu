@@ -1,5 +1,5 @@
 import { Container } from "react-bootstrap";
-import RCMenuHeader from "../components/RCMenuHeader";
+import RCMenuHeader from "../components/RCMenuHeader/RCMenuHeader";
 
 const MainLayout = function ({ children }){
   return (

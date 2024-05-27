@@ -3,7 +3,7 @@ import RCMenuPriceCard from "./RCMenuPriceCard";
 
 const RCMenuPlansAndPrices = () => {
     return (
-        <section className="prices">
+        <section id="prices" className="prices">
             <div className="prices__title">Plans and prices</div>
             <div className="prices__cards">
                 <RCMenuPriceCard 
