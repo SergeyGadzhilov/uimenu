@@ -1,7 +1,8 @@
 import { useContext, useState } from "react";
 import { HashLink as Link } from 'react-router-hash-link';
-import { AuthContextType } from "../types";
-import AuthContext from "../context/AuthContext";
+import { AuthContextType } from "../../types";
+import AuthContext from "../../context/AuthContext";
+import styles from './RCMenuHeader.module.css'
 
 const RCMenuHeader = () => {
     const auth = useContext(AuthContext) as AuthContextType;
@@ -29,7 +30,7 @@ const RCMenuHeader = () => {
               <div className="header__logo_menu">
                 <div className="header__logo">
                   <a href="/">
-                    <img src="/logo.png" alt="RCMenu" className="logo" />
+                    <img src="/logo.png" alt="RCMenu" className={styles.logo} />
                   </a>
                 </div>
                 <div className="header__menu">

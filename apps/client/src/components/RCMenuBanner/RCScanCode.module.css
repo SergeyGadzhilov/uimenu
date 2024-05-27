@@ -1,0 +1,49 @@
+.scancode {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.qrcode {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    background:#FFFFFF;
+    padding:30px;
+    border-radius:20px;
+    font-size:25px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow:0px -9px 38px -8px #aea6a6;
+    gap: 20px;
+}
+
+.description {
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.qrcode:after {
+    position: absolute;
+    content: '';
+    width: 140%;
+    height: 18px;
+    background: #ED6F3B;
+    left: 0;
+    bottom: 0;
+    border-radius: 20px;
+    transform: translate(-14%);
+}
+
+.link {
+    color: #ED6F3B;
+    font-weight: 700;
+    font-size: 32px;
+}
+
+.link:hover {
+    color: #ED6F3B;
+}
