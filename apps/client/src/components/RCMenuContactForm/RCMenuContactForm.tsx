@@ -32,7 +32,7 @@ const RCMenuContactFrom = () => {
     };
 
     return (
-        <form className={styles.form} onSubmit={handleSubmit}>
+        <form id="contacts" className={styles.form} onSubmit={handleSubmit}>
             {page == Page.Form &&
                 <>
                 <input
