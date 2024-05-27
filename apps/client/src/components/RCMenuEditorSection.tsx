@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { LinkAccentButton, LinkButton } from "./Buttons/buttons";
 
 const RCMenuEditorSection = () => {
     return (
@@ -20,8 +21,8 @@ const RCMenuEditorSection = () => {
                                     <li>Generate and print QR code for menu</li>
                                 </ul>
                                 <div className="editor__buttons">
-                                    <Link className="button_accent" to="/register">Create QR menu</Link>
-                                    <Link className="button" to="/demo">Demo</Link>
+                                    <LinkAccentButton to="/register">Create QR menu</LinkAccentButton>
+                                    <LinkButton to="/demo">Demo</LinkButton>
                                 </div>
                             </div>
                         </div>

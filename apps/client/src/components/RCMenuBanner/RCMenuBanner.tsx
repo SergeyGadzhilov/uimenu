@@ -1,5 +1,5 @@
 
-import { LinkAccentButton } from "../Buttons/AccentButton";
+import { LinkAccentButton } from "../Buttons/buttons";
 import styles from "./RCMenuBanner.module.css"
 import RCMenuScanCode from "./RCMenuScanCode";
 
@@ -15,7 +15,7 @@ const RCMenuBanner = () => {
               </div>
             </div>
             <div className={styles.button}>
-                <LinkAccentButton label="Create QR menu" to="/register"/>
+                <LinkAccentButton to="/register">Create QR menu</LinkAccentButton>
             </div>
           </div>
           <div className={styles.gap}></div>

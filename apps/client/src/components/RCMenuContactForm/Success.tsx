@@ -1,4 +1,4 @@
-import AccentButton from "../Buttons/AccentButton";
+import AccentButton from "../Buttons/buttons";
 import styles from "./Success.module.css"
 
 export default function SuccessPage({show=false, onClose=null}){
