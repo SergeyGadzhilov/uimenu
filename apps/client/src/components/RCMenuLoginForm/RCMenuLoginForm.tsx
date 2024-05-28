@@ -46,6 +46,7 @@ const RCMenuLoginFrom = () => {
     const ProcessResponse = (response: LoginResponse) => {
         if (response.IsSuccess) {
             navigateTo('/places');
+            return;
         }
         showErrors(response.Error.Message);
     }
