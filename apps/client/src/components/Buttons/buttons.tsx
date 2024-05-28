@@ -1,9 +1,15 @@
 import { Link } from "react-router-dom";
 import styles from "./buttons.module.css"
 
-export default function AccentButton({label="", onPress=null}) {
+export function Button({children, onPress=null}) {
     return (
-        <button className={styles.accent} onClick={onPress}>{label}</button>
+        <button className={styles.button} onClick={onPress}>{children}</button>
+    );
+}
+
+export default function AccentButton({children="", onPress=null}) {
+    return (
+        <button className={styles.accent} onClick={onPress}>{children}</button>
     );
 };
 
