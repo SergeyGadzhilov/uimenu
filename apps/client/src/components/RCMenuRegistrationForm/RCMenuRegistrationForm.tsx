@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import styles from './RCMenuRegistrationFrom.module.css'
-import Error from './Error';
+import Error from '../Error/Error';
 import Loader from './Loader';
 import SuccessPage from './Success';
 import AccentButton from '../Buttons/buttons';

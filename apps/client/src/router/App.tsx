@@ -1,7 +1,7 @@
 import {Route, Routes } from 'react-router-dom';
 import Login from "../pages/Login";
 import { ToastContainer } from 'react-toastify';
-import Places from '../pages/Places';
+import Places from '../pages/Places/Places';
 import { AuthProvider } from '../context/AuthContext';
 import PrivateRoute from './PrivateRoute';
 import Register from '../pages/Register';

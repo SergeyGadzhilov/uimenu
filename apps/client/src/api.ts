@@ -1,5 +1,5 @@
 import { toast } from "react-toastify";
-import { DataToken, IdDataToken, IdToken, Login, Token } from "./types";
+import { DataToken, IdDataToken, IdToken, Token } from "./types";
 
 async function request(path: string, { data, token, method = "GET" }: { data?: unknown, token?: string | null, method?: string }): Promise<unknown> {
   const url = '/api' + path;
@@ -47,10 +47,6 @@ async function request(path: string, { data, token, method = "GET" }: { data?: u
 
 export function fetchPlaces(token:Token) {
   return request("/places/", { token});
-}
-
-export function addPlace(place:DataToken) {
-  return request("/places/", { ...place, method: "POST" });
 }
 
 export function uploadImage(image:Blob|string) {

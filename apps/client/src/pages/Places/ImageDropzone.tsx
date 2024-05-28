@@ -2,7 +2,7 @@
 import { Spinner } from "react-bootstrap";
 import { useDropzone } from "react-dropzone";
 import styled from "styled-components";
-import { uploadImage } from "../api";
+import { uploadImage } from "../../api";
 import { useCallback, useState } from "react";
 
 const Dropzone = styled.div`
@@ -14,6 +14,7 @@ const Dropzone = styled.div`
     align-items:center;
     justify-content:center;
     height:142px;
+    padding: 20px;
     img{
         height: 140px;
 
@@ -28,18 +29,22 @@ function ImageDropzone({value,onChange}){
         .then((json)=>onChange(json.url))
         .finally(()=>setLoading(false))
     },[]);
+
     const {getRootProps, getInputProps} = useDropzone(
-        {onDrop,
-        multiple:false,
-        accept:'image/*'});
+        {
+            onDrop,
+            multiple: false,
+            accept: 'image/*'
+        }
+    );
 
     return (
         <Dropzone {...getRootProps()}>
             <input {...getInputProps()} />
             {
-            value ? <img src={value}  alt="img"/> 
-            : loading ? 
-            (<Spinner animation="border" role="status" variant="standard"  />)
+            value ? <img src={value}  alt="img"/>
+            : loading ?
+            (<Spinner animation="border" role="status" variant="standard" />)
             : <span>Drag & drop image here, or click to select image</span>
             }
         </Dropzone>

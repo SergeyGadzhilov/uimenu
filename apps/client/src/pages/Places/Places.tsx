@@ -1,13 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useContext, useEffect, useState } from "react";
-import MainLayout from "../layouts/MainLayout";
+import MainLayout from "../../layouts/MainLayout";
 import styled from 'styled-components'
-import AuthContext from "../context/AuthContext";
-import { fetchPlaces } from "../api";
+import AuthContext from "../../context/AuthContext";
+import { fetchPlaces } from "../../api";
 import { Col, Modal, Row } from "react-bootstrap";
-import PlaceForm from "../containers/PlaceForm";
+import PlaceForm from "./PlaceForm";
 import { useNavigate } from "react-router-dom";
-import { AuthContextType } from "../types";
+import { AuthContextType } from "../../types";
+import  styles from "./places.module.css";
 
 const Place = styled.div`
     margin-bottom:20px;
@@ -70,26 +71,28 @@ const Places = () => {
     }
     return(
     <MainLayout>
-        <Modal show={show} onHide={onHide} centered>
-            <Modal.Body>
-                <PlaceForm  onDone={onDone}/>
-            </Modal.Body>
-        </Modal>
-        <Row>
+        <section className={styles.places}>
+            <Modal show={show} onHide={onHide} centered>
+                <Modal.Body>
+                    <PlaceForm onDone={onDone}/>
+                </Modal.Body>
+            </Modal>
+            <Row>
             {
-            places.map((place: any) => (
-                <Col key={place.id} lg={4}>
-                    <Place onClick={()=>goToPlace(place.id)}>
-                        <div style={{backgroundImage:`url(${place.image})`}}></div>
-                        <p>{place.name}</p>
-                    </Place>
-                </Col>
-            ))
-        }
-        <Col lg={4} >
-            <AddPlaceButton onClick={onShow}> Add new place</AddPlaceButton>
-        </Col>
-        </Row>
+                places.map((place: any) => (
+                    <Col key={place.id} lg={4}>
+                        <Place onClick={()=>goToPlace(place.id)}>
+                            <div style={{backgroundImage:`url(${place.image})`}}></div>
+                            <p>{place.name}</p>
+                        </Place>
+                    </Col>
+                ))
+            }
+            <Col lg={4} >
+                <AddPlaceButton onClick={onShow}>Add</AddPlaceButton>
+            </Col>
+            </Row>
+        </section>
     </MainLayout>)
 }
 
