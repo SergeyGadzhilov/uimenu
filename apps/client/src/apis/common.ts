@@ -68,14 +68,22 @@ export async function PostRequest<TRequest, TResponse>(
         body: JSON.stringify(data)
     });
 
+    return await processResponse<TResponse>(response);
+}
+
+async function processResponse<TResponse>(response: Response) : Promise<Result<TResponse>> {
     if (response == null) {
         return Result.Error(response.status, ["response is null"]);
     }
 
     const payload = await response.json();
     if (response.status == 201) {
-        return Result.Success(payload);
+        return Result.Success<TResponse>(payload);
     }
 
-    return Result.Error(response.status, payload.message);
+    if (Array.isArray(payload.message)) {
+        return Result.Error(response.status, payload.message);
+    }
+
+    return Result.Error(response.status, [payload.message]);
 }

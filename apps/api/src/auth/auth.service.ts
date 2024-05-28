@@ -16,9 +16,9 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async login(username: string, password: string): Promise<TokenDto> {
+  async login(email: string, password: string): Promise<TokenDto> {
     const user = await this.prisma.user.findUnique({
-      where: { username: username },
+      where: { email },
     });
     if (!user) {
       throw new HttpException('User not found', HttpStatus.NOT_FOUND);
@@ -32,7 +32,7 @@ export class AuthService {
     return {
       accessToken: this.jwtService.sign({
         userId: user.id,
-        username: username,
+        email,
       }),
     };
   }

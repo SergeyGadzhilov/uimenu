@@ -8,6 +8,7 @@ import { AuthContextType } from '../../types';
 import AuthContext from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import { LoginResponse } from '../../apis/dto/TokenDTO';
 
 enum Page {
     Form,
@@ -25,21 +26,34 @@ const RCMenuLoginFrom = () => {
     const navigateTo = useNavigate();
     const auth = useContext(AuthContext) as AuthContextType;
 
-    const handleSubmit = async (event) => {
+    const showErrors = (error: string[]) => {
+        setError(error);
+        setPage(Page.Error);
+    }
+
+    const Demo = async (event) => {
         event.preventDefault();
         setPage(Page.Loader);
-        auth.signIn({email, password},()=> navigateTo('/places'));
-        setPage(Page.Error);
-    };
+        ProcessResponse(await auth.LogIn({email: 'test@test.com', password: 'password'}));
+    }
 
-    const demoLogin = () => {
-        auth.signIn({username:'test@test.com', password:'password'}, ()=> navigateTo('/places'));
+    const Login = async (event) => {
+        event.preventDefault();
+        setPage(Page.Loader);
+        ProcessResponse(await auth.LogIn({email, password}));
+    }
+
+    const ProcessResponse = (response: LoginResponse) => {
+        if (response.IsSuccess) {
+            navigateTo('/places');
+        }
+        showErrors(response.Error.Message);
     }
 
     return (
         <section className={styles.container}>
             <h1>Login</h1>
-            <form id="contacts" className={styles.form} onSubmit={handleSubmit}>
+            <form id="contacts" className={styles.form}>
             {page == Page.Form &&
                 <>
                 <input
@@ -55,8 +69,8 @@ const RCMenuLoginFrom = () => {
                     onChange={(e) => setPassword(e.target.value)}
                 />
                 <div className={styles.buttons}>
-                    <AccentButton onPress={handleSubmit}>Login</AccentButton>
-                    <Button onPress={demoLogin}>Demo</Button>
+                    <AccentButton onPress={Login}>Login</AccentButton>
+                    <Button onPress={Demo}>Demo</Button>
                 </div>
                 <div className={styles.registration}>
                     <h3>Don't have an account?</h3>
@@ -65,7 +79,10 @@ const RCMenuLoginFrom = () => {
                 </>
             }
             <Loader show={page == Page.Loader} />
-            <Error show={page == Page.Error} errors={errors} onClose={() => {setPage(Page.Form)}} />
+            <Error show={page == Page.Error} errors={errors} onClose={() => {
+                setError([]);
+                setPage(Page.Form)
+            }} />
             <SuccessPage show={page == Page.Success} onClose={() => {
                 setEmail("");
                 setPassword("");

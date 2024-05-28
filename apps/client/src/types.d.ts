@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import { LoginResponse } from "./apis/dto/TokenDTO";
+
 type Login ={
-    username: string;
+    email: string;
     password: string;
 }
 type Token = strings
@@ -22,6 +24,7 @@ type ItemType =
 type AuthContextType={
         token:string,
         loading:boolean,
+        LogIn: (login: Login) => Promise<LoginResponse>,
         signIn: (params: any, callback: () => void) => void,
         signOut:()=>void,
         register:(params: any, callback: () => void) => void,
