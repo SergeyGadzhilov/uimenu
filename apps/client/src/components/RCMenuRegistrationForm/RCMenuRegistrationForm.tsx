@@ -1,14 +1,13 @@
 import { useContext, useState } from 'react';
-import styles from './RCMenuLoginFrom.module.css'
+import styles from './RCMenuRegistrationFrom.module.css'
 import Error from './Error';
 import Loader from './Loader';
 import SuccessPage from './Success';
-import AccentButton, { Button } from '../Buttons/buttons';
+import AccentButton from '../Buttons/buttons';
 import { AuthContextType } from '../../types';
 import AuthContext from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { LoginResponse } from '../../apis/dto/TokenDTO';
 
 enum Page {
     Form,
@@ -17,7 +16,7 @@ enum Page {
     Success
 }
 
-const RCMenuLoginFrom = () => {
+const RCMenuRegistrationFrom = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [page, setPage] = useState(Page.Form);
@@ -31,28 +30,27 @@ const RCMenuLoginFrom = () => {
         setPage(Page.Error);
     }
 
-    const Demo = async (event) => {
-        event.preventDefault();
-        setPage(Page.Loader);
-        ProcessResponse(await auth.LogIn({email: 'test@test.com', password: 'password'}));
-    }
-
-    const Login = async (event) => {
-        event.preventDefault();
-        setPage(Page.Loader);
-        ProcessResponse(await auth.LogIn({email, password}));
-    }
-
-    const ProcessResponse = (response: LoginResponse) => {
+    const Login = async () => {
+        const response = await auth.LogIn({email, password});
         if (response.IsSuccess) {
             navigateTo('/places');
         }
         showErrors(response.Error.Message);
     }
 
+    const Register = async (event) => {
+        event.preventDefault();
+        setPage(Page.Loader);
+        const response = await auth.Register({email, password});
+        if (response.IsSuccess) {
+            await Login();
+        }
+        showErrors(response.Error.Message);
+    }
+
     return (
         <section className={styles.container}>
-            <h1>Login</h1>
+            <h1>Registration</h1>
             <form className={styles.form}>
             {page == Page.Form &&
                 <>
@@ -69,12 +67,11 @@ const RCMenuLoginFrom = () => {
                     onChange={(e) => setPassword(e.target.value)}
                 />
                 <div className={styles.buttons}>
-                    <AccentButton onPress={Login}>Login</AccentButton>
-                    <Button onPress={Demo}>Demo</Button>
+                    <AccentButton onPress={Register}>Register</AccentButton>
                 </div>
                 <div className={styles.registration}>
-                    <h3>Don't have an account?</h3>
-                    <Link to="/register">Registration</Link>
+                    <h3>Already have an account?</h3>
+                    <Link to="/login">Login</Link>
                 </div>
                 </>
             }
@@ -93,4 +90,4 @@ const RCMenuLoginFrom = () => {
     );
 };
 
-export default RCMenuLoginFrom;
+export default RCMenuRegistrationFrom;

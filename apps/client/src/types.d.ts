@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import { CreateUserResponse } from "./apis/dto/CreateUserDTO";
 import { LoginResponse } from "./apis/dto/TokenDTO";
 
 type Login ={
@@ -16,18 +17,16 @@ type IdToken = Id & Token
 
 type IdDataToken = Id & DataToken
 
-
 type ItemType =
     {category?:string,name:string,price:string,image:string,isAvailable:boolean, description:string,
         quantity?:number, id?:string,categoryId?:string, id?:string
     }
 type AuthContextType={
-        token:string,
-        loading:boolean,
-        LogIn: (login: Login) => Promise<LoginResponse>,
-        signIn: (params: any, callback: () => void) => void,
-        signOut:()=>void,
-        register:(params: any, callback: () => void) => void,
+    token:string,
+    loading:boolean,
+    LogIn: (login: Login) => Promise<LoginResponse>,
+    Register: (login: Login) => Promise<CreateUserResponse>
+    signOut:() => void,
 }
 
 type PlaceType= {

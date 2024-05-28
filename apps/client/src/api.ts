@@ -45,20 +45,6 @@ async function request(path: string, { data, token, method = "GET" }: { data?: u
   }
 }
 
-export function signIn(login:Login) {
-  return request("/auth/login/", {
-    data: login,
-    method: "POST",
-  });
-}
-
-export function register(signup:Login) {
-  return request("/users/", {
-    data:signup,
-    method: "POST",
-  });
-}
-
 export function fetchPlaces(token:Token) {
   return request("/places/", { token});
 }
