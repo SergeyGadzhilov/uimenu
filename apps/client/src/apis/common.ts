@@ -53,11 +53,29 @@ export class Result<TData> {
     }
 }
 
+export async function DeleteRequest<TRequest, TResponse>(
+    path: string = "",
+    data: TRequest = null,
+    token: string = ""
+) : Promise<Result<TResponse>> {
+    return await SendRequest(path, "DELETE", data, token);
+}
+
 export async function PostRequest<TRequest, TResponse>(
     path: string = "",
     data: TRequest = null,
     token: string = ""
 ) : Promise<Result<TResponse>> {
+    return await SendRequest(path, "POST", data, token);
+}
+
+async function SendRequest<TRequest, TResponse>(
+    path: string = "",
+    method: string = "POST",
+    data: TRequest = null,
+    token: string = "",
+) : Promise<Result<TResponse>>
+{
     const headers: Record<string, string> = {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json"
@@ -65,7 +83,7 @@ export async function PostRequest<TRequest, TResponse>(
 
     const response = await fetch(`/api/${path}`, {
         headers,
-        method: "POST",
+        method,
         body: JSON.stringify(data)
     });
 
@@ -78,7 +96,7 @@ async function processResponse<TResponse>(response: Response) : Promise<Result<T
     }
 
     const payload = await response.json();
-    if (response.status == 201) {
+    if (response.status == 201 || response.status == 200) {
         return Result.Success<TResponse>(payload);
     }
 

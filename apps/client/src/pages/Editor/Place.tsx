@@ -98,7 +98,7 @@ const Place = () => {
         onOrders={() => navigate(`/places/${params!.id}/orders`)}
         onSettings={() => navigate(`/places/${params.id}/settings`)}
       />
-      <Categories/>
+      <Categories place={place} onCreate={onFetchPlace} onRemove={onFetchPlace}/>
       <Row>
         <Col md={4}>
           <Panel>
