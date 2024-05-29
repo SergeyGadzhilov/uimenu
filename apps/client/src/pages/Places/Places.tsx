@@ -13,10 +13,6 @@ import  styles from "./places.module.css";
 const Place = styled.div`
     margin-bottom:20px;
     cursor:pointer;
-    transiton:all 0.2s;
-    :hover{
-        transform:scale(1.05);
-    }
     > div {
         background-size:cover;
         background-position:center;
