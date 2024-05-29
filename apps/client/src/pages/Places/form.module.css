@@ -13,3 +13,18 @@
     align-items: center;
     gap: 20px;
 }
+
+.buttonPlace {
+    border:2px dashed lightgrey;
+    height:200px;
+    border-radius:5px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    background:white;
+}
+
+.buttonPlace:hover {
+    background-color: #fbfbfb;
+}

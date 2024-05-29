@@ -1,52 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useContext, useEffect, useState } from "react";
 import MainLayout from "../../layouts/MainLayout";
-import styled from 'styled-components'
 import AuthContext from "../../context/AuthContext";
 import { fetchPlaces } from "../../api";
-import { Col, Modal, Row } from "react-bootstrap";
-import PlaceForm from "./PlaceForm";
-import { useNavigate } from "react-router-dom";
+import { Row } from "react-bootstrap";
+import AddPlaceForm, { AddPlaceButton } from "./PlaceForm";
 import { AuthContextType } from "../../types";
 import  styles from "./places.module.css";
-
-const Place = styled.div`
-    margin-bottom:20px;
-    cursor:pointer;
-    > div {
-        background-size:cover;
-        background-position:center;
-        height: 200px;
-        border-radius: 5px;
-    }
-    >p{
-        margin-top:5px;
-        font-size:20px;
-        font-weight:bold;
-    }`;
-
-const AddPlaceButton = styled.div`
-    border:2px dashed lightgrey;
-    height:200px;
-    border-radius:5px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    cursor:pointer;
-    background:white;
-    :hover{
-       background-color:#fbfbfbf;
-    }
-`
+import Place from "./Place";
 
 const Places = () => {
     const [places, setPlaces] = useState([]);
     const [show, setShow] = useState(false)
-    const navigate = useNavigate();
     const auth = useContext(AuthContext) as AuthContextType;
-
-    const onHide = () => setShow(false);
-    const onShow = () => setShow(true);
 
     useEffect(() => {
        onFetchPlaces();
@@ -59,34 +25,18 @@ const Places = () => {
         }
     }
 
-    const goToPlace = (id:string) => navigate(`/places/${id}/`);
-
     const onDone =()=>{
         onFetchPlaces();
-        onHide();
+        setShow(false);
     }
+
     return(
     <MainLayout>
         <section className={styles.places}>
-            <Modal show={show} onHide={onHide} centered>
-                <Modal.Body>
-                    <PlaceForm onDone={onDone}/>
-                </Modal.Body>
-            </Modal>
+            <AddPlaceForm show={show} onDone={onDone} onCancel={()=> setShow(false)}/>
             <Row>
-            {
-                places.map((place: any) => (
-                    <Col key={place.id} lg={4}>
-                        <Place onClick={()=>goToPlace(place.id)}>
-                            <div style={{backgroundImage:`url(${place.image})`}}></div>
-                            <p>{place.name}</p>
-                        </Place>
-                    </Col>
-                ))
-            }
-            <Col lg={4} >
-                <AddPlaceButton onClick={onShow}>Add</AddPlaceButton>
-            </Col>
+                { places.map((place: any) => <Place key={place.id} place={place} />)}
+                <AddPlaceButton onClick={() => setShow(true)}>Add</AddPlaceButton>
             </Row>
         </section>
     </MainLayout>)
