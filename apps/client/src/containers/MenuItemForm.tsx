@@ -5,7 +5,7 @@ import { addCategory, addMenuItem, updateMenuItem } from "../api";
 import { toast } from "react-toastify";
 import { Button, Form, Overlay, Popover, Spinner } from "react-bootstrap";
 import { RiPlayListAddFill} from "react-icons/ri";
-import ImageDropzone from "./ImageDropzone";
+import ImageDropzone from "../pages/Places/ImageDropzone";
 import { AuthContextType, ItemType, PlaceType } from "../types";
 
 const MenuItemForm = ({ place, onDone, item}:{place:PlaceType,onDone:()=>void,item?:ItemType}) =>{

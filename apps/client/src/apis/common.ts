@@ -55,10 +55,11 @@ export class Result<TData> {
 
 export async function PostRequest<TRequest, TResponse>(
     path: string = "",
-    data: TRequest = null
+    data: TRequest = null,
+    token: string = ""
 ) : Promise<Result<TResponse>> {
     const headers: Record<string, string> = {
-        Authorization: `Bearer `,
+        Authorization: `Bearer ${token}`,
         "Content-Type": "application/json"
     };
 
