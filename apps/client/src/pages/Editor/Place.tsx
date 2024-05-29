@@ -1,9 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { IoMdArrowBack } from "react-icons/io";
-import { AiOutlineDelete, AiOutlineQrcode } from "react-icons/ai";
-import { RiFileList3Line } from "react-icons/ri";
-import { FiSettings } from "react-icons/fi";
+import { AiOutlineDelete } from "react-icons/ai";
 import { Row, Col, Button, Modal } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
@@ -15,14 +12,16 @@ import {
   removeCategory,
   removeMenuItem,
   updatePlace,
-} from "../api";
-import AuthContext from "../context/AuthContext";
-import MainLayout from "../layouts/MainLayout";
-import MenuItemForm from "../containers/MenuItemForm";
-import MenuItem from "../components/MenuItem";
-import QRCodeModal from "../components/QRCodeModal";
+} from "../../api";
+import AuthContext from "../../context/AuthContext";
+import MainLayout from "../../layouts/MainLayout";
+import MenuItemForm from "../../containers/MenuItemForm";
+import MenuItem from "../../components/MenuItem";
+import QRCodeModal from "../../components/QRCodeModal";
 import { toast } from "react-toastify";
-import { AuthContextType, PlaceType } from "../types";
+import { AuthContextType, PlaceType } from "../../types";
+import SettingsPanel from "./SettingsPannel";
+import Categories from "./Categories";
 
 const Panel = styled.div`
   background-color: white;
@@ -93,37 +92,14 @@ const Place = () => {
 
   return (
     <MainLayout>
+      <SettingsPanel 
+        onQRCodes={showQRModal}
+        onRemove={onRemovePlace}
+        onOrders={() => navigate(`/places/${params!.id}/orders`)}
+        onSettings={() => navigate(`/places/${params.id}/settings`)}
+      />
+      <Categories/>
       <Row>
-        <Col lg={12}>
-          <div className="mb-4">
-            <div className="d-flex justify-content-between align-items-center mb-4">
-              <Button variant="link" onClick={onBack}>
-                <IoMdArrowBack size={25} color="black" />
-              </Button>
-              <h3 className="mb-0 ml-2 mr-2">{place?.name}</h3>
-
-              <Button variant="link" onClick={onRemovePlace}>
-                <AiOutlineDelete size={25} color="red" />
-              </Button>
-            </div>
-
-            <Button variant="link" onClick={showQRModal}>
-              <AiOutlineQrcode size={25} />{" "}
-              Tables
-            </Button>
-            |
-            <Button variant="link" href={`/places/${params!.id}/orders`}>
-              <RiFileList3Line size={25} />{" "}
-              Orders
-            </Button>
-            |
-            <Button variant="link" href={`/places/${params.id}/settings`}>
-              <FiSettings size={25} />{" "}
-              Settings
-            </Button>
-          </div>
-        </Col>
-
         <Col md={4}>
           <Panel>
             <MenuItemForm place={place} onDone={onFetchPlace} />

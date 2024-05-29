@@ -6,7 +6,7 @@ import { AuthProvider } from '../context/AuthContext';
 import PrivateRoute from './PrivateRoute';
 import Register from '../pages/Register';
 import IndexPage from '../pages/IndexPage';
-import Place from '../pages/Place';
+import Place from '../pages/Editor/Place';
 import MenuSettings from '../pages/MenuSettings';
 import Menu from '../pages/Menu';
 import Orders from '../pages/Orders';
