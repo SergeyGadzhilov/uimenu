@@ -16,7 +16,6 @@ import {
 import AuthContext from "../../context/AuthContext";
 import MainLayout from "../../layouts/MainLayout";
 import MenuItemForm from "../../containers/MenuItemForm";
-import MenuItem from "../../components/MenuItem";
 import QRCodeModal from "../../components/QRCodeModal";
 import { toast } from "react-toastify";
 import { AuthContextType, PlaceType } from "../../types";
@@ -37,8 +36,6 @@ const Place = () => {
   const [menuItemFormShow, setMenuItemFormShow] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const [qrCode, setQrCode] = useState(false);
-
-  const showModal = () => setMenuItemFormShow(true);
   const hideModal = () => setMenuItemFormShow(false);
 
   const showQRModal = () => setQrCode(true);
@@ -60,20 +57,6 @@ const Place = () => {
   const onRemovePlace = () => {
     if (window.confirm("Are you sure?")) {
       removePlace({ id: params.id, token: auth.token }).then(onBack);
-    }
-  };
-
-  const onRemoveCategory = async (id: string) => {
-    if (window.confirm("Are you sure?")) {
-      await removeCategory({id, token:auth.token}, place!.id).then(onFetchPlace);
-      toast("Category removed successfully",{type: "info"});
-    }
-  };
-
-  const onRemoveMenuItem = (id: string) => {
-    if (window.confirm("Are you sure?")) {
-      removeMenuItem({id, token:auth.token}, place!.id).then(onFetchPlace);
-      toast("Item removed successfully",{type: "info"})
     }
   };
 
@@ -102,10 +85,16 @@ const Place = () => {
       />
       <div className={styles.editor}>
         <Categories place={place} onCreate={onFetchPlace} onRemove={onFetchPlace}/>
-        <Products place={place} />
+        <Products place={place} onUpdated={onFetchPlace}/>
       </div>
-      
-
+      <Row>
+        <Col md={4}>
+          <Panel>
+            <MenuItemForm place={place} onDone={onFetchPlace} />
+          </Panel>
+        </Col>
+      </Row>
+ 
       <Modal show={menuItemFormShow} onHide={hideModal} centered>
         <Modal.Body>
           <h4 className="text-center">Menu Item</h4>

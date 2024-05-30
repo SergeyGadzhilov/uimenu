@@ -52,6 +52,10 @@
     box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1);
 }
 
+.eproduct {
+    position: relative;
+}
+
 .image {
     max-height: 170px;
     width: 40%;

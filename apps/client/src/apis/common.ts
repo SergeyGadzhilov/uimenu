@@ -7,6 +7,10 @@ export class Error {
         this._message = message;
     }
 
+    get IsUnauthorized() {
+        return this._code == 401;
+    }
+
     get Code() {
         return this._code;
     }
@@ -69,6 +73,14 @@ export async function PostRequest<TRequest, TResponse>(
     return await SendRequest(path, "POST", data, token);
 }
 
+export async function PatchRequest<TRequest, TResponse>(
+    path: string = "",
+    data: TRequest = null,
+    token: string = ""
+) : Promise<Result<TResponse>> {
+    return await SendRequest(path, "PATCH", data, token);
+}
+
 async function SendRequest<TRequest, TResponse>(
     path: string = "",
     method: string = "POST",
@@ -98,6 +110,11 @@ async function processResponse<TResponse>(response: Response) : Promise<Result<T
     const payload = await response.json();
     if (response.status == 201 || response.status == 200) {
         return Result.Success<TResponse>(payload);
+    }
+
+    if (response.status == 401) {
+        localStorage.removeItem("token");
+        window.location.href = "/login";
     }
 
     if (Array.isArray(payload.message)) {
