@@ -104,41 +104,7 @@ const Place = () => {
         <Categories place={place} onCreate={onFetchPlace} onRemove={onFetchPlace}/>
         <Products place={place} />
       </div>
-      <Row>
-        <Col md={4}>
-          <Panel>
-            <MenuItemForm place={place} onDone={onFetchPlace} />
-          </Panel>
-        </Col>
-
-        <Col md={8}>
-          {place?.categories?.map((category) => (
-            <div key={category.id} className="mb-5">
-              <div className="d-flex align-items-center mb-4">
-                <h4 className="mb-0 mr-2 text-dark">
-                  <b>{category.name}</b>
-                </h4>
-                <Button
-                  variant="link"
-                  onClick={() => onRemoveCategory(category.id)}
-                >
-                  <AiOutlineDelete size={25} color="red" />
-                </Button>
-              </div>
-              {category.items.map((item) => (
-                <MenuItem
-                  key={item.id}
-                  item={item}
-                  onEdit={() => {
-                    setSelectedItem(item);
-                    showModal();
-                  } }
-                  onRemove={() => onRemoveMenuItem(item.id)}/>
-              ))}
-            </div>
-          ))}
-        </Col>
-      </Row>
+      
 
       <Modal show={menuItemFormShow} onHide={hideModal} centered>
         <Modal.Body>
