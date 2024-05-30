@@ -15,7 +15,7 @@ function Category({category=null, isActive=false, onClick=null, onRemove=null}) 
         const response = await DeleteCategory(category, auth.token);
         if (response.IsSuccess) {
             showLoader(false);
-            if (onRemove) onRemove();
+            if (onRemove) onRemove(category.id);
             return;
         }
         toast(JSON.stringify(response.Error.Message), {type: "error"});
@@ -28,10 +28,10 @@ function Category({category=null, isActive=false, onClick=null, onRemove=null}) 
             className={isActive ? styles.active : styles.item}>
             <div className={styles.name}>{category.name}</div>
             {onRemove != null &&
-            IsLoader ?
+            (IsLoader ?
                 <img className={styles.eremove} src="/assets/images/spinner.svg"/>
             :
-                <img className={styles.eremove} onClick={Remove} src={`/assets/images/remove.svg`}/>
+                <img className={styles.eremove} onClick={Remove} src={`/assets/images/remove.svg`}/>)
             }
         </li>
     );
@@ -67,7 +67,7 @@ function AddCategory({placeId, onCreate=null}) {
         {isEditor ?
             <li className={styles.editor}>
                 <input
-                    onChange={(e) => setCategory(e.target.value)} 
+                    onChange={(e) => setCategory(e.target.value)}
                     className={styles.ename}
                     type="text"
                     placeholder="Enter name"
@@ -91,7 +91,14 @@ function AddCategory({placeId, onCreate=null}) {
 }
 
 export default function Categories({place, onCreate=null, onRemove=null}) {
-    const [active, setActive] = useState(0);
+    const [active, setActive] = useState("all");
+
+    const Remove = (id: string) => {
+        if (id == active) {
+            setActive("all");
+        }
+        onRemove();
+    }
 
     return (
         <div className={styles.categories}>
@@ -101,9 +108,9 @@ export default function Categories({place, onCreate=null, onRemove=null}) {
             <ul className={styles.items}>
                 <>
                     <Category
-                        isActive={active == 0}
-                        category={{id: 0, name: "All"}}
-                        onClick={() => setActive(0)}
+                        isActive={active == "all"}
+                        category={{id: "all", name: "All"}}
+                        onClick={() => setActive("all")}
                     />
                     {place?.categories?.map((category) =>
                         <Category
@@ -111,7 +118,7 @@ export default function Categories({place, onCreate=null, onRemove=null}) {
                             category={category}
                             isActive={active == category.id}
                             onClick={() => setActive(category.id)}
-                            onRemove={onRemove}
+                            onRemove={Remove}
                         />
                     )}
                 </>

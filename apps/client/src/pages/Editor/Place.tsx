@@ -22,6 +22,8 @@ import { toast } from "react-toastify";
 import { AuthContextType, PlaceType } from "../../types";
 import SettingsPanel from "./SettingsPannel";
 import Categories from "./Categories";
+import Products from "./Products";
+import styles from "./Place.module.css";
 
 const Panel = styled.div`
   background-color: white;
@@ -92,13 +94,16 @@ const Place = () => {
 
   return (
     <MainLayout>
-      <SettingsPanel 
+      <SettingsPanel
         onQRCodes={showQRModal}
         onRemove={onRemovePlace}
         onOrders={() => navigate(`/places/${params!.id}/orders`)}
         onSettings={() => navigate(`/places/${params.id}/settings`)}
       />
-      <Categories place={place} onCreate={onFetchPlace} onRemove={onFetchPlace}/>
+      <div className={styles.editor}>
+        <Categories place={place} onCreate={onFetchPlace} onRemove={onFetchPlace}/>
+        <Products place={place} />
+      </div>
       <Row>
         <Col md={4}>
           <Panel>

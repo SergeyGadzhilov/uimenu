@@ -4,6 +4,7 @@
     background-color: #F4F8FB;
     color: #4C4C4C;
     max-width: 350px;
+    min-width: 350px;
 }
 
 .title {

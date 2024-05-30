@@ -22,9 +22,6 @@ const AddPlaceForm = ({ show = false, onDone = null, onCancel = null})=>{
     const onClick = async (event) => {
         event.preventDefault();
         const response = await CreatePlace({name, image,}, auth.token);
-
-        console.log(`${JSON.stringify(response)}`);
-
         if (response.IsSuccess) {
             clear();
             onDone();
