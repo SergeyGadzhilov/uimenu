@@ -1,31 +1,61 @@
 import { createContext, useContext, useState } from "react";
 import styles from "./Products.module.css";
 import AccentButton, { Button } from "../../components/Buttons/buttons";
-import { UpdateProduct } from "../../apis/products";
+import { CreateProduct, DeleteProduct, UpdateProduct } from "../../apis/products";
 import { LoaderOverlay } from "../../components/Loader/LoaderOverlay";
 import AuthContext from "../../context/AuthContext";
 import { AuthContextType } from "../../types";
+import ImageDropzone from "../Places/ImageDropzone";
 
 const PlaceContext = createContext(null);
 
-function ProductEditor({product, onUpdated = null, onCancel = null}) {
+function ProductEditor({product = null, onUpdated = null, onCancel = null}) {
     const place = useContext(PlaceContext);
-    const [name, setName] = useState(product.name);
-    const [description, setDescription] = useState(product.description);
-    const [price, setPrice] = useState(product.price);
+    const [name, setName] = useState(product?.name);
+    const [description, setDescription] = useState(product?.description);
+    const [price, setPrice] = useState(product?.price);
+    const [image, setImage] = useState(product?.image);
     const [IsLoading, showLoader] = useState(false);
     const [errors, setErrors] = useState([]);
     const auth = useContext(AuthContext) as AuthContextType;
 
-    const Update = async () => {
+    const Save = async () => {
+        if (product?.id) {
+            await Update();
+        }
+        else {
+            await Create();
+        }
+    }
+
+    const Create = async () => {
         showLoader(true);
-        const response = await UpdateProduct(place.id, {
-            id: product.id,
+        const response = await CreateProduct(place.id, {
             name,
             description,
             price,
-            categoryId: product.categoryId,
-            image: product.image
+            categoryId: product?.categoryId,
+            image: image
+        }, auth.token);
+
+        if (response.IsSuccess) {
+            onUpdated();
+            showLoader(false);
+            return;
+        }
+
+        setErrors(response.Error.Message);
+    }
+
+    const Update = async () => {
+        showLoader(true);
+        const response = await UpdateProduct(place.id, {
+            id: product?.id,
+            name,
+            description,
+            price,
+            categoryId: product?.categoryId,
+            image: image
         }, auth.token);
 
         if (response.IsSuccess) {
@@ -40,7 +70,7 @@ function ProductEditor({product, onUpdated = null, onCancel = null}) {
     return (
     <li className={styles.eproduct}>
         <LoaderOverlay show={IsLoading} errors={errors} onClose={() => showLoader(false)}/>
-        <div className={styles.image} style={{ backgroundImage: `url(${product.image})`}}></div>
+        <ImageDropzone value={image} onChange={setImage} />
         <div className={styles.data}>
             <div className={styles.header}>
                 <input 
@@ -65,22 +95,15 @@ function ProductEditor({product, onUpdated = null, onCancel = null}) {
                 onChange={(e) => setPrice(parseFloat(e.target.value))}
             />
             <div className={styles.econtrols}>
-                <AccentButton onPress={Update}>Save</AccentButton>
+                <AccentButton onPress={Save}>Save</AccentButton>
                 <Button onPress={onCancel}>Cancel</Button>
             </div>
         </div>
     </li>);
 }
 
-function AddProduct() {
-    return (
-        <li className={styles.add}>+Add</li>
-    );
-}
-
-function Product({product, onUpdated = null}) {
+function AddProduct({categoryId, onUpdated = null}) {
     const [IsEditor, showEditor] = useState(false);
-
     const Update = () => {
         showEditor(false);
         onUpdated();
@@ -88,14 +111,48 @@ function Product({product, onUpdated = null}) {
 
     return (
         <>
+        {
+            IsEditor ? <ProductEditor product={{categoryId: categoryId}} onUpdated={Update} onCancel={() => showEditor(false)}/> :
+            <li onClick={() => showEditor(true)} className={styles.add}>+Add</li>
+        }
+        </>
+    );
+}
+
+function Product({product, onUpdated = null}) {
+    const place = useContext(PlaceContext);
+    const auth = useContext(AuthContext) as AuthContextType;
+    const [IsLoading, showLoader] = useState(false);
+    const [IsEditor, showEditor] = useState(false);
+    const [errors, setErrors] = useState([]);
+
+    const Update = () => {
+        showEditor(false);
+        onUpdated();
+    }
+
+    const Remove = async () => {
+        showLoader(true);
+        const response = await DeleteProduct(place.id, product.id, auth.token);
+        if (response.IsSuccess) {
+            showLoader(false);
+            onUpdated();
+            return;
+        }
+        setErrors(response.Error.Message);
+    }
+
+    return (
+        <>
         {IsEditor ? <ProductEditor product={product} onUpdated={Update} onCancel={() => showEditor(false)}/> :
         <li className={styles.product}>
+            <LoaderOverlay show={IsLoading} errors={errors} onClose={() => showLoader(false)}/>
             <div className={styles.image} style={{ backgroundImage: `url(${product.image})`}}></div>
             <div className={styles.data}>
                 <div className={styles.header}>
                     <h2 className={styles.name}>{product.name}</h2>
                     <img onClick={() => showEditor(true)} className={styles.icon} src={`/assets/images/edit.svg`}/>
-                    <img className={styles.icon} src={`/assets/images/remove.svg`}/>
+                    <img onClick={Remove} className={styles.icon} src={`/assets/images/remove.svg`}/>
                 </div>
                 <p className={styles.description}>{product.description}</p>
                 <div className={styles.price}>${product.price}</div>
@@ -111,7 +168,7 @@ function ProductCategory({category, onUpdated = null}) {
         <li className={styles.category}>
             <div className={styles.category_title}>{category.name}</div>
             <ul className={styles.products}>
-                <AddProduct />
+                <AddProduct categoryId={category?.id} onUpdated={onUpdated}/>
                 {category.items?.map((product) => <Product key={product.id} product={product} onUpdated={onUpdated}/>)}
             </ul>
         </li>

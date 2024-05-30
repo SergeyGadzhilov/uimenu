@@ -96,7 +96,7 @@ async function SendRequest<TRequest, TResponse>(
     const response = await fetch(`/api/${path}`, {
         headers,
         method,
-        body: JSON.stringify(data)
+        body: JSON.stringify(data ?? {})
     });
 
     return await processResponse<TResponse>(response);
