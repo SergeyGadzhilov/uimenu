@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useRef, useState } from "react";
 import styles from "./Products.module.css";
 import AccentButton, { Button } from "../../components/Buttons/buttons";
 import { CreateProduct, DeleteProduct, UpdateProduct } from "../../apis/products";
@@ -165,7 +165,7 @@ function Product({product, onUpdated = null}) {
 
 function ProductCategory({category, onUpdated = null}) {
     return (
-        <li className={styles.category}>
+        <li id={category.id} className={styles.category}>
             <div className={styles.category_title}>{category.name}</div>
             <ul className={styles.products}>
                 <AddProduct categoryId={category?.id} onUpdated={onUpdated}/>
@@ -176,10 +176,8 @@ function ProductCategory({category, onUpdated = null}) {
 }
 
 export default function Products({place = null, categoryId="", onUpdated = null}) {
-    const ActivateCategory = () => {
-        const category = document.getElementById(categoryId);
-        category?.scrollIntoView({behavior: "smooth"});
-    }
+    document.getElementById(categoryId)?.scrollIntoView({behavior: "smooth"});
+
     return (
         <PlaceContext.Provider value={place}>
             <ul className={styles.list}>
