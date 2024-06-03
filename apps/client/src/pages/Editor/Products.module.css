@@ -17,6 +17,7 @@
 }
 
 .category_title {
+    padding: 5px;
     max-height: 40px;
     background-color: #F3F3F3;
 }
