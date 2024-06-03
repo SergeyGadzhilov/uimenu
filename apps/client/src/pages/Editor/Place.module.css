@@ -3,3 +3,9 @@
     gap: 20px;
     padding: 20px 0px;
 }
+
+@media all and (max-width:780px) {
+    .editor {
+        flex-direction: column;
+    }
+}

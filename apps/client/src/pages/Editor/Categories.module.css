@@ -104,3 +104,11 @@
     flex: 1;
     flex-basis: 20px;
 }
+
+@media all and (max-width:780px) {
+    .categories {
+        position: relative;
+        max-width: none;
+        width: 100%;
+    }
+}
