@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { act, useContext, useState } from "react";
 import styles from "./Categories.module.css";
 import { CreateCategory, DeleteCategory } from "../../apis/categories";
 import { toast } from "react-toastify";
@@ -90,7 +90,7 @@ function AddCategory({placeId, onCreate=null}) {
     );
 }
 
-export default function Categories({place, onCreate=null, onRemove=null}) {
+export default function Categories({place, onChange= null, onCreate=null, onRemove=null}) {
     const [active, setActive] = useState("all");
 
     const Remove = (id: string) => {
@@ -98,6 +98,11 @@ export default function Categories({place, onCreate=null, onRemove=null}) {
             setActive("all");
         }
         onRemove();
+    }
+
+    const Change = (id) => {
+        onChange(id);
+        setActive(id);
     }
 
     return (
@@ -110,14 +115,14 @@ export default function Categories({place, onCreate=null, onRemove=null}) {
                     <Category
                         isActive={active == "all"}
                         category={{id: "all", name: "All"}}
-                        onClick={() => setActive("all")}
+                        onClick={() => Change("all")}
                     />
                     {place?.categories?.map((category) =>
                         <Category
                             key={category.id}
                             category={category}
                             isActive={active == category.id}
-                            onClick={() => setActive(category.id)}
+                            onClick={() => Change(category.id)}
                             onRemove={Remove}
                         />
                     )}

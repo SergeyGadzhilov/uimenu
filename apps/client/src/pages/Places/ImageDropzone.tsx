@@ -17,7 +17,6 @@ const Dropzone = styled.div`
     padding: 20px;
     img{
         height: 140px;
-
     }
 `;
 
@@ -50,6 +49,5 @@ function ImageDropzone({value,onChange}){
         </Dropzone>
     )
 }
-
 
 export default ImageDropzone;

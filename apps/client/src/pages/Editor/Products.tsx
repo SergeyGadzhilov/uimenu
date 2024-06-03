@@ -175,16 +175,21 @@ function ProductCategory({category, onUpdated = null}) {
     )
 }
 
-export default function Products({place = null, onUpdated = null}) {
+export default function Products({place = null, categoryId="", onUpdated = null}) {
+    const ActivateCategory = () => {
+        const category = document.getElementById(categoryId);
+        category?.scrollIntoView({behavior: "smooth"});
+    }
     return (
         <PlaceContext.Provider value={place}>
             <ul className={styles.list}>
                 {place?.categories?.map((category) => 
-                    <ProductCategory 
+                    <ProductCategory
                         key={category.id}
                         category={category}
                         onUpdated={onUpdated}
-                    />)}
+                    />)
+                }
             </ul>
         </PlaceContext.Provider>
     );

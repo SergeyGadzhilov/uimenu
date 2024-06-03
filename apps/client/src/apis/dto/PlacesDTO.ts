@@ -18,3 +18,4 @@ export class CreatePlaceRequest {
 }
 
 export type CreatePlaceResponse = Result<PlaceDTO>;
+export type GetPlacesResponse = Result<PlaceDTO[]>;

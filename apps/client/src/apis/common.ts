@@ -57,6 +57,14 @@ export class Result<TData> {
     }
 }
 
+export async function GetRequest<TRequest, TResponse>(
+    path: string = "",
+    data: TRequest = null,
+    token: string = ""
+) : Promise<Result<TResponse>> {
+    return await SendRequest(path, "GET", data, token);
+}
+
 export async function DeleteRequest<TRequest, TResponse>(
     path: string = "",
     data: TRequest = null,
@@ -96,7 +104,7 @@ async function SendRequest<TRequest, TResponse>(
     const response = await fetch(`/api/${path}`, {
         headers,
         method,
-        body: JSON.stringify(data ?? {})
+        body: data ? JSON.stringify(data) : null
     });
 
     return await processResponse<TResponse>(response);

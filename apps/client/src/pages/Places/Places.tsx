@@ -2,12 +2,12 @@
 import { useContext, useEffect, useState } from "react";
 import MainLayout from "../../layouts/MainLayout";
 import AuthContext from "../../context/AuthContext";
-import { fetchPlaces } from "../../api";
 import { Row } from "react-bootstrap";
 import AddPlaceForm, { AddPlaceButton } from "./PlaceForm";
 import { AuthContextType } from "../../types";
 import  styles from "./places.module.css";
 import Place from "./Place";
+import { GetPlaces } from "../../apis/places";
 
 const Places = () => {
     const [places, setPlaces] = useState([]);
@@ -19,9 +19,9 @@ const Places = () => {
     },[])
 
     const onFetchPlaces = async () => {
-        const json:any = await fetchPlaces(auth.token);
-        if(json){
-            setPlaces(json);
+        const response = await GetPlaces(auth.token);
+        if(response.IsSuccess){
+            setPlaces(response.Data);
         }
     }
 

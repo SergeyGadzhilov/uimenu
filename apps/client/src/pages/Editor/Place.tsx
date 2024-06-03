@@ -1,21 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { AiOutlineDelete } from "react-icons/ai";
-import { Row, Col, Button, Modal } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
-import styled from "styled-components";
 
 import {
   fetchPlace,
   removePlace,
-  removeCategory,
-  removeMenuItem,
   updatePlace,
 } from "../../api";
 import AuthContext from "../../context/AuthContext";
 import MainLayout from "../../layouts/MainLayout";
-import MenuItemForm from "../../containers/MenuItemForm";
 import QRCodeModal from "../../components/QRCodeModal";
 import { toast } from "react-toastify";
 import { AuthContextType, PlaceType } from "../../types";
@@ -24,19 +18,10 @@ import Categories from "./Categories";
 import Products from "./Products";
 import styles from "./Place.module.css";
 
-const Panel = styled.div`
-  background-color: white;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.05);
-`;
-
 const Place = () => {
   const [place, setPlace] = useState<PlaceType>();
-  const [menuItemFormShow, setMenuItemFormShow] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(null);
   const [qrCode, setQrCode] = useState(false);
-  const hideModal = () => setMenuItemFormShow(false);
+  const [activeCategory, setActiveCategory] = useState("all");
 
   const showQRModal = () => setQrCode(true);
   const hideQRModal = () => setQrCode(false);
@@ -84,31 +69,9 @@ const Place = () => {
         onSettings={() => navigate(`/places/${params.id}/settings`)}
       />
       <div className={styles.editor}>
-        <Categories place={place} onCreate={onFetchPlace} onRemove={onFetchPlace}/>
-        <Products place={place} onUpdated={onFetchPlace}/>
+        <Categories place={place} onChange={(id) => setActiveCategory(id)} onCreate={onFetchPlace} onRemove={onFetchPlace}/>
+        <Products categoryId={activeCategory} place={place} onUpdated={onFetchPlace}/>
       </div>
-      <Row>
-        <Col md={4}>
-          <Panel>
-            <MenuItemForm place={place} onDone={onFetchPlace} />
-          </Panel>
-        </Col>
-      </Row>
- 
-      <Modal show={menuItemFormShow} onHide={hideModal} centered>
-        <Modal.Body>
-          <h4 className="text-center">Menu Item</h4>
-          <MenuItemForm
-            place={place}
-            onDone={() => {
-              onFetchPlace();
-              hideModal();
-            }}
-            item={selectedItem}
-          />
-        </Modal.Body>
-      </Modal>
-
       <QRCodeModal
         show={qrCode}
         onHide={hideQRModal}
