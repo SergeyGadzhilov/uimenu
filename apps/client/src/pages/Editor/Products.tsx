@@ -91,7 +91,7 @@ function ProductEditor({product = null, onUpdated = null, onCancel = null}) {
                 placeholder="Price"
                 className={styles.eprice}
                 type="number"
-                value={price}
+                value={price ?? 0}
                 onChange={(e) => setPrice(parseFloat(e.target.value))}
             />
             <div className={styles.econtrols}>
