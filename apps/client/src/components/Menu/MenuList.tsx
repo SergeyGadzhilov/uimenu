@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import MenuItem from './MenuItem';
-import { PlaceType } from '../types';
+import { PlaceType } from '../../types';
+import { Categories } from './Categories';
+import { useState } from 'react';
 
 interface FontInterface{
     font:string
@@ -22,29 +24,38 @@ const Container = styled.div<FontInterface>`
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const MenuList = ({ place, shoppingCart = {}, onOrder, font,color }:{place:PlaceType,shoppingCart?:any,onOrder:(item:any)=>void,font?:string,color?:string}) => {
-  if(place?.categories?.length == 0){ 
-    return <h4 className='text-center text-gray'>Please Add Menu Categories <br/> and menu items</h4>}
+  const [activeCategory, setActiveCategory] = useState(place?.categories[0]?.id);
+  if(place?.categories?.length == 0){
+    return <h4 className='text-center text-gray'>Please Add Menu Categories <br/> and menu items</h4>
+  }
+
+  const ChangeCategory = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({behavior: "smooth"});
+    setActiveCategory(id);
+  }
+
   return (
     <Container font={font!}>
       <Place>
         <img src={place?.image} width={100} height={100} alt={place?.name}/>
         <h3 style={{color:color}}><b>{place?.name}</b> </h3>
       </Place>
+      <Categories active={activeCategory} onChange={ChangeCategory} place={place}/>
+
       {place?.categories
         ?.filter(
-          (category) => category?.items.filter((i) => i?.isAvailable)?.length
+          (category) => category?.items?.length
         )
         .map((category) => (
-          <div key={category?.id} className="mt-5">
+          <div id={category?.id} key={category?.id} className="mt-5">
             <h4 className="mb-4" style={{color}}>
               <b>{category?.name}</b>
             </h4>
             {category?.items
-              .filter((item) => item.isAvailable)
               .map((item) => (
-                <MenuItem 
-                  key={item.id} 
-                  item={{  
+                <MenuItem
+                  key={item.id}
+                  item={{
                     ...item,
                     quantity: shoppingCart[item.id!]?.quantity,
                   }} 
