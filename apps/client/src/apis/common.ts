@@ -7,6 +7,10 @@ export class Error {
         this._message = message;
     }
 
+    get IsUnauthorized() {
+        return this._code == 401;
+    }
+
     get Code() {
         return this._code;
     }
@@ -53,11 +57,45 @@ export class Result<TData> {
     }
 }
 
+export async function GetRequest<TRequest, TResponse>(
+    path: string = "",
+    data: TRequest = null,
+    token: string = ""
+) : Promise<Result<TResponse>> {
+    return await SendRequest(path, "GET", data, token);
+}
+
+export async function DeleteRequest<TRequest, TResponse>(
+    path: string = "",
+    data: TRequest = null,
+    token: string = ""
+) : Promise<Result<TResponse>> {
+    return await SendRequest(path, "DELETE", data, token);
+}
+
 export async function PostRequest<TRequest, TResponse>(
     path: string = "",
     data: TRequest = null,
     token: string = ""
 ) : Promise<Result<TResponse>> {
+    return await SendRequest(path, "POST", data, token);
+}
+
+export async function PatchRequest<TRequest, TResponse>(
+    path: string = "",
+    data: TRequest = null,
+    token: string = ""
+) : Promise<Result<TResponse>> {
+    return await SendRequest(path, "PATCH", data, token);
+}
+
+async function SendRequest<TRequest, TResponse>(
+    path: string = "",
+    method: string = "POST",
+    data: TRequest = null,
+    token: string = "",
+) : Promise<Result<TResponse>>
+{
     const headers: Record<string, string> = {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json"
@@ -65,8 +103,8 @@ export async function PostRequest<TRequest, TResponse>(
 
     const response = await fetch(`/api/${path}`, {
         headers,
-        method: "POST",
-        body: JSON.stringify(data)
+        method,
+        body: data ? JSON.stringify(data) : null
     });
 
     return await processResponse<TResponse>(response);
@@ -78,8 +116,13 @@ async function processResponse<TResponse>(response: Response) : Promise<Result<T
     }
 
     const payload = await response.json();
-    if (response.status == 201) {
+    if (response.status == 201 || response.status == 200) {
         return Result.Success<TResponse>(payload);
+    }
+
+    if (response.status == 401) {
+        localStorage.removeItem("token");
+        window.location.href = "/login";
     }
 
     if (Array.isArray(payload.message)) {

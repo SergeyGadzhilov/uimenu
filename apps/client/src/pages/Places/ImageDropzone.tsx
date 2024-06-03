@@ -1,25 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Spinner } from "react-bootstrap";
 import { useDropzone } from "react-dropzone";
-import styled from "styled-components";
 import { uploadImage } from "../../api";
 import { useCallback, useState } from "react";
+import styles from "./dropzone.module.css";
 
-const Dropzone = styled.div`
-    border: 1px dashed #ccc;
-    border-radius: 5px;
-    color: #6c7c7c;
-    display:flex;
-    cursor: pointer;
-    align-items:center;
-    justify-content:center;
-    height:142px;
-    padding: 20px;
-    img{
-        height: 140px;
-
-    }
-`;
 
 function ImageDropzone({value,onChange}){
     const [loading, setLoading] = useState(false);
@@ -39,7 +24,7 @@ function ImageDropzone({value,onChange}){
     );
 
     return (
-        <Dropzone {...getRootProps()}>
+        <div className={styles.dropzone} {...getRootProps()}>
             <input {...getInputProps()} />
             {
             value ? <img src={value}  alt="img"/>
@@ -47,9 +32,8 @@ function ImageDropzone({value,onChange}){
             (<Spinner animation="border" role="status" variant="standard" />)
             : <span>Drag & drop image here, or click to select image</span>
             }
-        </Dropzone>
+        </div>
     )
 }
-
 
 export default ImageDropzone;

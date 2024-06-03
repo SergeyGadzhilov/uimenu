@@ -1,0 +1,11 @@
+.pannel {
+    display: flex;
+    align-items: center;
+    height: 70px;
+    background-color: #F4F8FB;
+    padding-right: 20px;
+}
+
+.spacer {
+    flex: 1;
+}
