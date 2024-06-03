@@ -10,16 +10,18 @@ import {
 } from "../../api";
 import AuthContext from "../../context/AuthContext";
 import MainLayout from "../../layouts/MainLayout";
-import QRCodeModal from "../../components/QRCodeModal";
+import QRCodeModal from "../QRCodes/QRCodesPage";
 import { toast } from "react-toastify";
-import { AuthContextType, PlaceType } from "../../types";
+import { AuthContextType } from "../../types";
 import SettingsPanel from "./SettingsPannel";
 import Categories from "./Categories";
 import Products from "./Products";
 import styles from "./Place.module.css";
+import { UpdatePlace } from "../../apis/places";
+import { PlaceDTO } from "../../apis/dto/PlacesDTO";
 
 const Place = () => {
-  const [place, setPlace] = useState<PlaceType>();
+  const [place, setPlace] = useState<PlaceDTO>();
   const [qrCode, setQrCode] = useState(false);
   const [activeCategory, setActiveCategory] = useState("all");
 
@@ -45,15 +47,14 @@ const Place = () => {
     }
   };
 
-  const onUpdatePlace = (tables: number):void => {
-    updatePlace({id:place!.id, data:{ numberOfTables: tables }, token:auth.token}).then(
-      (json:any) => {
-        if (json) {
-          setPlace(json);
-          toast("Place updated successfully",{type: "success"})
-        }
-      }
-    );
+  const onUpdatePlace = async (tables: number) => {
+    const response = await UpdatePlace({id: place?.id, numberOfTables: tables}, auth.token);
+    if (response.IsSuccess) {
+      setPlace(response.Data);
+      return;
+
+    }
+    toast("Error",{type: "success"})
   };
 
   useEffect(() => {

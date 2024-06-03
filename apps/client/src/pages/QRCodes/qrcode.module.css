@@ -1,0 +1,65 @@
+.window {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    color: #4C4C4C;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.add {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 200px;
+    color: #D9D9D9;
+    font-size: 16px;
+    font-weight: 700;
+    border: 2px dashed #D9D9D9;
+}
+
+.tables {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.table {
+    display: flex;
+    flex-direction: column;
+}
+
+.table_name {
+    flex: 1;
+    font-size: 14px;
+    margin: 0;
+}
+
+.controls {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.control {
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.control:hover {
+    color: #ED6F3B;
+}
+
+.icons {
+    display: flex;
+    gap: 10px;
+    color: #4C4C4C;
+}

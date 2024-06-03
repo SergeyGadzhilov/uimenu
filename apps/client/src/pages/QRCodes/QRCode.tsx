@@ -1,26 +1,12 @@
 import { AiOutlineLink } from "react-icons/ai";
-import { Button } from "react-bootstrap";
+import { MdDelete } from "react-icons/md";
+import { FaPrint } from "react-icons/fa";
 import {QRCodeSVG}  from "qrcode.react";
 import { useRef } from "react";
 import styled from "styled-components";
 import { useReactToPrint } from "react-to-print";
-
-const Container = styled.div`
-  position: relative;
-`;
-
-const Overlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  background-color: rgba(255, 255, 255, 0.5);
-  > div {
-    margin: auto;
-  }
-`;
+import styles from "./qrcode.module.css";
+import { useNavigate } from "react-router-dom";
 
 const ComponentToPrint = styled.div`
   text-align: center;
@@ -36,7 +22,22 @@ const ComponentToPrint = styled.div`
   }
 `;
 
-const QRCode = ({ table, place }) => {
+function Controls({place, table, onPrint = null, onRemove = null}) {
+  const navigator = useNavigate();
+
+  return (
+    <div className={styles.controls}>
+      <h3 className={styles.table_name}>Table {table}</h3>
+      <div className={styles.icons}>
+        <FaPrint className={styles.control} onClick={onPrint} />
+        <AiOutlineLink className={styles.control} onClick={() => navigator(`/menu/${place.id}/${table}`)}/>
+        <MdDelete onClick={() => onRemove(place?.numberOfTables -1)} className={styles.control}/>
+      </div>
+    </div>
+  )
+}
+
+const QRCode = ({ table, place, onRemove = null }) => {
   const componentRef = useRef(null);
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
@@ -45,7 +46,7 @@ const QRCode = ({ table, place }) => {
   const url = `${window.location.origin}/menu/${place.id}/${table}`;
 
   return (
-    <Container>
+    <div className={styles.table}>
       <QRCodeSVG
             value={url}
             size={200}
@@ -62,21 +63,8 @@ const QRCode = ({ table, place }) => {
               excavate: true,
             }}
           />
-      <Overlay>
-        <div className="d-flex">
-          <Button variant="primary" onClick={handlePrint} className="m-2">
-            {`Print Table ${table}`}
-          </Button>
-          <Button
-            variant="primary"
-            href={`/menu/${place.id}/${table}`}
-            target="_blank"
-            className="m-2"
-          >
-            <AiOutlineLink size={25} />
-          </Button>
-        </div>
-      </Overlay>
+
+      <Controls place={place} table={table} onPrint={handlePrint} onRemove={onRemove} />
 
       <div style={{ display: "none" }}>
         <ComponentToPrint
@@ -114,7 +102,7 @@ const QRCode = ({ table, place }) => {
           />
         </ComponentToPrint>
       </div>
-    </Container>
+    </div>
   );
 };
 
