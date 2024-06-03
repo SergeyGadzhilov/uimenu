@@ -8,6 +8,11 @@
     background-position:center;
     height: 200px;
     border-radius: 5px;
+    border: 1px solid lightgrey;
+}
+
+.place:hover {
+    background-color: #fbfbfb;
 }
 
 .place > p {

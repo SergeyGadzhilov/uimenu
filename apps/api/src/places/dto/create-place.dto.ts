@@ -6,7 +6,6 @@ export class CreatePlaceDto {
   name: string;
 
   @IsString()
-  @IsNotEmpty()
   image: string;
   ownerId: string;
 }
