@@ -1,0 +1,18 @@
+.dropzone {
+    border: 1px dashed #ccc;
+    border-radius: 5px;
+    color: #6c7c7c;
+    display:flex;
+    cursor: pointer;
+    align-items:center;
+    justify-content:center;
+    height: 190px;
+    width: 190px;
+    padding: 20px;
+    text-align: center;
+    font-weight: 200;
+}
+
+.dropzon > img{
+    height: 140px;
+}

@@ -55,6 +55,17 @@
     box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1);
 }
 
+.eproduct {
+    padding: 20px;
+}
+
+.edata {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
 .image {
     max-height: 170px;
     width: 40%;
