@@ -5,6 +5,8 @@
     color: #4C4C4C;
     max-width: 300px;
     min-width: 300px;
+    flex: 0;
+    position: fixed;
 }
 
 .title {
@@ -95,4 +97,9 @@
 .eicon {
     cursor: pointer;
     max-width: 20px;
+}
+
+.spacer {
+    flex: 1;
+    flex-basis: 20px;
 }

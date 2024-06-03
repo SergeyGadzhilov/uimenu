@@ -1,4 +1,4 @@
-import { act, useContext, useState } from "react";
+import { useContext, useState } from "react";
 import styles from "./Categories.module.css";
 import { CreateCategory, DeleteCategory } from "../../apis/categories";
 import { toast } from "react-toastify";
@@ -105,7 +105,7 @@ export default function Categories({place, onChange= null, onCreate=null, onRemo
         setActive(id);
     }
 
-    return (
+    return (<div>
         <div className={styles.categories}>
             <div className={styles.title}>
                 <h3>Categories</h3>
@@ -129,6 +129,8 @@ export default function Categories({place, onChange= null, onCreate=null, onRemo
                 </>
                 <AddCategory placeId={place?.id} onCreate={onCreate}></AddCategory>
             </ul>
+        </div>
+        <div className={styles.spacer}></div>
         </div>
     );
 };
