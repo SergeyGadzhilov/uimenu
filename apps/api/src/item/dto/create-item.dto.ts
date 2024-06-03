@@ -13,7 +13,6 @@ export class CreateItemDto {
   @IsNumber()
   price: number;
 
-  @IsNotEmpty()
   @IsString()
   image: string;
 
