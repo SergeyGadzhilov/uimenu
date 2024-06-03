@@ -69,7 +69,13 @@ const Place = () => {
         onSettings={() => navigate(`/places/${params.id}/settings`)}
       />
       <div className={styles.editor}>
-        <Categories place={place} onChange={(id) => setActiveCategory(id)} onCreate={onFetchPlace} onRemove={onFetchPlace}/>
+        <Categories
+          place={place}
+          onChange={(id) => setActiveCategory(id)}
+          onCreate={onFetchPlace}
+          onRemove={onFetchPlace}
+          onUpdate={onFetchPlace}
+        />
         <Products categoryId={activeCategory} place={place} onUpdated={onFetchPlace}/>
       </div>
       <QRCodeModal

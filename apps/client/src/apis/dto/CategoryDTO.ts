@@ -8,3 +8,4 @@ export class CategoryDto {
 
 export type CreateCategoryResponse = Result<CategoryDto>;
 export type DeleteCategoryResponse = Result<CategoryDto>;
+export type UpdateCategoryResponse = Result<CategoryDto>;
