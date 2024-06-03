@@ -35,7 +35,7 @@ function ProductEditor({product = null, onUpdated = null, onCancel = null}) {
             description,
             price,
             categoryId: product?.categoryId,
-            image: image
+            image: image ?? ""
         }, auth.token);
 
         if (response.IsSuccess) {
@@ -147,7 +147,7 @@ function Product({product, onUpdated = null}) {
         {IsEditor ? <ProductEditor product={product} onUpdated={Update} onCancel={() => showEditor(false)}/> :
         <li className={styles.product}>
             <LoaderOverlay show={IsLoading} errors={errors} onClose={() => showLoader(false)}/>
-            <div className={styles.image} style={{ backgroundImage: `url(${product.image})`}}></div>
+            {product.image && <div className={styles.image} style={{ backgroundImage: `url(${product.image})`}}></div>}
             <div className={styles.data}>
                 <div className={styles.header}>
                     <h2 className={styles.name}>{product.name}</h2>
