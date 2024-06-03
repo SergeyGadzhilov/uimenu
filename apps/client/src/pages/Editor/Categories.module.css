@@ -97,6 +97,7 @@
 .eicon {
     cursor: pointer;
     max-width: 20px;
+    margin: 5px;
 }
 
 .spacer {
