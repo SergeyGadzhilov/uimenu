@@ -17,7 +17,6 @@ export default function PannelNavigation({
 {
     return (
         <ul className={styles.navigation}>
-            <Button onClick={onOrders} icon="orders.svg">Orders</Button>
             <Button onClick={onQRCodes} icon="qrcodes.svg">QRCodes</Button>
             <Button onClick={onSettings} icon="settings.svg">Settings</Button>
             <Button onClick={onRemove} icon="remove.svg">Remove</Button>
