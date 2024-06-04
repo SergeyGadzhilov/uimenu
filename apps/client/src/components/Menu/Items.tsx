@@ -13,8 +13,10 @@ function CategoryItem({item}) {
             <div className={styles.item_data}>
                 <h3 className={styles.item_title}>{item.name}</h3>
                 <p className={styles.item_description}>{item.description}</p>
-                <p className={styles.item_price}>${item.price}</p>
-                <AccentButton onPress={() => onOrder(item)}>Add</AccentButton>
+                <div className={styles.controls}>
+                    <p className={styles.item_price}>${item.price}</p>
+                    <AccentButton onPress={() => onOrder(item)}>Add</AccentButton>
+                </div>
             </div>
         </li>
     );
