@@ -74,6 +74,7 @@
 }
 
 .data {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -94,9 +95,28 @@
     font-weight: 700;
 }
 
+.description_hiden,
 .description {
+    cursor: pointer;
+    white-space: pre;
     font-size: 16px;
     font-weight: 300;
+}
+
+.description_hiden {
+    position: relative;
+    overflow: hidden;
+    max-height: 100px;
+}
+
+.description_hiden:after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 40px;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(180deg, #fff, hsla(0, 0%, 100%, 0) 0, #fff);
 }
 
 .price {
@@ -132,6 +152,7 @@
 }
 
 .edescription {
+    white-space: pre;
     min-height: 150px;
 }
 

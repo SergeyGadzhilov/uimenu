@@ -14,7 +14,8 @@
 
 .image {
     min-width: 200px;
-    min-height: 170px;
+    min-height: 220px;
+    max-height: 220px;
     background-size: cover;
     background-position: center;
 }
@@ -30,8 +31,33 @@
     font-weight: 700;
 }
 
+.item_description_hidden,
 .item_description {
+    position: relative;
+    cursor: pointer;
+    white-space: pre;
     font-size: 16px;
+    text-wrap: wrap;
+    min-height: 80px;
+}
+
+.item_description_hidden:after,
+.item_description:after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 40px;
+    bottom: 0;
+    left: 0;
+}
+
+.item_description_hidden {
+    overflow: hidden;
+    max-height: 80px;
+}
+
+.item_description_hidden:after {
+    background: linear-gradient(180deg, #fff, hsla(0, 0%, 100%, 0) 0, #fff);
 }
 
 .item_price {
