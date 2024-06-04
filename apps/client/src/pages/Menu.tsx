@@ -17,6 +17,8 @@ const OrderButton = styled(Button)`
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2);
   width: 60px;
   height: 60px;
+  color: #fff;
+  background-color: #ED6F3B;
 `;
 
 const Menu = () => {
@@ -103,13 +105,7 @@ const Menu = () => {
               onRemove={onRemoveItemToShoppingCart}
             />
           ) : (
-            <MenuList
-              place={place!}
-              shoppingCart={shoppingCart}
-              onOrder={onAddItemtoShoppingCart}
-              color={place?.color}
-              font={place?.font}
-            />
+            <MenuList place={place!} onOrder={onAddItemtoShoppingCart}/>
           )}
         </Col>
       </Row>
@@ -117,7 +113,6 @@ const Menu = () => {
       {totalQuantity ? (
         <OrderButton
           variant="standard"
-          style={{ backgroundColor: place?.color }}
           onClick={() => setShowShoppingCart(!showShoppingCart)}
         >
           {showShoppingCart ? <IoCloseOutline size={25} /> : totalQuantity}
