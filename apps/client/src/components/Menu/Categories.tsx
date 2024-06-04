@@ -1,21 +1,24 @@
-import { useState } from "react";
 import styles from "./categories.module.css";
 
 function Category({category = null, isActive = false, onChange = null}) {
     return (
-        <li 
-            onClick={() => onChange(category.id)}
-            className={isActive ? styles.category_active : styles.category }
-        >
-            {category.name}
-        </li>
+        <>
+        {category?.items?.length > 0 &&
+            <li
+                onClick={() => onChange(category.id)}
+                className={isActive ? styles.category_active : styles.category }
+            >
+                {category.name}
+            </li>
+        }
+        </>
     );
 }
 export function Categories({place, active = "", onChange = null}) {
     return (
         <ul className={styles.categories}>
             {
-                place?.categories?.map((category) => 
+                place?.categories?.map((category) =>
                     <Category
                         isActive={active == category.id}
                         onChange={() => {onChange(category.id)}}
