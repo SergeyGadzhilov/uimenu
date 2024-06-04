@@ -28,7 +28,7 @@ const RCMenuPlansAndPrices = () => {
                     You can try our QR code menu service first, and then decide does it suits you or not. 
                     It's totally free and we do not ask for your credit card details.
                 </div>
-                <Link className="price_card__button" to="/">Try it for free</Link>
+                <Link className="price_card__button" to="/register">Try it for free</Link>
             </div>
         </section>
     );
