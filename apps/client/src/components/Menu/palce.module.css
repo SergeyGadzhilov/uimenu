@@ -1,0 +1,14 @@
+.place {
+    text-align: center;
+}
+
+.place > img {
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.title {
+    color: #4C4C4C;
+    font-size: 36px;
+    font-weight: 700;
+}

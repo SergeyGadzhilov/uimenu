@@ -14,11 +14,11 @@ function Category({category = null, isActive = false, onChange = null}) {
         </>
     );
 }
-export function Categories({place, active = "", onChange = null}) {
+export function Categories({categories, active = "", onChange = null}) {
     return (
         <ul className={styles.categories}>
             {
-                place?.categories?.map((category) =>
+                categories?.map((category) =>
                     <Category
                         isActive={active == category.id}
                         onChange={() => {onChange(category.id)}}
