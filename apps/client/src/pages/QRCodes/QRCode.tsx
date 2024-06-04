@@ -6,7 +6,7 @@ import { useRef } from "react";
 import styled from "styled-components";
 import { useReactToPrint } from "react-to-print";
 import styles from "./qrcode.module.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ComponentToPrint = styled.div`
   text-align: center;
@@ -30,7 +30,7 @@ function Controls({place, table, onPrint = null, onRemove = null}) {
       <h3 className={styles.table_name}>Table {table}</h3>
       <div className={styles.icons}>
         <FaPrint className={styles.control} onClick={onPrint} />
-        <AiOutlineLink className={styles.control} onClick={() => navigator(`/menu/${place.id}/${table}`)}/>
+        <Link className={styles.link} target="blank" to={`/menu/${place.id}/${table}`}><AiOutlineLink className={styles.control}/></Link>
         <MdDelete onClick={() => onRemove(place?.numberOfTables -1)} className={styles.control}/>
       </div>
     </div>
