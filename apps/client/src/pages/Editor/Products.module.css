@@ -67,13 +67,15 @@
 }
 
 .image {
-    max-height: 170px;
+    max-height: 200px;
+    height: 200px;
     width: 250px;
     background-position: center;
     background-size: cover;
 }
 
 .data {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -94,9 +96,35 @@
     font-weight: 700;
 }
 
+.description_hiden,
 .description {
+    position: relative;
+    cursor: pointer;
+    white-space: pre;
     font-size: 16px;
     font-weight: 300;
+    min-height: 80px;
+    max-width: 500px;
+    text-wrap: wrap;
+}
+
+.description_hiden:after,
+.description:after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 40px;
+    bottom: 0;
+    left: 0;
+}
+
+.description_hiden {
+    overflow: hidden;
+    max-height: 100px;
+}
+
+.description_hiden:after {
+    background: linear-gradient(180deg, #fff, hsla(0, 0%, 100%, 0) 0, #fff);
 }
 
 .price {
@@ -132,6 +160,7 @@
 }
 
 .edescription {
+    white-space: pre;
     min-height: 150px;
 }
 
