@@ -4,6 +4,7 @@ import { PlaceType } from '../../types';
 import { Categories } from './Categories';
 import { useState } from 'react';
 import { Place } from './Place';
+import { Items } from './Items';
 
 interface FontInterface{
     font:string
@@ -32,6 +33,7 @@ const MenuList = ({ place, shoppingCart = {}, onOrder, font,color }:{place:Place
     <Container font={font!}>
       <Place place={place}/>
       <Categories active={activeCategory} onChange={ChangeCategory} categories={place?.categories}/>
+      <Items categories={place?.categories} />
 
       {place?.categories
         ?.filter(
