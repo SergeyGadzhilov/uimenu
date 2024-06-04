@@ -10,6 +10,7 @@ import Place from '../pages/Editor/Place';
 import MenuSettings from '../pages/MenuSettings';
 import Menu from '../pages/Menu';
 import Orders from '../pages/Orders';
+import { Terms } from '../pages/Terms/Terms';
 
 function App(){ 
     return (
@@ -18,6 +19,7 @@ function App(){
                 <Route path="/" element={<IndexPage />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/terms" element={<Terms />} />
                 <Route path="/places" element={<PrivateRoute Component={Places}/>} />
                 <Route path="/places/:id" element={<PrivateRoute Component={Place}/>} />
                 <Route path="/places/:id/settings" element={<PrivateRoute Component={MenuSettings}/>} />
