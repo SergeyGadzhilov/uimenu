@@ -11,7 +11,7 @@ import AuthContext from "../context/AuthContext";
 import { AuthContextType, PlaceType } from "../types";
 import { fetchPlace, updatePlace } from "../api";
 import { IoMdArrowBack } from "react-icons/io";
-import MenuList from "../components/MenuList";
+import MenuList from "../components/Menu/MenuList";
 
 const Panel = styled.div`
   background-color: white;

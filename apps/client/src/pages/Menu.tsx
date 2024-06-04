@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect, useMemo } from "react";
 import styled from "styled-components";
 
-import MenuList from "../components/MenuList";
+import MenuList from "../components/Menu/MenuList";
 import { fetchPlaceMenu } from "../api";
 import ShoppingCart from "../components/ShoppingCart";
 import {PlaceType, ShoppingCartType, ShoppingCartValueType } from "../types";
