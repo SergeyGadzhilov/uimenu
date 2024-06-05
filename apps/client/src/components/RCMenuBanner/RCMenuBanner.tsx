@@ -11,7 +11,7 @@ const RCMenuBanner = () => {
             <div className={styles.description}>
               <div>
                 Revolutionize your customers' ordering process with our contactless QR Code menu solution.
-                <span className={styles.description2}>Create digital restaurant menu and share it via a unique QR code with just a few clicks.</span>
+                <span className={styles.description2}> Create digital restaurant menu and share it via a unique QR code with just a few clicks.</span>
               </div>
             </div>
             <div className={styles.button}>

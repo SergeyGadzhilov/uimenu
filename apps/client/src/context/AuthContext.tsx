@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createContext, useState } from "react";
 import { Login } from "../types";
-import {LogIn as ApiLogin, ApiRegister} from "../apis/auth";
+import {ApiForgotPassword, LogIn as ApiLogin, ApiRegister, ApiResetPassword} from "../apis/auth";
 import { LoginResponse } from "../apis/dto/TokenDTO";
 import { CreateUserResponse } from "../apis/dto/CreateUserDTO";
+import { ForgotPasswordResponse, ResetPasswordRequest, ResetPasswrodResponse } from "../apis/dto/AuthDTO";
 
  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
  // @ts-expect-error
@@ -29,6 +30,14 @@ export function AuthProvider({ children }) {
         return await ApiRegister(login);
     };
 
+    const ForgotPassword = async (email: string) : Promise<ForgotPasswordResponse> => {
+        return await ApiForgotPassword(email);
+    }
+
+    const ResetPassword = async (request: ResetPasswordRequest): Promise<ResetPasswrodResponse> => {
+        return await ApiResetPassword(request);
+    }
+
     const signOut = ()=>{
         localStorage.removeItem("token");
         setToken("");
@@ -38,7 +47,9 @@ export function AuthProvider({ children }) {
         token,
         signOut,
         LogIn,
-        Register
+        Register,
+        ForgotPassword,
+        ResetPassword
     };
     
     return (

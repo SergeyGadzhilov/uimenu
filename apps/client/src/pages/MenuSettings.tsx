@@ -125,8 +125,6 @@ const MenuSettings = () => {
         <Col md={8}>
           <MenuList
             place={place!}
-            font={font}
-            color={color}
             onOrder={() => []}
           />
         </Col>

@@ -63,3 +63,10 @@
     gap: 10px;
     color: #4C4C4C;
 }
+
+.link {
+    line-height: 20px;
+    text-decoration: none;
+    color: #4C4C4C;
+    font-weight: 700;
+}
