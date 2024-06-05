@@ -6,7 +6,7 @@ import { useRef } from "react";
 import styled from "styled-components";
 import { useReactToPrint } from "react-to-print";
 import styles from "./qrcode.module.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const ComponentToPrint = styled.div`
   text-align: center;
@@ -23,7 +23,6 @@ const ComponentToPrint = styled.div`
 `;
 
 function Controls({place, table, onPrint = null, onRemove = null}) {
-  const navigator = useNavigate();
 
   return (
     <div className={styles.controls}>

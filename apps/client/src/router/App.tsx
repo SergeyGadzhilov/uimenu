@@ -11,6 +11,8 @@ import MenuSettings from '../pages/MenuSettings';
 import Menu from '../pages/Menu';
 import Orders from '../pages/Orders';
 import { Terms } from '../pages/Terms/Terms';
+import { ResetPassword } from '../pages/ResetPassword/ResetPassword';
+import { ForgotPassword } from '../pages/ForgotPassword/ForgotPassword';
 
 function App(){ 
     return (
@@ -25,6 +27,8 @@ function App(){
                 <Route path="/places/:id/settings" element={<PrivateRoute Component={MenuSettings}/>} />
                 <Route path="/places/:id/orders/" element={<PrivateRoute Component={Orders} />} />
                 <Route path="/menu/:id/:tableNumber" element={<Menu />} />
+                <Route path="/password/forgot" element={<ForgotPassword />} />
+                <Route path="/password/reset/:token" element={<ResetPassword />} />
             </Routes>
             <ToastContainer />
         </AuthProvider>

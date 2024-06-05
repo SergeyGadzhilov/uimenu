@@ -19,6 +19,16 @@ model User {
   places    Place[]
 }
 
+model ResetTokens {
+  id        String   @id @unique @default(cuid())
+  ownerId   String   @unique
+  token     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@index(ownerId)
+  @@index(token)
+}
+
 model Place {
   id             String     @id @unique @default(cuid())
   name           String

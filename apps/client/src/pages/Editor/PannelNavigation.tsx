@@ -10,9 +10,7 @@ function Button({icon="", onClick=null, children}) {
 }
 
 export default function PannelNavigation({
-    onOrders = null,
     onQRCodes = null,
-    onSettings = null,
     onRemove = null})
 {
     return (

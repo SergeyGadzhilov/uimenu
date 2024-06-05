@@ -4,11 +4,7 @@ import { Button } from "react-bootstrap";
 import { IoMdArrowBack } from "react-icons/io";
 import PannelNavigation from "./PannelNavigation";
 
-export default function SettingsPanel({
-    onOrders = null,
-    onQRCodes = null,
-    onSettings = null,
-    onRemove = null})
+export default function SettingsPanel({onQRCodes = null, onRemove = null})
 {
     const navigate = useNavigate();
     const onBack = () => navigate("/places");
@@ -20,9 +16,7 @@ export default function SettingsPanel({
             </Button>
             <div className={styles.spacer}></div>
             <PannelNavigation
-                onOrders={onOrders}
                 onQRCodes={onQRCodes}
-                onSettings={onSettings}
                 onRemove={onRemove}
             />
         </div>

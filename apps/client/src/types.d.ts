@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import { ForgotPasswordResponse, ResetPasswordRequest, ResetPasswrodResponse } from "./apis/dto/AuthDTO";
 import { CreateUserResponse } from "./apis/dto/CreateUserDTO";
 import { LoginResponse } from "./apis/dto/TokenDTO";
 
@@ -25,7 +26,9 @@ type AuthContextType={
     token:string,
     loading:boolean,
     LogIn: (login: Login) => Promise<LoginResponse>,
-    Register: (login: Login) => Promise<CreateUserResponse>
+    Register: (login: Login) => Promise<CreateUserResponse>,
+    ForgotPassword: (email: string) => Promise<ForgotPasswordResponse>,
+    ResetPassword: (reqeust: ResetPasswordRequest) => Promise<ResetPasswrodResponse>,
     signOut:() => void,
 }
 

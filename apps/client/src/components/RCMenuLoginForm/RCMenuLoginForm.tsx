@@ -69,6 +69,7 @@ const RCMenuLoginFrom = () => {
                     type="password" placeholder="Password"
                     onChange={(e) => setPassword(e.target.value)}
                 />
+                <Link to="/password/forgot">Forgot passwrod?</Link>
                 <div className={styles.buttons}>
                     <AccentButton onPress={Login}>Login</AccentButton>
                     <Button onPress={Demo}>Demo</Button>

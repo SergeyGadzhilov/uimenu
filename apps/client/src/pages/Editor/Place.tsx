@@ -11,13 +11,11 @@ import {
 import AuthContext from "../../context/AuthContext";
 import MainLayout from "../../layouts/MainLayout";
 import QRCodeModal from "../QRCodes/QRCodesPage";
-import { toast } from "react-toastify";
 import { AuthContextType, PlaceType } from "../../types";
 import SettingsPanel from "./SettingsPannel";
 import Categories from "./Categories";
 import Products from "./Products";
 import styles from "./Place.module.css";
-import { UpdatePlace } from "../../apis/places";
 
 const Place = () => {
   const [place, setPlace] = useState<PlaceType>();
@@ -64,8 +62,6 @@ const Place = () => {
       <SettingsPanel
         onQRCodes={showQRModal}
         onRemove={onRemovePlace}
-        onOrders={() => navigate(`/places/${params!.id}/orders`)}
-        onSettings={() => navigate(`/places/${params.id}/settings`)}
       />
       <div className={styles.editor}>
         <Categories
