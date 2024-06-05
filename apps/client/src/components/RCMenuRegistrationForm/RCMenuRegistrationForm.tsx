@@ -21,6 +21,7 @@ const RCMenuRegistrationFrom = () => {
     const [password, setPassword] = useState("");
     const [page, setPage] = useState(Page.Form);
     const [errors, setError] = useState([]);
+    const [isTermsAccepted, setTermsAccepted] = useState(false);
     
     const navigateTo = useNavigate();
     const auth = useContext(AuthContext) as AuthContextType;
@@ -40,6 +41,12 @@ const RCMenuRegistrationFrom = () => {
 
     const Register = async (event) => {
         event.preventDefault();
+        
+        if (!isTermsAccepted) {
+            showErrors(["Terms of Services are not accepted"]);
+            return;
+        }
+
         setPage(Page.Loader);
         const response = await auth.Register({email, password});
         if (response.IsSuccess) {
@@ -66,6 +73,15 @@ const RCMenuRegistrationFrom = () => {
                     type="password" placeholder="Password"
                     onChange={(e) => setPassword(e.target.value)}
                 />
+                <div className={styles.terms}>
+                    <input id="terms"
+                        onChange={() => setTermsAccepted(!isTermsAccepted)} 
+                        type='checkbox' checked={isTermsAccepted}
+                    />
+                    <label htmlFor="terms">Creating an account means you’re okay with our
+                    <Link target='blank' to="/terms"> Terms of Service</Link></label>
+                </div>
+                
                 <div className={styles.buttons}>
                     <AccentButton onPress={Register}>Register</AccentButton>
                 </div>

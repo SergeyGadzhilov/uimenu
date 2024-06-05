@@ -125,6 +125,7 @@ function Product({product, onUpdated = null}) {
     const [IsLoading, showLoader] = useState(false);
     const [IsEditor, showEditor] = useState(false);
     const [errors, setErrors] = useState([]);
+    const [isDescriptionHidden, hideDescription] = useState(true);
 
     const Update = () => {
         showEditor(false);
@@ -154,7 +155,12 @@ function Product({product, onUpdated = null}) {
                     <img onClick={() => showEditor(true)} className={styles.icon} src={`/assets/images/edit.svg`}/>
                     <img onClick={Remove} className={styles.icon} src={`/assets/images/remove.svg`}/>
                 </div>
-                <p className={styles.description}>{product.description}</p>
+                <p
+                    onClick={() => hideDescription(!isDescriptionHidden)}
+                    className={isDescriptionHidden ? styles.description_hiden : styles.description}
+                >
+                    {product.description}
+                </p>
                 <div className={styles.price}>${product.price}</div>
             </div>
         </li>

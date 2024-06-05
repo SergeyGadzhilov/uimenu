@@ -1,10 +1,22 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 import AccentButton from "../Buttons/buttons";
 import styles from "./items.module.css";
 
 const ItemsContext = createContext(null);
 
+function ItemDescription({descirption}) {
+    const [isFullDescription, setFullDescription] = useState(false);
+    return (
+        <p 
+            onClick={() => setFullDescription(!isFullDescription)}
+            className={isFullDescription ? styles.item_description : styles.item_description_hidden}>
+                {descirption}
+        </p>
+    );
+}
+
 function CategoryItem({item}) {
+    
     const onOrder = useContext(ItemsContext);
 
     return (
@@ -12,7 +24,7 @@ function CategoryItem({item}) {
             {item.image && <div className={styles.image} style={{backgroundImage: `url(${item.image})`}}></div>}
             <div className={styles.item_data}>
                 <h3 className={styles.item_title}>{item.name}</h3>
-                <p className={styles.item_description}>{item.description}</p>
+                <ItemDescription descirption={item.description} />
                 <div className={styles.controls}>
                     <p className={styles.item_price}>${item.price}</p>
                     <AccentButton onPress={() => onOrder(item)}>Add</AccentButton>
