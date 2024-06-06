@@ -1,18 +1,27 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Spinner } from "react-bootstrap";
 import { useDropzone } from "react-dropzone";
-import { uploadImage } from "../../api";
-import { useCallback, useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import styles from "./dropzone.module.css";
+import { UploadImage } from "../../apis/aws";
+import AuthContext from "../../context/AuthContext";
+import { AuthContextType } from "../../types";
 
 
-function ImageDropzone({value,onChange}){
+function ImageDropzone({place, value, onChange}){
+    const auth = useContext(AuthContext) as AuthContextType;
     const [loading, setLoading] = useState(false);
-    const onDrop = useCallback((acceptedFiles: (string | Blob)[])=>{
+    const onDrop = useCallback(async (acceptedFiles: File[])=>{
         setLoading(true);
-        uploadImage(acceptedFiles[0])
-        .then((json)=>onChange(json.url))
-        .finally(()=>setLoading(false))
+        const response = await UploadImage({
+            menu: place.id,
+            image: acceptedFiles[0]
+        }, auth.token);
+        
+        if (response.IsSuccess) {
+            if (onChange) onChange(response.Data.url);
+        }
+        setLoading(false);
     },[]);
 
     const {getRootProps, getInputProps} = useDropzone(
