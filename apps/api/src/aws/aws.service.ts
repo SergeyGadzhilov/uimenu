@@ -14,10 +14,10 @@ export class AwsService {
     }
     _aws: S3Client = new S3Client(this.s3Configuration);
 
-    async GetSecureUrl(request: GetUploadUrlRequest) : Promise<string> {
+    async GetSecureUrl(userid: string, request: GetUploadUrlRequest) : Promise<string> {
         const command = new PutObjectCommand({
             Bucket: "rc-menu-storage",
-            Key: `${request.menu}/${request.image.path}`
+            Key: `${userid}/${request.menu ?? "places"}/${request.image.path}-${Date.now()}`
         });
         return await getSignedUrl(this._aws, command, {expiresIn: 3600});
     }

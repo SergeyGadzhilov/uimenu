@@ -7,14 +7,13 @@ import { UploadImage } from "../../apis/aws";
 import AuthContext from "../../context/AuthContext";
 import { AuthContextType } from "../../types";
 
-
-function ImageDropzone({place, value, onChange}){
+function ImageDropzone({place = null, value = null, onChange = null}){
     const auth = useContext(AuthContext) as AuthContextType;
     const [loading, setLoading] = useState(false);
     const onDrop = useCallback(async (acceptedFiles: File[])=>{
         setLoading(true);
         const response = await UploadImage({
-            menu: place.id,
+            menu: place?.id ?? "",
             image: acceptedFiles[0]
         }, auth.token);
         

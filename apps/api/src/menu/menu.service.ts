@@ -1,5 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common';
-import { CreateOrderDto } from './dto/create-menu.dto';
+import { Injectable } from '@nestjs/common';
 import { UpdtateOrderDto } from './dto/update-menu.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
 
