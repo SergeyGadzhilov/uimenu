@@ -16,6 +16,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { SupportModule } from './support/support.module';
 import { SupportController } from './support/support.controller';
+import { AwsModule } from './aws/aws.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { SupportController } from './support/support.controller';
     MenuModule,
     OrderModule,
     SupportModule,
+    AwsModule,
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '../../..', 'client', 'dist'),
     })

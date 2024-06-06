@@ -70,7 +70,7 @@ function ProductEditor({product = null, onUpdated = null, onCancel = null}) {
     return (
     <li className={styles.eproduct}>
         <LoaderOverlay show={IsLoading} errors={errors} onClose={() => showLoader(false)}/>
-        <ImageDropzone value={image} onChange={setImage} />
+        <ImageDropzone place={place} value={image} onChange={setImage} />
         <div className={styles.edata}>
             <div className={styles.header}>
                 <input 

@@ -49,19 +49,6 @@ export function fetchPlaces(token:Token) {
   return request("/places/", { token});
 }
 
-export function uploadImage(image:Blob|string) {
-  const formData = new FormData();
-  formData.append("file", image);
-  formData.append("upload_preset", "menunizer");
-
-  return fetch("https://api.cloudinary.com/v1_1/awsomegroove/image/upload", {
-    method: "POST",
-    body: formData,
-  }).then((response) => {
-    return response.json();
-  });
-}
-
 export function fetchPlace(place:IdToken) {
   return request(`/places/${place.id}`, { token:place.token });
 }
