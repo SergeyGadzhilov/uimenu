@@ -1,10 +1,12 @@
 {
+  "packageManager": "npm@10.2.4",
   "name": "rcmenu",
   "module": "index.ts",
   "type": "module",
   "devDependencies": {
     "@types/bun": "^1.0.3",
-    "prisma": "^5.15.0"
+    "prisma": "^5.15.0",
+    "turbo": "^2.0.3"
   },
   "workspaces": [
     "apps/*"
