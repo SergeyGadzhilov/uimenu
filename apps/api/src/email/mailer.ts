@@ -10,11 +10,11 @@ export class Email {
 
 export async function SendEmail(email: MailOptions) {
     const transport = nodemailer.createTransport({
-        host: "sandbox.smtp.mailtrap.io",
-        port: 25,
+        host: process.env.EMAIL_HOST || "sandbox.smtp.mailtrap.io",
+        port: parseInt(process.env.EMAIL_PORT) || 25,
         auth: {
-            user: "a073fc5a0285c5",
-            pass: "bc1ce75ee42394"
+            user: process.env.EMAIL_USER || "a073fc5a0285c5",
+            pass: process.env.EMAIL_PASS || "bc1ce75ee42394"
         }
     });
 
