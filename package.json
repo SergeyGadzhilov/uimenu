@@ -4,14 +4,14 @@
   "type": "module",
   "devDependencies": {
     "@types/bun": "^1.0.3",
-    "prisma": "^5.13.0"
+    "prisma": "^5.15.0"
   },
   "workspaces": [
     "apps/*"
   ],
   "scripts": {
     "dev": "turbo run dev",
-    "build": "turbo run build",
+    "build": "prisma generate --schema=./apps/api/prisma/schema.prisma && turbo run build",
     "start": "node ./apps/api/dist/src/main"
   },
   "peerDependencies": {
@@ -24,7 +24,7 @@
     "@nestjs/jwt": "^10.2.0",
     "@nestjs/passport": "^10.0.3",
     "@nestjs/serve-static": "^4.0.0",
-    "@prisma/client": "^5.13.0",
+    "@prisma/client": "^5.15.0",
     "@types/nodemailer": "^6.4.15",
     "@types/passport-jwt": "^4.0.0",
     "@types/react-color": "^3.0.11",
