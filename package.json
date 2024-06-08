@@ -12,6 +12,7 @@
   ],
   "scripts": {
     "dev": "turbo run dev",
+    "db:seed": "ts-node ./apps/api/prisma/seed.ts",
     "build": "prisma generate --schema=./apps/api/prisma/schema.prisma && turbo run build",
     "start": "node ./apps/api/dist/src/main"
   },
