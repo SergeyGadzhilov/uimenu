@@ -19,6 +19,5 @@ COPY --from=builder /usr/build/apps/client/dist ./apps/client/dist
 COPY --from=builder /usr/build/apps/api/dist/prisma ./apps/api/dist/prisma
 COPY --from=builder /usr/build/apps/api/dist/src ./apps/api/dist/src
 COPY --from=builder /usr/build/apps/client/dist ./apps/client/dist
-COPY --from=builder /usr/build/.env ./.env
 
 EXPOSE 3000
