@@ -13,12 +13,12 @@ const RCMenuPlansAndPrices = () => {
                 />
                 <RCMenuPriceCard 
                     title = "Annual"
-                    descirption = "Charged every month. Total amount is 96$"
+                    descirption = "Charged every 12 months. Total amount is 96$"
                     price = "8$"
                 />
                 <RCMenuPriceCard 
                     title = "Semi-annual"
-                    descirption = "Charged every month. Total amount is 54$"
+                    descirption = "Charged every 6 months. Total amount is 54$"
                     price = "9$"
                 />
             </div>
