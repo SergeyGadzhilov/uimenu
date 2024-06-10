@@ -1,22 +1,26 @@
+import { MdMenuBook } from "react-icons/md";
+import { MdOutlineQrCode2 } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
 import styles from "./PannelNavigation.module.css";
 
-function Button({icon="", onClick=null, children}) {
+function Button({children, onClick=null}) {
     return (
         <li onClick={onClick} className={styles.button}>
-            <img className={styles.icon} src={`/assets/images/${icon}`}/>
             {children}
         </li>
-    );
+    )
 }
 
 export default function PannelNavigation({
+    onOpenMenu = null,
     onQRCodes = null,
     onRemove = null})
 {
     return (
         <ul className={styles.navigation}>
-            <Button onClick={onQRCodes} icon="qrcodes.svg">QRCodes</Button>
-            <Button onClick={onRemove} icon="remove.svg">Remove</Button>
+            <Button onClick={onOpenMenu}><MdMenuBook className={styles.icon}/>Menu</Button>
+            <Button onClick={onQRCodes}><MdOutlineQrCode2 className={styles.icon}/>QR Codes</Button>
+            <Button onClick={onRemove}><MdDelete className={styles.icon}/>Remove</Button>
         </ul>
     );
 };

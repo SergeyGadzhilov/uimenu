@@ -30,6 +30,7 @@ const Place = () => {
   const navigate = useNavigate();
 
   const onBack = () => navigate("/places");
+  const openMenu = () => navigate(`/menu/${place.id}/1`);
 
   const onFetchPlace = async () => {
     const json:any = await fetchPlace({ id: params.id, token: auth.token });
@@ -60,6 +61,7 @@ const Place = () => {
   return (
     <MainLayout>
       <SettingsPanel
+        onOpenMenu={openMenu}
         onQRCodes={showQRModal}
         onRemove={onRemovePlace}
       />
