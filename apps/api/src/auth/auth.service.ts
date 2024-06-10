@@ -57,9 +57,9 @@ export class AuthService {
     const token = await this.createResetToken(user.id);
 
     await SendEmail({
-      from: "RCMenuSupport<support@rc-menu.com>",
+      from: "UIMenuSupport<support@rc-menu.com>",
       to: user.email,
-      subject: "RCMenu reset password",
+      subject: "UIMenu reset password",
       text: `We have received a password reset request. Please, use the following link to reset your password:
 ${baseUrl}/password/reset/${token}
 This reset password link will be valid only for 10 minutes.`
