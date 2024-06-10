@@ -15,7 +15,8 @@
 .image {
     min-width: 200px;
     min-height: 220px;
-    max-height: 220px;
+    max-height: 100%;
+    border-radius: 5px;
     background-size: cover;
     background-position: center;
 }
