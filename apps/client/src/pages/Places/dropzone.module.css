@@ -6,13 +6,15 @@
     cursor: pointer;
     align-items:center;
     justify-content:center;
-    height: 190px;
+    height: 200px;
     width: 100%;
     padding: 20px;
     text-align: center;
     font-weight: 200;
 }
 
-.dropzon > img{
-    height: 140px;
+.image {
+    max-height: 190px;
+    max-width: 400px;
+    height: 190px;
 }

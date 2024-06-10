@@ -1,9 +1,14 @@
 import AccentButton from "../Buttons/buttons";
 import styles from "./Error.module.css"
 
-export default function Error({show=false, errors=[], onClose=null}) {
+export default function Error({children = null, show=false, errors=[], onClose=null}) {
     const messages = () => {
         if (errors.length <= 0) {
+
+            if (children) {
+                return <li>{children}</li>
+            }
+
             return (
                 <>
                     <li>An error occurred while sending the message</li>
@@ -22,9 +27,11 @@ export default function Error({show=false, errors=[], onClose=null}) {
                     <ul className={styles.description}>
                         {messages()}
                     </ul>
-                    <div className={styles.button}>
-                        <AccentButton onPress={onClose}>Ok</AccentButton>
-                    </div>
+                    {onClose &&
+                        <div className={styles.button}>
+                            <AccentButton onPress={onClose}>Ok</AccentButton>
+                        </div>
+                    }
                 </div>)
             }
         </>

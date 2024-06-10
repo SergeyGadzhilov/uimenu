@@ -3,7 +3,7 @@ import styles from './palce.module.css';
 function PlaceImage({place = null}) {
     return (
       <>
-        {place?.image && <img src={place?.image} width={100} height={100} alt={place?.name}/>}
+        {place?.image && <img src={place?.image} alt={place?.name}/>}
       </>
     );
 }

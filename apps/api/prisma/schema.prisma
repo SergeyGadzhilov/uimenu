@@ -33,7 +33,7 @@ model Place {
   id             String     @id @unique @default(cuid())
   name           String
   ownerId        String
-  image          String
+  image          String     @db.Text
   numberOfTables Int        @default(1)
   owner          User       @relation(fields: [ownerId], references: [id])
   categories     Category[]
@@ -55,11 +55,11 @@ model Category {
 model MenuItem {
   id          String   @id @unique @default(cuid()) 
   name        String
-  image       String // Assuming image is a URL or file path
+  image       String @db.Text
   price       Float @default(0.0)
   category    Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
   categoryId  String
-  description String?
+  description String? @db.Text
   isAvailable Boolean @default(false)
 }
 
