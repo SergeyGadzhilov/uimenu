@@ -30,7 +30,7 @@ const RCMenuHeader = () => {
               <div className="header__logo_menu">
                 <div className="header__logo">
                   <a href="/">
-                    <img src="/logo.png" alt="UIMenu" className={styles.logo} />
+                    <img src="/logo.svg" alt="UIMenu" className={styles.logo} />
                   </a>
                 </div>
                 <div className="header__menu">
