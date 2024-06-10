@@ -1,9 +1,9 @@
-import {Navigate, Route, Routes } from 'react-router-dom';
+import {Route, Routes } from 'react-router-dom';
 import Login from "../pages/Login";
 import { ToastContainer } from 'react-toastify';
 import Places from '../pages/Places/Places';
 import { AuthProvider } from '../context/AuthContext';
-import PrivateRoute from './PrivateRoute';
+import PrivateRoute, { NonPrivateRoute } from './PrivateRoute';
 import Register from '../pages/Register';
 import IndexPage from '../pages/IndexPage';
 import Place from '../pages/Editor/Place';
@@ -19,8 +19,8 @@ function App(){
         <AuthProvider>
             <Routes>
                 <Route path="/" element={<IndexPage />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
+                <Route path="/login" element={<NonPrivateRoute Component={Login} />} />
+                <Route path="/register" element={<NonPrivateRoute Component={Register} />} />
                 <Route path="/terms" element={<Terms />} />
                 <Route path="/places" element={<PrivateRoute Component={Places}/>} />
                 <Route path="/places/:id" element={<PrivateRoute Component={Place}/>} />

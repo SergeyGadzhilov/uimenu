@@ -7,4 +7,10 @@ const PrivateRoute = ({ Component }) => {
   const auth = useContext(AuthContext) as AuthContextType;
   return auth.token ? <Component /> : <Navigate to="/login" />;
 };
+
+export function NonPrivateRoute({Component}) {
+  const auth = useContext(AuthContext) as AuthContextType;
+  return auth.token ? <Navigate to="/places" /> : <Component />;
+}
+
 export default PrivateRoute;
