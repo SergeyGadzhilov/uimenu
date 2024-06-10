@@ -1,4 +1,4 @@
-import {Route, Routes } from 'react-router-dom';
+import {Navigate, Route, Routes } from 'react-router-dom';
 import Login from "../pages/Login";
 import { ToastContainer } from 'react-toastify';
 import Places from '../pages/Places/Places';
@@ -29,6 +29,7 @@ function App(){
                 <Route path="/menu/:id/:tableNumber" element={<Menu />} />
                 <Route path="/password/forgot" element={<ForgotPassword />} />
                 <Route path="/password/reset/:token" element={<ResetPassword />} />
+                <Route path="*" element={<IndexPage />} />
             </Routes>
             <ToastContainer />
         </AuthProvider>
