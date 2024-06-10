@@ -1,6 +1,6 @@
 services:
   rcmenu:
-    image: "sgad/rcmenu:v1.0.1"
+    image: "sgad/rcmenu:v1.0.2"
     command: npm start
     ports:
       - 80:3000
