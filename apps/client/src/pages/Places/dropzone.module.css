@@ -8,13 +8,12 @@
     justify-content:center;
     height: 200px;
     width: 100%;
-    padding: 20px;
     text-align: center;
     font-weight: 200;
 }
 
 .image {
-    max-height: 190px;
-    max-width: 400px;
+    max-height: 90%;
+    max-width: 90%;
     height: 190px;
 }
