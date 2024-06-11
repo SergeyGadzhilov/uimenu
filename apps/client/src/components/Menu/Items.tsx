@@ -36,7 +36,7 @@ function CategoryItem({item}) {
 
 function CategoryItems({items = null}) {
     return (
-        <ul>
+        <ul className={styles.items}>
             {items?.map((item) => <CategoryItem key={item.id} item={item}/>)}
         </ul>
     );
