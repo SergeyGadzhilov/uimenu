@@ -1,13 +1,14 @@
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { IoCloseOutline } from "react-icons/io5";
 import { useParams } from "react-router-dom";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useCallback } from "react";
 import styled from "styled-components";
-
 import MenuList from "../components/Menu/MenuList";
 import { fetchPlaceMenu } from "../api";
 import ShoppingCart from "../components/ShoppingCart";
-import {PlaceType, ShoppingCartType, ShoppingCartValueType } from "../types";
+import { ShoppingCart as Cart } from "../ShoppingCart/ShoppingCart";
+import { Product } from "../ShoppingCart/Product";
+import { PlaceType } from "../types";
 
 const OrderButton = styled(Button)`
   position: fixed;
@@ -21,72 +22,37 @@ const OrderButton = styled(Button)`
   background-color: #ED6F3B;
 `;
 
+enum Pages {
+  Menu,
+  Cart
+}
+
 const Menu = () => {
-  const [place, setPlace] = useState<PlaceType>();
-  const [shoppingCart, setShoppingCart] = useState(
-    JSON.parse(localStorage.getItem("shoppingCart")) || {}
-  );
-  const [showShoppingCart, setShowShoppingCart] = useState(false);
-
   const params = useParams();
+  const cart = Cart.instance(params.id);
+  const [page, setPage] = useState(Pages.Menu);
+  const [place, setPlace] = useState<PlaceType>();
+  const [products, setProducts] = useState(cart.products);
 
-  const onFetchPlace = async () => {
+  const onFetchPlace = useCallback( async () => {
     const json = await fetchPlaceMenu(params.id) as PlaceType;
     if (json) {
       setPlace(json);
     }
-  };
+  }, []);
 
-  const shoppingCartLocalStorage = (shopCart:ShoppingCartType) => {
-    localStorage.removeItem("shoppingCart");
-    localStorage.setItem("shoppingCart", JSON.stringify(shopCart));
-  };
+  const onAddProduct = useCallback((product: Product) => {
+    cart.add(product);
+    setProducts(cart.products);
+  }, []);
 
-  const onAddItemtoShoppingCart = (item:ShoppingCartValueType) => {
-    shoppingCartLocalStorage({
-      ...shoppingCart,
-      [item.id]: {
-        ...item,
-        quantity: (shoppingCart[item.id]?.quantity || 0) + 1,
-      },
-    });
-    setShoppingCart({
-      ...shoppingCart,
-      [item.id]: {
-        ...item,
-        quantity: (shoppingCart[item.id]?.quantity || 0) + 1,
-      },
-    });
-  };
-
-  const onRemoveItemToShoppingCart = (item:ShoppingCartValueType) => {
-    if (totalQuantity === 1) {
-      setShowShoppingCart(false);
+  const onRemoveProduct = useCallback((product: Product) => {
+    cart.remove(product.id);
+    setProducts(cart.products);
+    if (cart.isEmpty()) {
+      setPage(Pages.Menu);
     }
-    shoppingCartLocalStorage({
-      ...shoppingCart,
-      [item.id]: {
-        ...item,
-        quantity: (shoppingCart[item.id]?.quantity || 0) - 1,
-      },
-    });
-
-    setShoppingCart({
-      ...shoppingCart,
-      [item.id]: {
-        ...item,
-        quantity: (shoppingCart[item.id]?.quantity || 0) - 1,
-      },
-    });
-  };
-
-  const totalQuantity = useMemo(
-    () =>
-      Object.keys(shoppingCart)
-        .map((i) => shoppingCart[i].quantity)
-        .reduce((a, b) => a + b, 0),
-    [shoppingCart]
-  );
+  }, []);
 
   useEffect(() => {
     onFetchPlace();
@@ -96,26 +62,21 @@ const Menu = () => {
     <Container className="mt-5 mb-5">
       <Row className="justify-content-center">
         <Col lg={8}>
-          {showShoppingCart ? (
-            <ShoppingCart
-              items={Object.keys(shoppingCart)
-                .map((key) => shoppingCart[key])
-                .filter((item) => item.quantity > 0)}
-              onAdd={onAddItemtoShoppingCart}
-              onRemove={onRemoveItemToShoppingCart}
-            />
-          ) : (
-            <MenuList place={place!} onOrder={onAddItemtoShoppingCart}/>
-          )}
+          {page == Pages.Cart && <ShoppingCart
+              items={products}
+              onAdd={onAddProduct}
+              onRemove={onRemoveProduct}
+          />}
+          {page == Pages.Menu && <MenuList place={place!} onOrder={onAddProduct}/>}
         </Col>
       </Row>
 
-      {totalQuantity ? (
+      {cart.total ? (
         <OrderButton
           variant="standard"
-          onClick={() => setShowShoppingCart(!showShoppingCart)}
+          onClick={() => page == Pages.Cart ? setPage(Pages.Menu) : setPage(Pages.Cart)}
         >
-          {showShoppingCart ? <IoCloseOutline size={25} /> : totalQuantity}
+          {page == Pages.Cart ? <IoCloseOutline size={25} /> : cart.total}
         </OrderButton>
       ) : null}
     </Container>
