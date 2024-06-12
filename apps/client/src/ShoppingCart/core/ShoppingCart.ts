@@ -43,6 +43,13 @@ export class ShoppingCart {
         }
     }
 
+    getProduct(id: string) : Product {
+        if (this._products.has(id)) {
+            return this._products.get(id);
+        }
+        return null;
+    }
+
     public isEmpty() {
         return this._products.size == 0;
     }
@@ -59,5 +66,13 @@ export class ShoppingCart {
             }
         }
         return total;
+    }
+
+    get price() : number {
+        let price = 0;
+        for(let product of this._products.values()) {
+            price += product.price * product.quantity;
+        }
+        return parseFloat(price.toFixed(2));
     }
 }

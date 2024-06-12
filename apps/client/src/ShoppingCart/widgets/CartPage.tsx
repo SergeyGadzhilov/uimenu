@@ -1,13 +1,9 @@
-import { useMemo } from "react";
 import { Card } from "react-bootstrap";
-import OperationButton from "./OperationButton";
+import OperationButton from "../../components/OperationButton";
+import AccentButton from "../../components/Buttons/buttons";
+import styles from "./CartPage.module.css";
 
-const ShoppingCart = ({ items, onAdd, onRemove}) => {
-  const totalPrice = useMemo(
-    () => items.map((i) => i.quantity * i.price ).reduce((a, b) => parseFloat(`${(a + b).toFixed(2)}`), 0),
-    [items]
-  );
-
+const CartPage = ({cart, onAdd, onRemove, onClose}) => {
   return (
     <>
       <h3 className="text-center mb-4">
@@ -15,7 +11,7 @@ const ShoppingCart = ({ items, onAdd, onRemove}) => {
       </h3>
       <Card>
         <Card.Body>
-          {items.map((item) => (
+          {cart.products.map((item) => (
             <div key={item.id} className="d-flex mb-4 align-items-center">
               <div className="flex-grow-1">
                 <p className="mb-0">
@@ -50,16 +46,16 @@ const ShoppingCart = ({ items, onAdd, onRemove}) => {
               <b>Total</b>
             </h5>
             <h5>
-              <b>${totalPrice}</b>
+              <b>${cart.price}</b>
             </h5>
           </div>
-
-          <hr className="mb-4" />
         </Card.Body>
-       
       </Card>
+      <div className={styles.back_button}>
+        <AccentButton onPress={onClose}>Back to menu</AccentButton>
+      </div>
     </>
   );
 };
 
-export default ShoppingCart;
+export default CartPage;
