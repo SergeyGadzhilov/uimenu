@@ -12,9 +12,6 @@
   ],
   "scripts": {
     "dev": "turbo run dev",
-    "release:major": "npm version major && release:image",
-    "release:minor": "npm version minor && release:image",
-    "release:patch": "npm version patch && release:image",
     "release:image": "build:image && publish:image",
     "db:seed": "ts-node ./apps/api/prisma/seed.ts",
     "db:migrate": "npx prisma migrate dev --schema=./apps/api/prisma/schema.prisma",
