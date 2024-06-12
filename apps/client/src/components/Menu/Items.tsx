@@ -1,6 +1,8 @@
 import { createContext, useContext, useState } from "react";
-import AccentButton from "../Buttons/buttons";
 import styles from "./items.module.css";
+import { TiMinus, TiPlus } from "react-icons/ti";
+import { CartContext } from "./MenuList";
+import { ShoppingCart } from "../../ShoppingCart/core/ShoppingCart";
 
 const ItemsContext = createContext(null);
 
@@ -15,10 +17,27 @@ function ItemDescription({descirption}) {
     );
 }
 
-function CategoryItem({item}) {
-    
-    const onOrder = useContext(ItemsContext);
+function OrderButton({item}) {
+    const events = useContext(ItemsContext);
+    const cart = useContext(CartContext) as ShoppingCart;
+    const product = cart.getProduct(item.id);
 
+    return (
+        <>
+        {product?.quantity ?
+            <div className={styles.counter}>
+                <TiMinus onClick={() => events.onRemove(item)} className={styles.counter_control} />
+                <div>{product?.quantity}</div>
+                <TiPlus onClick={() => events.onOrder(item)} className={styles.counter_control}/>
+            </div>
+        :
+            <div className={styles.order_button} onClick={() => events.onOrder(item)}>+</div>
+        }
+        </>
+    );
+}
+
+function CategoryItem({item}) {
     return (
         <li className={styles.item}>
             {item.image && <div className={styles.image} style={{backgroundImage: `url(${item.image})`}}></div>}
@@ -27,7 +46,7 @@ function CategoryItem({item}) {
                 <ItemDescription descirption={item.description} />
                 <div className={styles.controls}>
                     <p className={styles.item_price}>${item.price}</p>
-                    <AccentButton onPress={() => onOrder(item)}>Add</AccentButton>
+                    <OrderButton item={item}/>
                 </div>
             </div>
         </li>
@@ -55,9 +74,9 @@ function Category({category}) {
     );
 }
 
-export function Items({categories, onOrder = null}) {
+export function Items({categories, onOrder = null, onRemove = null}) {
     return (
-        <ItemsContext.Provider value={onOrder}>
+        <ItemsContext.Provider value={{onOrder, onRemove}}>
             {categories?.map((category) => <Category key={category.id} category={category}/>)}
         </ItemsContext.Provider>
     );

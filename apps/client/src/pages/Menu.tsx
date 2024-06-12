@@ -1,26 +1,12 @@
-import { Container, Row, Col, Button } from "react-bootstrap";
-import { IoCloseOutline } from "react-icons/io5";
+import { Container, Row, Col} from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import { useState, useEffect, useCallback } from "react";
-import styled from "styled-components";
+import { useState, useEffect, useCallback, createContext } from "react";
 import MenuList from "../components/Menu/MenuList";
 import { fetchPlaceMenu } from "../api";
-import ShoppingCart from "../components/ShoppingCart";
-import { ShoppingCart as Cart } from "../ShoppingCart/ShoppingCart";
-import { Product } from "../ShoppingCart/Product";
+import { ShoppingCart } from "../ShoppingCart/core/ShoppingCart";
+import { Product } from "../ShoppingCart/core/Product";
 import { PlaceType } from "../types";
-
-const OrderButton = styled(Button)`
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  border-radius: 50%;
-  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2);
-  width: 60px;
-  height: 60px;
-  color: #fff;
-  background-color: #ED6F3B;
-`;
+import { Cart } from "../ShoppingCart/widgets/Cart";
 
 enum Pages {
   Menu,
@@ -29,10 +15,10 @@ enum Pages {
 
 const Menu = () => {
   const params = useParams();
-  const cart = Cart.instance(params.id);
+  const cart = ShoppingCart.instance(params.id);
   const [page, setPage] = useState(Pages.Menu);
   const [place, setPlace] = useState<PlaceType>();
-  const [products, setProducts] = useState(cart.products);
+  let [updates, onUpdate] = useState(0);
 
   const onFetchPlace = useCallback( async () => {
     const json = await fetchPlaceMenu(params.id) as PlaceType;
@@ -43,15 +29,12 @@ const Menu = () => {
 
   const onAddProduct = useCallback((product: Product) => {
     cart.add(product);
-    setProducts(cart.products);
+    onUpdate(++updates);
   }, []);
 
   const onRemoveProduct = useCallback((product: Product) => {
     cart.remove(product.id);
-    setProducts(cart.products);
-    if (cart.isEmpty()) {
-      setPage(Pages.Menu);
-    }
+    onUpdate(++updates);
   }, []);
 
   useEffect(() => {
@@ -62,23 +45,10 @@ const Menu = () => {
     <Container className="mt-5 mb-5">
       <Row className="justify-content-center">
         <Col lg={8}>
-          {page == Pages.Cart && <ShoppingCart
-              items={products}
-              onAdd={onAddProduct}
-              onRemove={onRemoveProduct}
-          />}
-          {page == Pages.Menu && <MenuList place={place!} onOrder={onAddProduct}/>}
+          {page == Pages.Menu && <MenuList cart={cart} place={place!} onOrder={onAddProduct} onRemove={onRemoveProduct}/>}
+          <Cart cart={cart} onClose={() => setPage(Pages.Menu)} onOpen={() => setPage(Pages.Cart)}/>
         </Col>
       </Row>
-
-      {cart.total ? (
-        <OrderButton
-          variant="standard"
-          onClick={() => page == Pages.Cart ? setPage(Pages.Menu) : setPage(Pages.Cart)}
-        >
-          {page == Pages.Cart ? <IoCloseOutline size={25} /> : cart.total}
-        </OrderButton>
-      ) : null}
     </Container>
   );
 };
