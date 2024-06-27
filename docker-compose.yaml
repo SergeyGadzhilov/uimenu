@@ -13,5 +13,9 @@ services:
       - 3000:3000
     environment:
       DATABASE_URL: "mysql://root:test1@db:3306/RCMenu"
+      EMAIL_HOST: "live.smtp.mailtrap.io"
+      EMAIL_PORT: 587
+      EMAIL_USER: "api"
+      EMAIL_PASS: "31d44f1c8ebb485ce777dac37de159cb"
     depends_on:
       - db

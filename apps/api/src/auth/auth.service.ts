@@ -9,7 +9,7 @@ import { JwtService } from '@nestjs/jwt';
 import { TokenDto } from './auth.dto';
 import * as bcrypt from 'bcrypt';
 import * as crypto from "crypto";
-import { SendEmail } from 'src/email/mailer';
+import { SendPasswordResetMail } from 'src/email/mailer';
 
 @Injectable()
 export class AuthService {
@@ -55,15 +55,7 @@ export class AuthService {
   async forgot(baseUrl: string, email: string): Promise<any> {
     const user = await this.getUser(email);
     const token = await this.createResetToken(user.id);
-
-    await SendEmail({
-      from: "UIMenu <no-reply@uimenu.com>",
-      to: user.email,
-      subject: "UIMenu reset password",
-      text: `We have received a password reset request. Please, use the following link to reset your password:
-${baseUrl}/password/reset/${token}
-This reset password link will be valid only for 10 minutes.`
-    });
+    await SendPasswordResetMail(user.email, `${baseUrl}/password/reset/${token}`);
 
     return {};
   }
