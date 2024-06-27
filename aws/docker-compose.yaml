@@ -6,4 +6,8 @@ services:
       - 80:3000
     environment:
       DATABASE_URL: "mysql://RCMenu:l.vbyf96rd66@awseb-e-eypnqgjwrb-stack-awsebrdsdatabase-9b6hbvu9fvkx.cxwuy6uqan7d.us-west-1.rds.amazonaws.com:3306/RCMenu"
+      EMAIL_HOST: "live.smtp.mailtrap.io"
+      EMAIL_PORT: 587
+      EMAIL_USER: "api"
+      EMAIL_PASS: "31d44f1c8ebb485ce777dac37de159cb"
     restart: unless-stopped

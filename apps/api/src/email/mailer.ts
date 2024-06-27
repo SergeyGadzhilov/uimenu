@@ -1,14 +1,24 @@
 import * as nodemailer from 'nodemailer';
-import { MailOptions } from 'nodemailer/lib/json-transport';
+import * as ejs from "ejs";
+import * as path from 'path';
 
-export class Email {
-    from: string;
+class Email {
     to: string;
     subject: string;
-    body: string;
+    template: string;
+    data: {};
 };
 
-export async function SendEmail(email: MailOptions) {
+export async function SendPasswordResetMail(to: string, resetUrl: string) : Promise<void> {
+    await SendEmail({
+        to,
+        subject: "UIMenu reset password",
+        template: "reset_password",
+        data: { reset_url: resetUrl }
+    });
+}
+
+async function SendEmail(email: Email) : Promise<void> {
     const transport = nodemailer.createTransport({
         host: process.env.EMAIL_HOST || "sandbox.smtp.mailtrap.io",
         port: parseInt(process.env.EMAIL_PORT) || 25,
@@ -19,9 +29,17 @@ export async function SendEmail(email: MailOptions) {
     });
 
     try {
-        await transport.sendMail(email);
+        const template = path.join(__dirname, "..", "assets", "emails", `${email.template}.ejs`);
+        const content = await ejs.renderFile(template, email.data);
+        await transport.sendMail({
+            from: "UIMenu <no-reply@uimenu.com>",
+            to: email.to,
+            subject: email.subject,
+            html: content
+        });
     }
     catch(err) {
-        console.error(`fail to send email to ${email.to} due to: ${JSON.stringify(err)}`);
+        console.error(`fail to send email: ${err}`);
+        throw err;
     }
 }
