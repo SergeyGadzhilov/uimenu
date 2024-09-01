@@ -1,22 +1,22 @@
 import { Link } from "react-router-dom";
-import RCMenuPriceCard from "./RCMenuPriceCard";
+import UIMenuPriceCard from "./UIMenuPriceCard";
 
-const RCMenuPlansAndPrices = () => {
+const UIMenuPlansAndPrices = () => {
     return (
         <section id="prices" className="prices">
             <div className="prices__title">Plans and prices</div>
             <div className="prices__cards">
-                <RCMenuPriceCard 
+                <UIMenuPriceCard 
                     title = "Monthly"
                     descirption = "Charged every month. Total amount is 10$"
                     price = "10$"
                 />
-                <RCMenuPriceCard 
+                <UIMenuPriceCard 
                     title = "Annual"
                     descirption = "Charged every 12 months. Total amount is 96$"
                     price = "8$"
                 />
-                <RCMenuPriceCard 
+                <UIMenuPriceCard 
                     title = "Semi-annual"
                     descirption = "Charged every 6 months. Total amount is 54$"
                     price = "9$"
@@ -34,4 +34,4 @@ const RCMenuPlansAndPrices = () => {
     );
 };
 
-export default RCMenuPlansAndPrices;
+export default UIMenuPlansAndPrices;

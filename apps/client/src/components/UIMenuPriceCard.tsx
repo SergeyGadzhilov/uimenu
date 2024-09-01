@@ -1,4 +1,4 @@
-const RCMenuPriceCard = ({title, descirption, price}) => {
+const UIMenuPriceCard = ({title, descirption, price}) => {
     return (
         <div className="price_card">
             <div className="price_card__title">{title}</div>
@@ -9,4 +9,4 @@ const RCMenuPriceCard = ({title, descirption, price}) => {
     );
 };
 
-export default RCMenuPriceCard;
+export default UIMenuPriceCard;

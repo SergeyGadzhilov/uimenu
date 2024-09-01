@@ -1,7 +1,7 @@
-import RCMenuContactFrom from '../../components/RCMenuContactForm/RCMenuContactForm';
-import styles from './RCMenuContatcs.module.css'
+import UIMenuContactFrom from '../../components/UIMenuContactForm/UIMenuContactForm';
+import styles from './UIMenuContatcs.module.css'
 
-const RCMenuContactsSection = () => {
+const UIMenuContactsSection = () => {
     return (
         <section className={styles.contacts}>
             <div className={styles.title}>Contact Us</div>
@@ -9,10 +9,10 @@ const RCMenuContactsSection = () => {
                 If you have any questions, simply send us a message, and we will get back to you as soon as possible
             </div>
             <div className={styles.form}>
-                <RCMenuContactFrom/>
+                <UIMenuContactFrom/>
             </div>
         </section>
     );
 };
 
-export default RCMenuContactsSection;
+export default UIMenuContactsSection;

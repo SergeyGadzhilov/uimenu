@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const RCMenuFooter = () => {
+const UIMenuFooter = () => {
     return (
         <footer>
             <Link target="blank" className="terms_of_service" to="/terms">Terms of Service</Link>
@@ -9,4 +9,4 @@ const RCMenuFooter = () => {
     );
 };
 
-export default RCMenuFooter;
+export default UIMenuFooter;

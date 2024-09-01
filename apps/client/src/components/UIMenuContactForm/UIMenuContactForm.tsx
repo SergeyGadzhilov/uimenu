@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from './RCMenuContactFrom.module.css'
+import styles from './UIMenuContactFrom.module.css'
 import Error from './Error';
 import Loader from './Loader';
 import SuccessPage from './Success';
@@ -12,7 +12,7 @@ enum Page {
     Success
 }
 
-const RCMenuContactFrom = () => {
+const UIMenuContactFrom = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
@@ -68,4 +68,4 @@ const RCMenuContactFrom = () => {
     );
 };
 
-export default RCMenuContactFrom;
+export default UIMenuContactFrom;

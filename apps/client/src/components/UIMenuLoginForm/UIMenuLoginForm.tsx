@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import styles from './RCMenuLoginFrom.module.css'
+import styles from './UIMenuLoginFrom.module.css'
 import Error from '../Error/Error';
 import Loader from './Loader';
 import SuccessPage from './Success';
@@ -17,7 +17,7 @@ enum Page {
     Success
 }
 
-const RCMenuLoginFrom = () => {
+const UIMenuLoginFrom = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [page, setPage] = useState(Page.Form);
@@ -97,4 +97,4 @@ const RCMenuLoginFrom = () => {
     );
 };
 
-export default RCMenuLoginFrom;
+export default UIMenuLoginFrom;

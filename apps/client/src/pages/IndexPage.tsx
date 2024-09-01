@@ -1,19 +1,19 @@
-import RCMenuHeader from "../components/RCMenuHeader/RCMenuHeader";
-import RCMenuBanner from "../components/RCMenuBanner/RCMenuBanner";
-import RCMenuEditorSection from "../components/RCMenuEditorSection";
-import RCMenuFooter from "../components/RCMenuFooter";
-import RCMenuPlansAndPrices from "../components/RCMenuPlansAndPrices";
-import RCMenuContactsSection from "../sections/contacts/RCMenuContactsSection";
+import UIMenuHeader from "../components/UIMenuHeader/UIMenuHeader";
+import UIMenuBanner from "../components/UIMenuBanner/UIMenuBanner";
+import UIMenuEditorSection from "../components/UIMenuEditorSection";
+import UIMenuFooter from "../components/UIMenuFooter";
+import UIMenuPlansAndPrices from "../components/UIMenuPlansAndPrices";
+import UIMenuContactsSection from "../sections/contacts/UIMenuContactsSection";
 
 function IndexPage() {
   return (
     <div id="landing">
-      <RCMenuHeader/>
-      <RCMenuBanner/>
-      <RCMenuEditorSection/>
-      <RCMenuPlansAndPrices/>
-      <RCMenuContactsSection/>
-      <RCMenuFooter/>
+      <UIMenuHeader/>
+      <UIMenuBanner/>
+      <UIMenuEditorSection/>
+      <UIMenuPlansAndPrices/>
+      <UIMenuContactsSection/>
+      <UIMenuFooter/>
     </div>
   );
 }

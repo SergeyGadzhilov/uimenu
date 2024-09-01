@@ -1,6 +1,6 @@
 import { LinkAccentButton, LinkButton } from "./Buttons/buttons";
 
-const RCMenuEditorSection = () => {
+const UIMenuEditorSection = () => {
     return (
       <section className="section_editor">
         <div className="container">
@@ -32,4 +32,4 @@ const RCMenuEditorSection = () => {
     </section>);
 };
 
-export default RCMenuEditorSection;
+export default UIMenuEditorSection;

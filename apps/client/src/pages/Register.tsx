@@ -1,10 +1,10 @@
 import MainLayout from "../layouts/MainLayout";
-import RCMenuRegistrationFrom from "../components/RCMenuRegistrationForm/RCMenuRegistrationForm";
+import UIMenuRegistrationFrom from "../components/UIMenuRegistrationForm/UIMenuRegistrationForm";
 
 const Register = () => {
   return (
     <MainLayout>
-      <RCMenuRegistrationFrom/>
+      <UIMenuRegistrationFrom/>
     </MainLayout>
   );
 };

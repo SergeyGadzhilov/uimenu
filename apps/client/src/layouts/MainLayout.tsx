@@ -1,15 +1,15 @@
 import { Container } from "react-bootstrap";
-import RCMenuHeader from "../components/RCMenuHeader/RCMenuHeader";
-import RCMenuFooter from "../components/RCMenuFooter";
+import UIMenuHeader from "../components/UIMenuHeader/UIMenuHeader";
+import UIMenuFooter from "../components/UIMenuFooter";
 
 const MainLayout = function ({ children }){
   return (
     <>
-        <RCMenuHeader/>
+        <UIMenuHeader/>
         <Container>
             { children }
         </Container>
-        <RCMenuFooter />
+        <UIMenuFooter />
     </>
   );
 }

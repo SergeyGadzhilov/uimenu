@@ -1,6 +1,6 @@
 import styles from "./RCScanCode.module.css"
 
-export default function RCMenuScanCode() {
+export default function UIMenuScanCode() {
     return (
         <div className={styles.scancode}>
             <div className={styles.qrcode}>
