@@ -1,9 +1,9 @@
 
 import { LinkAccentButton } from "../Buttons/buttons";
-import styles from "./RCMenuBanner.module.css"
-import RCMenuScanCode from "./RCMenuScanCode";
+import styles from "./UIMenuBanner.module.css"
+import UIMenuScanCode from "./UIMenuScanCode";
 
-const RCMenuBanner = () => {
+const UIMenuBanner = () => {
     return (
         <section className={styles.banner}>
           <div className={styles.left} >
@@ -20,10 +20,10 @@ const RCMenuBanner = () => {
           </div>
           <div className={styles.gap}></div>
           <div>
-            <RCMenuScanCode />
+            <UIMenuScanCode />
           </div>
       </section>
     );
 };
 
-export default RCMenuBanner;
+export default UIMenuBanner;

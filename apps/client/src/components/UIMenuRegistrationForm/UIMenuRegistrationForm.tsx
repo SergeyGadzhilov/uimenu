@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import styles from './RCMenuRegistrationFrom.module.css'
+import styles from './UIMenuRegistrationFrom.module.css'
 import Error from '../Error/Error';
 import Loader from './Loader';
 import SuccessPage from './Success';
@@ -16,7 +16,7 @@ enum Page {
     Success
 }
 
-const RCMenuRegistrationFrom = () => {
+const UIMenuRegistrationFrom = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [page, setPage] = useState(Page.Form);
@@ -106,4 +106,4 @@ const RCMenuRegistrationFrom = () => {
     );
 };
 
-export default RCMenuRegistrationFrom;
+export default UIMenuRegistrationFrom;

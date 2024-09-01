@@ -2,9 +2,9 @@ import { useContext, useState } from "react";
 import { HashLink as Link } from 'react-router-hash-link';
 import { AuthContextType } from "../../types";
 import AuthContext from "../../context/AuthContext";
-import styles from './RCMenuHeader.module.css'
+import styles from './UIMenuHeader.module.css'
 
-const RCMenuHeader = () => {
+const UIMenuHeader = () => {
     const auth = useContext(AuthContext) as AuthContextType;
     const [menu_class, setMenuClass] = useState("menu");
     const [isMenuOpened, setIsMenuOpened] = useState(false);
@@ -94,4 +94,4 @@ const RCMenuHeader = () => {
     )
 };
 
-export default RCMenuHeader;
+export default UIMenuHeader;

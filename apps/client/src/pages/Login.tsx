@@ -1,10 +1,10 @@
 import MainLayout from "../layouts/MainLayout"
-import RCMenuLoginFrom from "../components/RCMenuLoginForm/RCMenuLoginForm"
+import UIMenuLoginFrom from "../components/UIMenuLoginForm/UIMenuLoginForm"
 
 const Login  = () =>{
     return (
         <MainLayout>
-            <RCMenuLoginFrom />
+            <UIMenuLoginFrom />
         </MainLayout>
     )
 }

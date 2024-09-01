@@ -1,6 +1,7 @@
 {
   "packageManager": "npm@10.2.4",
-  "name": "rcmenu",
+  "name": "uimenu",
+  "version": "1.0.3",
   "module": "index.ts",
   "devDependencies": {
     "@types/bun": "^1.0.3",
@@ -17,8 +18,8 @@
     "db:migrate": "npx prisma migrate dev --schema=./apps/api/prisma/schema.prisma",
     "db:update": "npx prisma migrate deploy --schema=./apps/api/prisma/schema.prisma",
     "build": "prisma generate --schema=./apps/api/prisma/schema.prisma && turbo run build",
-    "build:image": "docker build -t sgad/rcmenu:v%npm_package_version% .",
-    "publish:image": "docker push sgad/rcmenu:v%npm_package_version%",
+    "build:image": "docker build -t sgad/uimenu:v%npm_package_version% .",
+    "publish:image": "docker push sgad/uimenu:v%npm_package_version%",
     "start": "node ./apps/api/dist/src/main"
   },
   "peerDependencies": {
@@ -55,6 +56,5 @@
     "react-router-hash-link": "^2.4.3",
     "react-to-print": "^2.14.15",
     "styled-components": "^6.1.8"
-  },
-  "version": "1.0.3"
+  }
 }

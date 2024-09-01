@@ -1,12 +1,12 @@
 import { HashLink } from 'react-router-hash-link';
-import RCMenuFooter from "../../components/RCMenuFooter";
-import RCMenuHeader from "../../components/RCMenuHeader/RCMenuHeader";
+import UIMenuFooter from "../../components/UIMenuFooter";
+import UIMenuHeader from "../../components/UIMenuHeader/UIMenuHeader";
 import styles from "./terms.module.css";
 
 export function Terms() {
     return (
         <>
-            <RCMenuHeader/>
+            <UIMenuHeader/>
             <section className={styles.section}>
                 <h3>Terms of Service</h3>
                 <p>Before you use the platform, please read the following terms and conditions carefully.
@@ -131,7 +131,7 @@ export function Terms() {
                     acceptance of this Agreement with such addition, deletion, amendment, or modification.
                 </p>
             </section>
-            <RCMenuFooter/>
+            <UIMenuFooter/>
         </>
     );
 }

@@ -1,11 +1,11 @@
 services:
-  rcmenu:
-    image: "sgad/rcmenu:v1.0.3"
+  uimenu:
+    image: "sgad/uimenu:v1.0.3"
     command: npm start
     ports:
       - 80:3000
     environment:
-      DATABASE_URL: "mysql://RCMenu:l.vbyf96rd66@awseb-e-eypnqgjwrb-stack-awsebrdsdatabase-9b6hbvu9fvkx.cxwuy6uqan7d.us-west-1.rds.amazonaws.com:3306/RCMenu"
+      DATABASE_URL: ""
       EMAIL_HOST: "live.smtp.mailtrap.io"
       EMAIL_PORT: 587
       EMAIL_USER: "api"

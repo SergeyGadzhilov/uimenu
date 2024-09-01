@@ -6,13 +6,13 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: "test1"
 
-  rcmenu:
+  uimenu:
     build: .
     command: npm start
     ports:
       - 3000:3000
     environment:
-      DATABASE_URL: "mysql://root:test1@db:3306/RCMenu"
+      DATABASE_URL: "mysql://root:test1@db:3306/uimenu"
       EMAIL_HOST: "live.smtp.mailtrap.io"
       EMAIL_PORT: 587
       EMAIL_USER: "api"
