@@ -38,7 +38,6 @@ const UIMenuHeader = () => {
                   <nav className={menu_class}>
                     <ul>
                       <li><Link to="/">Home</Link></li>
-                      <li><Link to="/#prices">Prices</Link></li>
                       <li><Link to="/#contacts">Contacts</Link></li>
                       <li><Link to="/places">Account</Link></li>
                       <li><Link to= "/" onClick={() => auth.signOut()}>Logout</Link></li>
@@ -47,7 +46,6 @@ const UIMenuHeader = () => {
                   <nav className={menu_class}>
                     <ul>
                       <li><Link to="/">Home</Link></li>
-                      <li><Link to="/#prices">Prices</Link></li>
                       <li><Link to="/#contacts">Contacts</Link></li>
                       <li><Link to="/login">Login</Link></li>
                       <li><Link to="/register">Registration</Link></li>
@@ -73,7 +71,6 @@ const UIMenuHeader = () => {
             <nav className={menu_class}>
               <ul>
                 <li><Link to="/">Home</Link></li>
-                <li><Link to="/#prices">Prices</Link></li>
                 <li><Link to="/#contacts">Contacts</Link></li>
                 <li><Link to="/places">Account</Link></li>
                 <li><Link to= "/" onClick={() => auth.signOut()}>Logout</Link></li>
@@ -82,7 +79,6 @@ const UIMenuHeader = () => {
             <nav className={menu_class}>
               <ul>
                 <li><Link to="/">Home</Link></li>
-                <li><Link to="/#prices">Prices</Link></li>
                 <li><Link to="/#contacts">Contacts</Link></li>
                 <li><Link to="/login">Login</Link></li>
                 <li><Link to="/register">Registration</Link></li>
