@@ -1,4 +1,3 @@
-import { HashLink } from 'react-router-hash-link';
 import UIMenuFooter from "../../components/UIMenuFooter";
 import UIMenuHeader from "../../components/UIMenuHeader/UIMenuHeader";
 import styles from "./terms.module.css";
@@ -14,8 +13,8 @@ export function Terms() {
                 <p>This agreement, and all schedules and appendices attached or referred hereto, if any,
                    (“Agreement”) is an agreement between you as a user who accesses or establishes 
                    a connection to the website and internet service known as uimenu.com and UIMenu.com owned by 
-                   individual entrepreneur (ФОП) Hadzhilov Serhii registration number 10000000225662,
-                   Ukraine, Dnipro, Savkina st. 7, 255.</p>
+                   individual entrepreneur Hadzhilov Serhii registration number 10000000225662,
+                   Ukraine, Dnipro.</p>
             </section>
             <section className={styles.section}>
                 <h3>Definitions and interpretations</h3>
@@ -25,7 +24,6 @@ export function Terms() {
                     <li><b>Service</b> - means the services and features provided or made available by UIMenu through or on the Platform.</li>
                     <li><b>User/Users</b> - means all users who access or establish a connection to the Platform and/or UIMenu Services.</li>
                     <li><b>Information</b> - means any information, details, content, dimensions, data, maps, locations, photographs, text, descriptions, specifications, audio or video clips, graphics, and/or other materials.</li>
-                    <li><b>Paid Subscription</b> - means recurring payment fees that are charged in advance on a monthly basis or some other recurring interval disclosed to the User prior to the purchase.</li>
                 </ul>
             </section>
             <section className={styles.section}>
@@ -57,46 +55,6 @@ export function Terms() {
                     complete, accurate and up-to-date and that User have all the necessary authority and right to publish or 
                     provide such Information. User warrant that UIMenu’s use of any such Information will not infringe the right 
                     (including without limitation the Intellectual Property Rights) of any third party.
-                </p>
-            </section>
-            <section className={styles.section}>
-                <h3>Fees and payments</h3>
-                <p>
-                    After creating an Account at the Platform User is given time limited access to a trial version of the 
-                    UIMenu Services. In order to continue using the Service after the end of the trial time period and to have 
-                    access to Information uploaded, User may purchase a Paid Subscription.
-                </p>
-                <p>
-                    Paid Subscription fees are charged in advance on a monthly basis or some other recurring interval 
-                    disclosed to User prior to the purchase.
-                </p>
-               
-                <p>Current Paid Subscription prices and recurring intervals are equal to:</p>
-                <ul>
-                    <li>10 USD per 1 month</li>
-                    <li>54 USD per 6 month</li>
-                    <li>96 USD per 12 month</li>
-                </ul>
-                <p>
-                    Paid Subscription will automatically renew at the end of the applicable subscription period, 
-                    unless User cancels the Paid Subscription before the end of the then-current subscription period. 
-                    UIMenu does not provide refunds for any partial subscription periods.
-                    To cancel the subscription please <HashLink className={styles.link} to="/#contacts">contact us</HashLink>.
-                </p>
-                <p>
-                    UIMenu reserves the right, in its sole discretion, to change fees, including, but not limited to, 
-                    Paid Subscription and recurring subscription fees (for periods not yet paid) for access to and use of the 
-                    Service, or any portions of the Platform.
-                </p>
-                <p>
-                    If UIMenu elects to change its fees it will post notice on the Platform of all provisions pertaining to 
-                    fees and payments at least one calendar month before it comes into effect.
-                </p>
-                <p>
-                    UIMenu reserves the right to charge fees in UAH currency in accordance with Ukrainian laws.
-                </p>
-                <p>
-                    Prices do not include VAT. VAT may be added on top of the prices in accordance with local laws.
                 </p>
             </section>
             <section className={styles.section}>
