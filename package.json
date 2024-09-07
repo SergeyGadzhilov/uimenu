@@ -15,6 +15,7 @@
     "dev": "turbo run dev",
     "release:image": "build:image && publish:image",
     "db:seed": "ts-node ./apps/api/prisma/seed.ts",
+    "db:install": "npm run db:migrate && npm run db:seed",
     "db:migrate": "npx prisma migrate dev --schema=./apps/api/prisma/schema.prisma",
     "db:update": "npx prisma migrate deploy --schema=./apps/api/prisma/schema.prisma",
     "build": "prisma generate --schema=./apps/api/prisma/schema.prisma && turbo run build",

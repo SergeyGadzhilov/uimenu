@@ -4,14 +4,14 @@ WORKDIR /usr/build
 
 COPY . .
 
-RUN npm ci --only=production && \
-    npm install turbo --global && \
-    npm install @rollup/rollup-linux-x64-musl && \
-    npm run build
+RUN npm ci --only=production \
+    && npm install turbo --global \
+    && npm install @rollup/rollup-linux-arm64-musl \
+    && npm run build
 
 FROM node:alpine
 
-WORKDIR app
+WORKDIR /usr/app
 
 COPY --from=builder /usr/build/node_modules ./node_modules
 COPY --from=builder /usr/build/package.json ./package.json

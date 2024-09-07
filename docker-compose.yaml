@@ -3,7 +3,10 @@ services:
     image: mysql:latest
     ports:
       - 3306:3306
+    volumes:
+      - ./../db:/var/lib/mysql
     environment:
+      MYSQL_DATABASE: uimenu
       MYSQL_ROOT_PASSWORD: "test1"
 
   uimenu:
