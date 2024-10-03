@@ -1,7 +1,7 @@
 {
   "packageManager": "npm@10.2.4",
   "name": "uimenu",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "module": "index.ts",
   "devDependencies": {
     "@types/bun": "^1.0.3",
@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "dev": "turbo run dev",
-    "release:image": "build:image && publish:image",
+    "release:image": "npm run build:image && npm run publish:image",
     "db:seed": "ts-node ./apps/api/prisma/seed.ts",
     "db:install": "npm run db:update && npm run db:seed",
     "db:migrate": "npx prisma migrate dev --schema=./apps/api/prisma/schema.prisma",
