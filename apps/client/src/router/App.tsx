@@ -29,7 +29,7 @@ function App(){
                 <Route path="/menu/:id/:tableNumber" element={<Menu />} />
                 <Route path="/password/forgot" element={<ForgotPassword />} />
                 <Route path="/password/reset/:token" element={<ResetPassword />} />
-                <Route path="/demo" element={<Navigate to="/menu/clxa5q63w0002lnvqoov6nmmf/1" />} />
+                <Route path="/demo" element={<Navigate to="/menu/cm1tarlr00009jrhtgf31q3c8/1" />} />
                 <Route path="*" element={<IndexPage />} />
             </Routes>
             <ToastContainer />
