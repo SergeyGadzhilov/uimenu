@@ -1,4 +1,4 @@
-import AccentButton from "../Buttons/buttons";
+import { AccentButton } from "../Buttons/buttons";
 import styles from "./Error.module.css"
 
 export default function Error({children = null, show=false, errors=[], onClose=null}) {

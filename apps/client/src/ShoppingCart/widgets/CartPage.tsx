@@ -1,9 +1,9 @@
 import { Card } from "react-bootstrap";
 import OperationButton from "../../components/OperationButton";
-import AccentButton from "../../components/Buttons/buttons";
+import { AccentButton, Button } from "../../components/Buttons/buttons";
 import styles from "./CartPage.module.css";
 
-const CartPage = ({cart, onAdd, onRemove, onClose}) => {
+const CartPage = ({cart, onAdd, onRemove, onClose, onClear}) => {
   return (
     <>
       <h3 className="text-center mb-4">
@@ -51,8 +51,9 @@ const CartPage = ({cart, onAdd, onRemove, onClose}) => {
           </div>
         </Card.Body>
       </Card>
-      <div className={styles.back_button}>
-        <AccentButton onPress={onClose}>Back to menu</AccentButton>
+      <div className={styles.buttons}>
+          <AccentButton onPress={onClose}>Back to menu</AccentButton>
+          <Button onPress={onClear}>Clear</Button>
       </div>
     </>
   );

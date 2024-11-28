@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import styles from "./Products.module.css";
-import AccentButton, { Button } from "../../components/Buttons/buttons";
+import { AccentButton, Button } from "../../components/Buttons/buttons";
 import { CreateProduct, DeleteProduct, UpdateProduct } from "../../apis/products";
 import { LoaderOverlay } from "../../components/Loader/LoaderOverlay";
 import AuthContext from "../../context/AuthContext";

@@ -3,7 +3,7 @@ import { useContext, useState } from 'react';
 import AuthContext from '../../context/AuthContext';
 import ImageDropzone from './ImageDropzone';
 import { AuthContextType } from '../../types';
-import AccentButton, { Button } from '../../components/Buttons/buttons';
+import { AccentButton, Button } from '../../components/Buttons/buttons';
 import styles from "./form.module.css";
 import { CreatePlace } from '../../apis/places';
 import Error from '../../components/Error/Error';

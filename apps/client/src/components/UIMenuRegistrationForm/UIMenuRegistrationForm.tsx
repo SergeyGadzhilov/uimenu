@@ -3,7 +3,7 @@ import styles from './UIMenuRegistrationFrom.module.css'
 import Error from '../Error/Error';
 import Loader from './Loader';
 import SuccessPage from './Success';
-import AccentButton from '../Buttons/buttons';
+import { AccentButton } from '../Buttons/buttons';
 import { AuthContextType } from '../../types';
 import AuthContext from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
