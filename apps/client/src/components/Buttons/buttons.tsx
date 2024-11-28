@@ -7,7 +7,7 @@ export function Button({children, onPress = null}) {
     );
 }
 
-export default function AccentButton({children="", onPress=null}) {
+export function AccentButton({children="", onPress=null}) {
     return (
         <button className={styles.accent} onClick={onPress}>{children}</button>
     );

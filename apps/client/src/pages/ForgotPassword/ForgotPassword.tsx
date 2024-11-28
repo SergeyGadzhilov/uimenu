@@ -3,7 +3,7 @@ import styles from './ForgotPasswrod.module.css';
 import Error from '../../components/Error/Error';
 import Loader from './Loader';
 import SuccessPage from './Success';
-import AccentButton from '../../components/Buttons/buttons';
+import { AccentButton } from '../../components/Buttons/buttons';
 import { AuthContextType } from '../../types';
 import AuthContext from '../../context/AuthContext';
 import MainLayout from '../../layouts/MainLayout';

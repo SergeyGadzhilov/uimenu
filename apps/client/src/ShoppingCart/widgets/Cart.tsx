@@ -30,9 +30,26 @@ export function Cart({cart, onOpen = null, onClose = null}) {
         onUpdate(++counter);
     }
 
+    const Clear = () => {
+        cart.clear();
+        if (cart.isEmpty())
+        {
+            Close();
+        }
+        onUpdate(++counter);
+    }
+
     return (
         <>
-            {showCart && <CartPage cart={cart} onAdd={Add} onRemove={Remove} onClose={Close}/>}
+            {showCart &&
+                <CartPage
+                    cart={cart}
+                    onAdd={Add}
+                    onRemove={Remove}
+                    onClose={Close}
+                    onClear={Clear}
+                />
+            }
             {!showCart && <CartButton cart={cart} onClick={Open}/>}
         </>
     );
