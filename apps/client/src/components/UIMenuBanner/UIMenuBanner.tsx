@@ -15,7 +15,7 @@ const UIMenuBanner = () => {
               </div>
             </div>
             <div className={styles.button}>
-                <LinkAccentButton to="/register">Create QR menu</LinkAccentButton>
+                <LinkAccentButton to="/register">Create menu</LinkAccentButton>
             </div>
           </div>
           <div className={styles.gap}></div>

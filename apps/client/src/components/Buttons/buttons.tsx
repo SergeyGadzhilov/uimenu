@@ -15,12 +15,12 @@ export function AccentButton({children="", onPress=null}) {
 
 export function LinkAccentButton({children = null, to=""}) {
     return (
-        <Link className={styles.accent} to={to}>{children}</Link>
+        <Link className={styles.accent_link} to={to}>{children}</Link>
     );
 }
 
 export function LinkButton({children=null, to=""}) {
     return (
-        <Link className={styles.button} to={to}>{children}</Link>
+        <Link className={styles.link} to={to}>{children}</Link>
     );
 }
