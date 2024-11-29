@@ -20,7 +20,7 @@ const UIMenuEditorSection = () => {
                                     <li>Generate and print QR code for menu</li>
                                 </ul>
                                 <div className="editor__buttons">
-                                    <LinkAccentButton to="/register">Create QR menu</LinkAccentButton>
+                                    <LinkAccentButton to="/register">Create menu</LinkAccentButton>
                                     <LinkButton to="/demo">Demo</LinkButton>
                                 </div>
                             </div>
