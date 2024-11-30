@@ -1,25 +1,26 @@
-import { LinkAccentButton, LinkButton } from "./Buttons/buttons";
+import styles from './UIMenuEditorSection.module.css';
+import { LinkAccentButton, LinkButton } from "../Buttons/buttons";
 
 const UIMenuEditorSection = () => {
     return (
-      <section className="section_editor">
+      <section className={styles.editor}>
         <div className="container">
             <div className="row">
                 <div className="col-md-12">
-                    <div className="editor__main_content">
-                        <div className="editor__main_content_left">
-                            <img src="/assets/images/idea_item.png" alt="item_image" />
+                    <div className={styles.main_content}>
+                        <div className={styles.main_content_left}>
+                            <img src="/assets/images/editor_image.webp" alt="editor image" />
                         </div>
-                        <div className="editor__main_content_right">
-                            <div className="editor__title">QR Code Menu Editor</div>
-                            <div className="editor__description">
-                                The QR code menu editor allows you to effortlessly create and share your menu within minutes.
-                                <ul className="editor__features">
+                        <div className={styles.main_content_right}>
+                            <div className={styles.title}>Menu editor</div>
+                            <div className={styles.description}>
+                                The menu editor allows you to effortlessly create and share your menu within minutes.
+                                <ul className={styles.features}>
                                     <li>Design your digital menu in just minutes</li>
                                     <li>Effortless menu updates with our editor</li>
                                     <li>Generate and print QR code for menu</li>
                                 </ul>
-                                <div className="editor__buttons">
+                                <div className={styles.buttons}>
                                     <LinkAccentButton to="/register">Create menu</LinkAccentButton>
                                     <LinkButton to="/demo">Demo</LinkButton>
                                 </div>
