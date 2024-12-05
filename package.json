@@ -1,7 +1,7 @@
 {
   "packageManager": "npm@10.2.4",
   "name": "uimenu",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "module": "index.ts",
   "devDependencies": {
     "@types/bun": "^1.0.3",
@@ -19,8 +19,8 @@
     "db:migrate": "npx prisma migrate dev --schema=./apps/api/prisma/schema.prisma",
     "db:update": "npx prisma migrate deploy --schema=./apps/api/prisma/schema.prisma",
     "build": "prisma generate --schema=./apps/api/prisma/schema.prisma && turbo run build",
-    "build:image": "docker build -t sgad/uimenu:$npm_package_version .",
-    "publish:image": "docker push sgad/uimenu:$npm_package_version",
+    "build:image": "docker build -t sgad/uimenu:%npm_package_version% .",
+    "publish:image": "docker push sgad/uimenu:%npm_package_version%",
     "start": "node ./apps/api/dist/src/main"
   },
   "peerDependencies": {

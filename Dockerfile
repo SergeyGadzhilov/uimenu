@@ -6,7 +6,7 @@ COPY . .
 
 RUN npm ci --only=production \
     && npm install turbo --global \
-    && npm install @rollup/rollup-linux-arm64-musl \
+    && npm install @rollup/rollup-linux-x64-musl \
     && npm run build
 
 FROM node:alpine
