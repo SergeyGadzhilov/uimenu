@@ -52,7 +52,7 @@ const CartPage = ({cart, onAdd, onRemove, onClose, onClear}) => {
         </Card.Body>
       </Card>
       <div className={styles.buttons}>
-          <AccentButton onPress={onClose}>Back to menu</AccentButton>
+          <AccentButton onPress={onClose}>Menu</AccentButton>
           <Button onPress={onClear}>Clear</Button>
       </div>
     </>
