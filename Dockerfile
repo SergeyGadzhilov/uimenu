@@ -1,4 +1,4 @@
-FROM node:alpine AS builder
+FROM node:20-alpine3.17 AS builder
 
 WORKDIR /usr/build
 
@@ -9,7 +9,7 @@ RUN npm ci --only=production \
     && npm install @rollup/rollup-linux-x64-musl \
     && npm run build
 
-FROM node:alpine
+FROM node:20-alpine3.17
 
 WORKDIR /usr/app
 
