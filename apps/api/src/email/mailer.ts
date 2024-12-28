@@ -20,11 +20,11 @@ export async function SendPasswordResetMail(to: string, resetUrl: string) : Prom
 
 async function SendEmail(email: Email) : Promise<void> {
     const transport = nodemailer.createTransport({
-        host: process.env.EMAIL_HOST || "sandbox.smtp.mailtrap.io",
+        host: process.env.EMAIL_HOST,
         port: parseInt(process.env.EMAIL_PORT) || 25,
         auth: {
-            user: process.env.EMAIL_USER || "a073fc5a0285c5",
-            pass: process.env.EMAIL_PASS || "bc1ce75ee42394"
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASS
         }
     });
 
