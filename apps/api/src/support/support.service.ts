@@ -11,10 +11,14 @@ export class  SupportService {
     async create(ticket: CreateTicketDTO) {
         await SendEmail({
             to: "support@uimenu.com",
-            from: ticket.email,
+            from: "UIMenu <no-reply@uimenu.com>",
             subject: `Email from user ${ticket.name}`,
-            data: {user_name: ticket.name, message: ticket.message},
-            template: "user_email"
+            template: "user_email",
+            data: {
+                user_email: ticket.email,
+                user_name: ticket.name,
+                user_message: ticket.message
+            },
         });
 
         return this.prisma.supportTicket.create({
