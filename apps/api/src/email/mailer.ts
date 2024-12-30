@@ -3,6 +3,7 @@ import * as ejs from "ejs";
 import * as path from 'path';
 
 class Email {
+    from: string;
     to: string;
     subject: string;
     template: string;
@@ -11,6 +12,7 @@ class Email {
 
 export async function SendPasswordResetMail(to: string, resetUrl: string) : Promise<void> {
     await SendEmail({
+        from: "UIMenu <no-reply@uimenu.com>",
         to,
         subject: "UIMenu reset password",
         template: "reset_password",
@@ -18,7 +20,12 @@ export async function SendPasswordResetMail(to: string, resetUrl: string) : Prom
     });
 }
 
-async function SendEmail(email: Email) : Promise<void> {
+async function getEmailContent(email) {
+    const template = path.join(__dirname, "..", "assets", "emails", `${email.template}.ejs`);
+    return await ejs.renderFile(template, email.data);
+}
+
+export async function SendEmail(email: Email) : Promise<void> {
     const transport = nodemailer.createTransport({
         host: process.env.EMAIL_HOST || "sandbox.smtp.mailtrap.io",
         port: parseInt(process.env.EMAIL_PORT) || 25,
@@ -29,10 +36,9 @@ async function SendEmail(email: Email) : Promise<void> {
     });
 
     try {
-        const template = path.join(__dirname, "..", "assets", "emails", `${email.template}.ejs`);
-        const content = await ejs.renderFile(template, email.data);
+        const content = await getEmailContent(email);
         await transport.sendMail({
-            from: "UIMenu <no-reply@uimenu.com>",
+            from: email.from,
             to: email.to,
             subject: email.subject,
             html: content
