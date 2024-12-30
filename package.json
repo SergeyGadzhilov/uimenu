@@ -1,7 +1,7 @@
 {
   "packageManager": "npm@10.2.4",
   "name": "uimenu",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "module": "index.ts",
   "devDependencies": {
     "@types/bun": "^1.0.3",
