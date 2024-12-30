@@ -6,10 +6,10 @@ import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 @Injectable()
 export class AwsService {
   s3Configuration: S3ClientConfig = {
-    region: '',
+    region: process.env.AWS_REGION,
     credentials: {
-      accessKeyId: '',
-      secretAccessKey: '',
+      accessKeyId:  process.env.AWS_KEY_ID,
+      secretAccessKey: process.env.AWS_ACCESS_KEY,
     },
   };
   _aws: S3Client = new S3Client(this.s3Configuration);
@@ -19,7 +19,7 @@ export class AwsService {
     request: GetUploadUrlRequest,
   ): Promise<string> {
     const command = new PutObjectCommand({
-      Bucket: 'rc-menu-storage',
+      Bucket: process.env.AWS_BUCKET,
       Key: `${userid}/${request.menu ?? 'places'}/${request.image.path}-${Date.now()}`,
     });
     return await getSignedUrl(this._aws, command, { expiresIn: 3600 });
